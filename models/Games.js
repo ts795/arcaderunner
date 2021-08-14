@@ -15,6 +15,9 @@ Games.init(
     name: {
       type: DataTypes.STRING,
     },
+    description: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,
