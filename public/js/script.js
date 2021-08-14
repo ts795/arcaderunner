@@ -1,30 +1,43 @@
 const searchHandler = async (event) => {
     event.preventDefault();
     //not sure what to do here
+    console.log("Search button works");
    
   };
   $(".search-btn").on("submit", searchHandler);
-//   <button id = "logout-btn">Logout</button>
-//   <button id = "history-btn">History </button>
-//   <button id = "instruction-btn">Instructions</button>
-//   <button id = "play-computer-btn">Play Computer</button>
-//   <button id = "play-friend-btn">Select Friend</button>
-//   <button id = "favorite-btn">Favorite</button>
+
 const historyHandler = async (event) => {
     event.preventDefault();
     //not sure what to do here
+    console.log("History button works");
   };
   $(".history-btn").on("submit", historyHandler);
 
   const instructionHandler = async (event) => {
     event.preventDefault();
     //not sure what to do here
-  };
-  $(".instruction-btn").on("submit", instructionHandler);
-  
-  const instructionHandler = async (event) => {
-    event.preventDefault();
-    //not sure what to do here
+    console.log("Instruction button works")
   };
   $(".instruction-btn").on("submit", instructionHandler);
 
+  const playComputerHandler = async (event) => {
+    event.preventDefault();
+    //not sure what to do here
+    console.log("Play Computer button works")
+  };
+  $(".play-computer-btn").on("submit", playComputerHandler);
+
+
+  const playFriendHandler = async (event) => {
+    event.preventDefault();
+    //not sure what to do here
+    console.log("Play Freind button works")
+  };
+  $(".play-friend-btn").on("submit", playFriendHandler);
+
+  const favoriteHandler = async (event) => {
+    event.preventDefault();
+    //not sure what to do here
+    console.log("Favorite Button Works")
+  };
+  $(".favorite-btn").on("submit", favoriteHandler);
