@@ -1,0 +1,22 @@
+[
+    {
+        "score": 100,
+        "game_id": 1,
+        "user_id": 1
+    },
+    {
+        "score": 95,
+        "game_id": 2,
+        "user_id": 1
+    },
+    {
+        "score": 90,
+        "game_id": 1,
+        "user_id": 2
+    },
+    {
+        "score": 85,
+        "game_id": 2,
+        "user_id": 2
+    }
+]
