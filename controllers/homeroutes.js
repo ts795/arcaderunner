@@ -6,3 +6,15 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
+
+//login route
+router.get("/login", (req, res) => {
+  // If the user is already logged in, redirect to the homepage
+  console.log("req.session.loggedIn", req.session.loggedIn);
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  // Otherwise, render the 'login' template
+  res.render(__dirname, "../views/login.html");
+});
