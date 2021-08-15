@@ -2,7 +2,8 @@ const sequelize = require('../config/connection');
 const gamesData = require('./gameData.json');
 const userData = require('./userData.json');
 const highscoresData = require('./highscoresData.json');
-const { User, Games, Highscores } = require('../models');
+const messagesData = require('./messageData.json');
+const { User, Games, Highscores, Message } = require('../models');
 
 const seedAll = async () => {
     await sequelize.sync({ force: true });
@@ -15,6 +16,9 @@ const seedAll = async () => {
 
     // Load Highscores for testing
     await Highscores.bulkCreate(highscoresData);
+
+    // Load messages for testing
+    await Message.bulkCreate(messagesData);
 
     process.exit(0);
 };

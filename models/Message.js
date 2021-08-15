@@ -17,7 +17,18 @@ Message.init(
       allowNull: false,
     },
 
+    // Sender of the message
     user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
+
+    // Receiver of the message
+    receiver_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
