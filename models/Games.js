@@ -14,6 +14,7 @@ Games.init(
 
     name: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
