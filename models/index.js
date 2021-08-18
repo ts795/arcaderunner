@@ -17,20 +17,20 @@ User.belongsToMany(User, {
   through: "UserFriends",
 });
 
-// Games.hasMany(Highscores, {
-//   foreignKey: "game_id",
-// });
+Games.hasMany(Highscores, {
+  foreignKey: "game_id",
+});
 
-// Message.belongsTo(User, {
-//   foreignKey: "user_id",
-// });
+Message.belongsTo(User, {
+  foreignKey: "user_id",
+});
 
-// Highscores.belongsToMany(User, {
-//   foreignKey: "user_id",
-// });
+Highscores.belongsTo(User, {
+  foreignKey: "user_id",
+});
 
-// Highscores.belongsToMany(Games, {
-//   foreignKey: "game_id",
-// });
+Highscores.belongsTo(Games, {
+  foreignKey: "game_id",
+});
 
 module.exports = { User, Message, Games, Highscores };
