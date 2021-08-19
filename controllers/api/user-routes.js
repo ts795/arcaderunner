@@ -1,5 +1,14 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
+
+// get config vars
+dotenv.config();
+
+function generateAccessToken(username) {
+  return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+}
 
 //POST -  /api/login
 router.post("/login", async (req, res) => {
@@ -45,12 +54,15 @@ router.post("/signup", async (req, res) => {
     const userData = await User.create({
       username: req.body.username,
       password: req.body.password,
+      email: req.body.email
     });
 
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user_id = userData.id;
-      res.status(200).json(userData);
+      // Create a JWT token that the client can use to authenticate
+      const token = generateAccessToken({ user_id: userData.id });
+      res.status(200).json({jwt_token: token});
     });
   } catch (err) {
     console.log(err);
