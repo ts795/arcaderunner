@@ -33,7 +33,7 @@ FavoriteGames.init(
     {
         sequelize,
         timestamps: true,
-        modelName: "friends",
+        modelName: "favoriteGames",
         freezeTableName: true,
         underscored: true,
     }

@@ -5,7 +5,7 @@ const highscoresData = require('./highscoresData.json');
 const messagesData = require('./messageData.json');
 const favoritesData = require('./favorites.json');
 
-const { User, Games, Highscores, Message, Favorites } = require('../models');
+const { User, Games, Highscores, Message, FavoriteGames } = require('../models');
 
 const seedAll = async () => {
     await sequelize.sync({ force: true });
@@ -23,7 +23,7 @@ const seedAll = async () => {
     await Message.bulkCreate(messagesData);
 
     //Load favorites for testing
-    await Favorites.bulkCreate(favoritesData);
+    await FavoriteGames.bulkCreate(favoritesData);
 
 
     process.exit(0);

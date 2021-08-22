@@ -1,15 +1,16 @@
 const router = require("express").Router();
-const { Favorites } = require('../../models');
+const { FavoriteGames } = require('../../models');
 
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
    
 
     //documentation on favorite routes: https://stackoverflow.com/questions/53280738/join-in-sequelize/53288485
 
-    const favoriteData = await Favorites.findAll({
+    const favoriteData = await FavoriteGames.findAll({
         where: {
-            user_id: parseInt(req.params.id),
+            user_id: req.session.user_id, 
+            //=======how to check user id with JWT======
         },
     // include: { 
     //     model: sequelize.models.games,
@@ -31,7 +32,7 @@ console.log("this is it==========================", favoriteData);
 router.get('/:id', async (req, res) => {
   try {
     // Get all of the games
-    const gamesData = await Games.findOne({
+    const gamesData = await FavoriteGames.findOne({
       where: {
         id: req.params.id
       }
@@ -45,29 +46,49 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Delete a game with the passed in ID
+
 router.delete('/:id', async (req, res) => {
   try {
-    let gameData = await Games.findByPk(req.params.id);
-    if (!gameData) {
-      res.status(400).json({ message: 'No game found with that id!' });
+    const favoriteGamesData = await FavoriteGames.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!favoriteGamesData) {
+      res.status(404).json({ message: 'No game found with that id!' });
       return;
-    } else {
-      dbTripData = await Games.destroy(
-        {
-          where: {
-            id: req.params.id,
-          },
-        });
-      res.status(200).json({ message: 'Deleted the game successfully!' });
     }
+
+    res.status(200).json(favoriteGamesData);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
+})
+
+// // Delete a game with the passed in ID
+// router.delete('/:id', async (req, res) => {
+//   try {
+//     let gameData = await Games.findByPk(req.params.id);
+//     if (!gameData) {
+//       res.status(400).json({ message: 'No game found with that id!' });
+//       return;
+//     } else {
+//       dbTripData = await Games.destroy(
+//         {
+//           where: {
+//             id: req.params.id,
+//           },
+//         });
+//       res.status(200).json({ message: 'Deleted the game successfully!' });
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
 
 
-});
+// });
 
 // add a game
 // router.post('/', async (req, res) => {
