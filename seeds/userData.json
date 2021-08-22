@@ -8,5 +8,10 @@
         "username": "Super Mario",
         "email": "supermario@arcaderunner.com",
         "password": "Nintendo"
+    },
+    {
+        "username": "Luigi",
+        "email": "superluigi@arcaderunner.com",
+        "password": "Nintedo2"
     }
 ]

@@ -3,6 +3,7 @@ const User = require("./User");
 const Message = require("./Message");
 const Games = require("./Games");
 const Highscores = require("./Highscores");
+const FavoriteGames = require("./FavoriteGames")
 
 User.hasMany(Message, {
   foreignKey: "user_id",
@@ -17,9 +18,39 @@ User.belongsToMany(User, {
   through: "UserFriends",
 });
 
+User.belongsToMany(Games, {
+  as: "favoriteG",
+  through: FavoriteGames,
+  unique: false,
+  foreignKey: "user_id",
+})
+
+// User.belongsTo(FavoriteGames, {
+//   foreignKey: "user_id",
+// })
+
+Games.belongsToMany(User, {
+  as: "favoriteG2",
+  through: FavoriteGames,
+  unique: false,
+  foreignKey: "game_id",
+})
+
+// FavoriteGames.hasMany(User, {
+//   foreignKey: "user_id",
+// });
+
+// FavoriteGames.hasMany(Games, {
+//   foreignKey: "game_id",
+// });
+
 Games.hasMany(Highscores, {
   foreignKey: "game_id",
 });
+
+// Games.belongsTo(FavoriteGames, {
+//   foreignKey: "game_id",
+// })
 
 Message.belongsTo(User, {
   foreignKey: "user_id",
@@ -33,4 +64,4 @@ Highscores.belongsTo(Games, {
   foreignKey: "game_id",
 });
 
-module.exports = { User, Message, Games, Highscores };
+module.exports = { User, Message, Games, Highscores, FavoriteGames };
