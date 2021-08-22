@@ -1,0 +1,12 @@
+[
+    {
+        "username": "Sonic The Hedgehog",
+        "email": "sonic@arcaderunner.com",
+        "password": "Sega"
+    },
+    {
+        "username": "Super Mario",
+        "email": "supermario@arcaderunner.com",
+        "password": "Nintendo"
+    }
+]

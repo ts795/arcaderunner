@@ -1,29 +1,26 @@
 const router = require("express").Router();
 const { Favorites } = require('../../models');
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    // Get all of the favorite games
-
-    // const favoriteData = await Favorites.findAll({
-    // });
-    // const favorite = favoriteData.map((game) =>
-    //   game.get({ plain: true })
-    // );
+   
 
     //documentation on favorite routes: https://stackoverflow.com/questions/53280738/join-in-sequelize/53288485
 
     const favoriteData = await Favorites.findAll({
-    include: { 
-        model: sequelize.models.users,
-        as: 'favorite',
         where: {
-            id: user_id
+            user_id: parseInt(req.params.id),
         },
-        required: false
-    }
+    // include: { 
+    //     model: sequelize.models.games,
+    //     as: 'favorite',
+    //     required: false
+    // }
 });
-
+console.log("this is it==========================", favoriteData);
+    const favorite = favoriteData.map((favoriteGame) =>
+      favoriteGame.get({ plain: true })
+    );
     res.json(favorite);
   } catch (err) {
     res.status(500).json(err);

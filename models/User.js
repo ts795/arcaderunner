@@ -43,6 +43,13 @@ User.init(
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
+      beforeBulkCreate: async (newUserData) => {
+        // newUserData is an array of values to insert
+        for (var idx = 0; idx < newUserData.length; idx++) {
+          newUserData[idx].dataValues.password = await bcrypt.hash(newUserData[idx].dataValues.password, 10);
+        }
+        return newUserData;
+      },
     },
     sequelize,
     timestamps: false,

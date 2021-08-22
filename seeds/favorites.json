@@ -1,0 +1,10 @@
+[
+    {
+        "user_id": 1,
+        "games_id": 2
+    },
+    {
+        "user_id": 2,
+        "games_id": 1
+    }
+]
