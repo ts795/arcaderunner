@@ -1,10 +1,27 @@
-const withAuth = (req, res, next) => {
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 
-    if (!req.session.loggedIn) {
-      res.redirect('/api/login')
-    } else {
+// get config vars
+dotenv.config();
+
+// Source code from https://stackabuse.com/authentication-and-authorization-with-jwts-in-express-js/
+const authenticateJWT = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (authHeader) {
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+
+      req.user = user;
       next();
-    }
-  };
-  
-  module.exports = withAuth;
+    });
+  } else {
+    res.sendStatus(401);
+  }
+};
+
+module.exports = authenticateJWT;

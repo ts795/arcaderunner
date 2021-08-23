@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const { FavoriteGames } = require('../../models');
+const authenticateJWT = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', authenticateJWT, async (req, res) => {
   try {
    
 
@@ -9,7 +10,7 @@ router.get('/', async (req, res) => {
 
     const favoriteData = await FavoriteGames.findAll({
         where: {
-            user_id: req.session.user_id, 
+            user_id: req.user.user_id, 
             //=======how to check user id with JWT======
         },
     // include: { 
