@@ -45,6 +45,21 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+//user favorite a game
+router.post('/',async (req,res) =>{
+  try{ 
+    const favoriteGamesData = await FavoriteGames.create({
+      user_id: req.session.user_id,//update to jwt token
+      game_id:req.body.game_id
+  });
+
+  res.status(200).json(favoriteGamesData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+}
+});
+
 
 
 router.delete('/:id', async (req, res) => {
