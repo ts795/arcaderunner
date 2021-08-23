@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const { Games } = require('../../models');
+const authenticateJWT = require('../../utils/auth');
 
 // Get all games
-router.get('/', async (req, res) => {
+router.get('/', authenticateJWT, async (req, res) => {
   try {
     // Get all of the games
     const gamesData = await Games.findAll({
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get one game by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', authenticateJWT, async (req, res) => {
   try {
     // Get all of the games
     const gamesData = await Games.findOne({
