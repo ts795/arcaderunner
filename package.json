@@ -4,8 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "npm run build && node server.js",
+    "start:dev": "concurrently \"npm run server\" \"cd react-app && npm run start\"",
+    "server": "nodemon server.js --ignore client",
+    "build": "cd react-app && npm run build",
+    "install": "cd react-app && npm install",
+    "client": "cd react-app && npm start"
   },
   "repository": {
     "type": "git",

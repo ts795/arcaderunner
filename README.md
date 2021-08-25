@@ -27,3 +27,10 @@ DB_PASSWORD=<your mysql password>
 SECRET=<your session secret>
 TOKEN_SECRET=<token secret generated with node command>
 ```
+
+To run the server and compile the react app type:
+```
+npm run start:prod
+```
+
+then go to localhost:3004 in your browser
