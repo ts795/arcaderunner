@@ -3,6 +3,8 @@ import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
 import Games from "./components/pages/Games";
+import Profile from "./components/pages/Profile";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/games/:userId" component={Games} />
+        <Route exact path="/profile/:userId" component={Profile} />
       </div>
     </Router>
   );
