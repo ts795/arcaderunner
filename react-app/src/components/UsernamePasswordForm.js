@@ -8,7 +8,7 @@ function UsernamePasswordForm(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [redirect, setRedirect] = useState(false);
+  const [userId, setUserId] = useState('');
 
   const handleInputChange = (e) => {
     // Getting the value and name of the input which triggered the change
@@ -29,13 +29,15 @@ function UsernamePasswordForm(props) {
     e.preventDefault();
 
     // Alert the user their first and last name, clear the inputs
-    var status = loginOrSignup(username, password, props.formType === "Log In", email);
-    setUsername('');
-    setPassword('');
-    setEmail('');
-    if (status) {
-      setRedirect(true);
-    }
+    var returnVal = loginOrSignup(username, password, props.formType === "Log In", email);
+    returnVal.then((id) => {
+      setUsername('');
+      setPassword('');
+      setEmail('');
+      if (id) {
+        setUserId(id);
+      }
+    })
   };
 
   let emailInput = '';
@@ -49,8 +51,9 @@ function UsernamePasswordForm(props) {
         />
   }
 
-  if (redirect) {
-    return <Redirect to='/games' />
+  if (userId) {
+    let pathToRedirect = "/games/" + userId;
+    return <Redirect to={pathToRedirect} />
   } else {
     return (
       <form className="form">

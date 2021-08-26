@@ -16,9 +16,9 @@ export default async function loginOrSignup(username, password, login, email) {
         if (response.ok) {
             const json = await response.json();
             window.arcadeRunnerJWTToken = json.jwt_token;
-            return true;
+            return json.user_id;
         } else {
-            return false;
+            return;
         }
       }
 }
