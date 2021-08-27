@@ -1,11 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
+import { Redirect, useParams } from 'react-router-dom'
 
 function Games() {
-  return (
-    <section>
-      <h1>To be implemented</h1>
-    </section>
-  );
+  const { userId } = useParams();
+  const [goToProfile, setGoToProfile] = useState(false);
+
+  const onProfileButtonClick = (e) => {
+    setGoToProfile(true);
+  };
+
+  if (goToProfile) {
+    let pathToRedirect = "/profile/" + userId;
+    return <Redirect to={pathToRedirect} />
+  } else {
+    return (
+      <div>
+        <button onClick={onProfileButtonClick} className="clickableIcon"><i class="fa fa-user fa-5x" aria-hidden="true"></i></button>
+      </div>
+    );
+  }
 }
 
 export default Games;

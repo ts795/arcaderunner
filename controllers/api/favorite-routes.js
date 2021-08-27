@@ -1,30 +1,22 @@
 const router = require("express").Router();
-const { FavoriteGames } = require('../../models');
+const { FavoriteGames, User } = require('../../models');
 const authenticateJWT = require('../../utils/auth');
 
 router.get('/', authenticateJWT, async (req, res) => {
   try {
-   
-
     //documentation on favorite routes: https://stackoverflow.com/questions/53280738/join-in-sequelize/53288485
-
-    const favoriteData = await FavoriteGames.findAll({
-        where: {
-            user_id: req.user.user_id, 
-            //=======how to check user id with JWT======
-        },
-    // include: { 
-    //     model: sequelize.models.games,
-    //     as: 'favorite',
-    //     required: false
-    // }
-});
-console.log("this is it==========================", favoriteData);
-    const favorite = favoriteData.map((favoriteGame) =>
-      favoriteGame.get({ plain: true })
-    );
+    const favoriteData = await User.findOne({
+      where: {
+        id: req.user.user_id,
+      },
+      attributes: { exclude: ['password'] },
+      include: "favoriteG"
+    });
+    console.log("this is it==========================", favoriteData);
+    const favorite = favoriteData.get({ plain: true });
     res.json(favorite);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -47,18 +39,18 @@ router.get('/:id', async (req, res) => {
   }
 });
 //user favorite a game
-router.post('/', authenticateJWT, async (req,res) =>{
-  try{ 
+router.post('/', authenticateJWT, async (req, res) => {
+  try {
     const favoriteGamesData = await FavoriteGames.create({
       user_id: req.user.user_id,//update to jwt token
-      game_id:req.body.game_id
-  });
+      game_id: req.body.game_id
+    });
 
-  res.status(200).json(favoriteGamesData);
+    res.status(200).json(favoriteGamesData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
-}
+  }
 });
 
 

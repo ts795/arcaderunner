@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken');
 // get config vars
 dotenv.config();
 
-function generateAccessToken(username) {
-  return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+function generateAccessToken(userInfo) {
+  return jwt.sign(userInfo, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
 }
 
 //POST -  /api/login
@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
       req.session.loggedIn = true;
       req.session.user_id = userData.id;
       // Create a JWT token that the client can use to authenticate
-      const token = generateAccessToken({ user_id: userData.id });
+      const token = generateAccessToken({ user_id: userData.id, username: userData.username, email: userData.email });
       res.status(200).json({jwt_token: token, user_id: userData.id});
     });
   } catch (err) {
@@ -60,7 +60,7 @@ router.post("/signup", async (req, res) => {
       req.session.loggedIn = true;
       req.session.user_id = userData.id;
       // Create a JWT token that the client can use to authenticate
-      const token = generateAccessToken({ user_id: userData.id });
+      const token = generateAccessToken({ user_id: userData.id, username: userData.username, email: userData.email });
       res.status(200).json({jwt_token: token, user_id: userData.id});
     });
   } catch (err) {
@@ -79,5 +79,7 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
+
+// GET user 
 
 module.exports = router;

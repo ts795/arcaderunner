@@ -88,3 +88,8 @@ section {
 .homeLink {
   width: 20%;
 }
+
+/* Show cursor pointer for clickable icons */
+.clickableIcon {
+  cursor: pointer;
+}

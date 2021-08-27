@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './UsernamePasswordForm.css';
-import  loginOrSignup from '../utils/API';
 import { Redirect } from 'react-router-dom'
+import  {loginOrSignup} from '../utils/API';
+
 
 function UsernamePasswordForm(props) {
   // Here we set two state variables for firstName and lastName using `useState`
