@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Redirect, useParams } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { getFavoriteGames } from "../../utils/API";
+import { getHighScores } from '../../utils/API';
+
 
 function Profile() {
   const { userId } = useParams();
@@ -9,6 +11,7 @@ function Profile() {
   let jwt_token = localStorage.getItem('arcadeRunnerJWTToken');
   let decoded = jwt_decode(jwt_token);
   const [goToGames, setGoToGames] = useState(false);
+  const [ goToHighScores, setGoToHighScores] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -19,8 +22,19 @@ function Profile() {
     )
   }, []);
 
+  useEffect(() => {
+        getHighScores().then((result) => {
+        console.log("highscore", result);
+        setData(result);
+    }
+    )
+  }, []);
+
   const onGamesButtonClick = (e) => {
     setGoToGames(true);
+  };
+     const onHighScoresButtonClick = (e) => {
+    setGoToHighScores(true);
   };
 
   if (goToGames) {
@@ -29,6 +43,14 @@ function Profile() {
   } else {
     const listItems = data.map((game) =>
       <li key={game.id}>{game.name}</li>
+    );
+
+    if (goToHighScores) {
+    let pathToRedirect = "/highscores/" + userId;
+    return <Redirect to={pathToRedirect} />
+  } else {
+    const listItemsHighScore = data.map((score) =>
+      <li key={score.id}>{score.score}</li>
     );
     return (
       <div>
@@ -39,9 +61,18 @@ function Profile() {
         <ul>
           {listItems}
         </ul>
+        <button onClick={onHighScoresButtonClick} className="clickableIcon"><i class="fa fa-arrow-left fa-5x" aria-hidden="true"></i></button>
+        <h1>{decoded.username}</h1>
+        <h3>{decoded.email}</h3>
+        <h2>High Scores</h2>
+        <ul>
+          {listItemsHighScore}
+        </ul>
+
       </div>
     );
   }
+}
 }
 
 export default Profile;

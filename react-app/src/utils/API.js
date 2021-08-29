@@ -29,6 +29,7 @@ async function loginOrSignup(username, password, login, email) {
 async function getFavoriteGames() {
     const response = await fetch('/api/favorite', {
         method: 'GET',
+        //any route that needs authentication will need line 33 header
         headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
     });
     if (response.ok) {
@@ -39,4 +40,19 @@ async function getFavoriteGames() {
     }
 }
 
-export { loginOrSignup, getFavoriteGames };
+//Get HighScores of a user
+async function getHighScores() {
+    const response = await fetch('/api/highscores', {
+        method: 'GET',
+        //any route that needs authentication will need this next line
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+        const json = await response.json();
+        return json.highscores;
+    } else {
+        return;
+    }
+}
+
+export { loginOrSignup, getFavoriteGames, getHighScores };
