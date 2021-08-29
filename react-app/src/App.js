@@ -4,6 +4,7 @@ import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
 import Games from "./components/pages/Games";
 import Profile from "./components/pages/Profile";
+import BeforeGame from './components/pages/BeforeGame';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/games/:userId" component={Games} />
         <Route exact path="/profile/:userId" component={Profile} />
+        <Route exact path="/games/:id" component={BeforeGame}/>
       </div>
     </Router>
   );
