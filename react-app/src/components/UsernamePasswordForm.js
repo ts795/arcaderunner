@@ -53,7 +53,7 @@ function UsernamePasswordForm(props) {
   }
 
   if (userId) {
-    let pathToRedirect = "/games/" + userId;
+    let pathToRedirect = "/games";
     return <Redirect to={pathToRedirect} />
   } else {
     return (
