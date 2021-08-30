@@ -5,7 +5,6 @@ import { getFavoriteGames } from "../../../utils/API";
 import './Profile.css';
 
 function Profile() {
-  const { userId } = useParams();
   // Get the user's information from locations
   let jwt_token = localStorage.getItem('arcadeRunnerJWTToken');
   let decoded = jwt_decode(jwt_token);
@@ -25,7 +24,7 @@ function Profile() {
   };
 
   if (goToGames) {
-    let pathToRedirect = "/games/" + userId;
+    let pathToRedirect = "/games";
     return <Redirect to={pathToRedirect} />
   } else {
     const listItems = data.map((game) =>
