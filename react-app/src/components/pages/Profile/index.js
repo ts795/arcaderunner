@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { getFavoriteGames } from "../../../utils/API";
 import './Profile.css';
