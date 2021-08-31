@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import { Redirect, useParams } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 function Games() {
-  const { userId } = useParams();
   const [goToProfile, setGoToProfile] = useState(false);
 
   const onProfileButtonClick = (e) => {
@@ -10,7 +9,7 @@ function Games() {
   };
 
   if (goToProfile) {
-    let pathToRedirect = "/profile/" + userId;
+    let pathToRedirect = "/profile";
     return <Redirect to={pathToRedirect} />
   } else {
     return (

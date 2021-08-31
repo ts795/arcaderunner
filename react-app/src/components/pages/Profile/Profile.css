@@ -1,0 +1,24 @@
+
+.profileCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 75%;
+    margin: auto;
+    text-align: center;
+    z-index: 2;
+    background-color:rgba(255, 255, 255, 0.5);
+    color: white;
+    /* Add a text shadow */
+    text-shadow: 2px 2px 8px #FF0000;
+}
+
+.profileFavoriteGames {
+    list-style-type: none;
+}
+ 
+.profilePageBody {
+    background-image: url("../../../files/element5-digital-dwcC-OJ-bRs-unsplash.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

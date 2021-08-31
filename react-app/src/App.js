@@ -15,9 +15,9 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/games/:userId" component={Games} />
-        <Route exact path="/profile/:userId" component={Profile} />
-        <Route exact path="/highscores/:userId" component={HighScores} />
+        <Route exact path="/highscores" component={HighScores} />
+        <Route exact path="/games" component={Games} />
+        <Route exact path="/profile" component={Profile} />
       </div>
     </Router>
   );
