@@ -3,7 +3,7 @@ import { Redirect, useParams } from 'react-router-dom'
 
 function Games() {
   const { userId } = useParams();
-  const {id} = useParams();
+  // const {id} = useParams();
   const [goToProfile, setGoToProfile] = useState(false);
   const [goToGame, setGoToGame] = useState(false);
 
@@ -18,7 +18,7 @@ function Games() {
     let pathToRedirect = "/profile/" + userId;
     return <Redirect to={pathToRedirect} />
   } else if(goToGame){
-    let pathToRedirect = "/games/" + id;
+    let pathToRedirect = "/game/" + 4;
     return <Redirect to={pathToRedirect} />
   }
   else {

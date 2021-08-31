@@ -20,6 +20,7 @@ function Profile() {
   }, []);
 
   const onGamesButtonClick = (e) => {
+    console.log("Profile")
     setGoToGames(true);
   };
 
