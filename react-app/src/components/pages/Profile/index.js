@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
-import { getFavoriteGames, removeJSONWebToken } from "../../../utils/API";
+import { getFavoriteGames } from "../../../utils/API";
+import { removeJSONWebToken } from "../../../utils/auth";
 import './Profile.css';
 
 function Profile() {
