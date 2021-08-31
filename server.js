@@ -26,6 +26,13 @@ app.use(express.static(path.join(__dirname, 'react-app/build')));
 
 app.use(routes);
 
+// Wildcard route to re-direct users to /
+app.get('*', (req, res, next) => {
+  res.redirect("/");
+  next();
+}
+);
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening to: http://localhost:${PORT}`));
 });

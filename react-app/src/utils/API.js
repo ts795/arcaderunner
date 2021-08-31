@@ -39,8 +39,4 @@ async function getFavoriteGames() {
     }
 }
 
-function removeJSONWebToken() {
-    localStorage.removeItem('arcadeRunnerJWTToken');
-}
-
-export { loginOrSignup, getFavoriteGames, removeJSONWebToken };
+export { loginOrSignup, getFavoriteGames };
