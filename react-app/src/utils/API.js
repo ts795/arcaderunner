@@ -49,7 +49,8 @@ async function getHighScores() {
     });
     if (response.ok) {
         const json = await response.json();
-        return json.highscores;
+        console.log("JSON", json);
+        return json;
     } else {
         return;
     }

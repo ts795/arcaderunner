@@ -13,10 +13,11 @@ function Profile() {
   const [goToGames, setGoToGames] = useState(false);
   const [ goToHighScores, setGoToHighScores] = useState(false);
   const [data, setData] = useState([]);
+  const [highScoresData, setHighScoresData] = useState([]);
 
   useEffect(() => {
     getFavoriteGames().then((result) => {
-      console.log(result);
+      console.log("Games", result);
       setData(result);
     }
     )
@@ -25,7 +26,7 @@ function Profile() {
   useEffect(() => {
         getHighScores().then((result) => {
         console.log("highscore", result);
-        setData(result);
+        setHighScoresData(result);
     }
     )
   }, []);
@@ -49,8 +50,8 @@ function Profile() {
     let pathToRedirect = "/highscores/" + userId;
     return <Redirect to={pathToRedirect} />
   } else {
-    const listItemsHighScore = data.map((score) =>
-      <li key={score.id}>{score.score}</li>
+    const listItemsHighScore = highScoresData.map((score) =>
+      <li key={score.id}>{score.game.name + ": " + score.score}</li>
     );
     return (
       <div>
@@ -61,9 +62,6 @@ function Profile() {
         <ul>
           {listItems}
         </ul>
-        <button onClick={onHighScoresButtonClick} className="clickableIcon"><i class="fa fa-arrow-left fa-5x" aria-hidden="true"></i></button>
-        <h1>{decoded.username}</h1>
-        <h3>{decoded.email}</h3>
         <h2>High Scores</h2>
         <ul>
           {listItemsHighScore}

@@ -18,5 +18,15 @@
         "score": 85,
         "game_id": 2,
         "user_id": 2
+    },
+    {
+        "score": 60,
+        "game_id": 1,
+        "user_id": 3
+    },
+    {
+        "score": 185,
+        "game_id": 2,
+        "user_id": 3
     }
 ]
