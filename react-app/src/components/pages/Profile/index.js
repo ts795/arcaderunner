@@ -4,6 +4,9 @@ import jwt_decode from "jwt-decode";
 import { getFavoriteGames } from "../../../utils/API";
 import { removeJSONWebToken } from "../../../utils/auth";
 import './Profile.css';
+import { getHighScores } from '../../../utils/API';
+
+
 
 function Profile() {
   // Get the user's information from locations
@@ -17,6 +20,9 @@ function Profile() {
   const [goToGames, setGoToGames] = useState(false);
   const [logout, setLogout] = useState(false);
   const [data, setData] = useState([]);
+  const [highScoresData, setHighScoresData] = useState([]);
+  const [ goToHighScores, setGoToHighScores] = useState(false);
+
 
   useEffect(() => {
     getFavoriteGames().then((result) => {
@@ -26,8 +32,19 @@ function Profile() {
     )
   }, []);
 
+  useEffect(() => {
+        getHighScores().then((result) => {
+        console.log("highscore", result);
+        setHighScoresData(result);
+    }
+    )
+  }, []);
   const onGamesButtonClick = (e) => {
     setGoToGames(true);
+  };
+
+  const onHighScoresButtonClick = (e) => {
+  setGoToHighScores(true);
   };
 
   const onLogoutClick = (e) => {
@@ -38,12 +55,18 @@ function Profile() {
   if (goToGames) {
     let pathToRedirect = "/games";
     return <Redirect to={pathToRedirect} />
+  } else if (goToHighScores) {
+    let pathToRedirect = "/highscores/";
+    return <Redirect to={pathToRedirect} />
   } else if (logout) {
     let pathToRedirect = "/";
     return <Redirect to={pathToRedirect} />
   } else {
     const listItems = data.map((game) =>
       <li key={game.id}>{game.name}</li>
+    );
+    const listItemsHighScore = highScoresData.map((score) =>
+      <li key={score.id}>{score.game.name + ": " + score.score}</li>
     );
     return (
       <div className="profilePageBody">
@@ -56,6 +79,10 @@ function Profile() {
           <ul className="profileFavoriteGames">
             {listItems}
           </ul>
+        <h2>High Scores</h2>
+        <ul>
+          {listItemsHighScore}
+        </ul>
         </div>
       </div>
     );

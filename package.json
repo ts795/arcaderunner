@@ -10,7 +10,8 @@
     "server": "nodemon server.js --ignore client",
     "build": "cd react-app && npm run build",
     "install": "cd react-app && npm install",
-    "client": "cd react-app && npm start"
+    "client": "cd react-app && npm start",
+    "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const path = require("path");
-const { Highscores } = require('../../models');
+const { Highscores, Games } = require('../../models');
+const authenticateJWT = require('../../utils/auth');
 
 // Get the high scores for a game in descending order
 // First request parameter is the ID of the game to get high scores for
@@ -42,5 +43,28 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+//user's high scores
+
+router.get('/', authenticateJWT, async (req, res) => {
+  try {
+    // Get all of the games
+    const highScoresData = await Highscores.findAll({
+      where: {
+        user_id: req.user.user_id,
+      },
+      order: [['score', 'DESC']],
+      include: Games
+    });
+    const highScores = highScoresData.map((highScore) =>
+      highScore.get({ plain: true })
+    );
+    res.json(highScores);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
