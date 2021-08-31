@@ -4,7 +4,7 @@ import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
 import Games from "./components/pages/Games";
 import Profile from "./components/pages/Profile";
-import BeforeGame from './components/pages/BeforeGames/BeforeGame';
+import BeforeGame from './components/pages/BeforeGames/index';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
