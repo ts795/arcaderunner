@@ -18,5 +18,9 @@
   {
     "name": "Go Fish",
     "description": "Competitive Card Game"
+  },
+  {
+    "name": "Coin Flip",
+    "description": "Tie Breaker Game"
   }
 ]

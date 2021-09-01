@@ -29,6 +29,7 @@ async function loginOrSignup(username, password, login, email) {
 async function getFavoriteGames() {
     const response = await fetch('/api/favorite', {
         method: 'GET',
+        //any route that needs authentication will need line 33 header
         headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
     });
     if (response.ok) {
@@ -38,5 +39,63 @@ async function getFavoriteGames() {
         return;
     }
 }
+async function addFavoriteGame(gameId){
+    const token = localStorage.getItem('arcadeRunnerJWTToken');
+    console.log(gameId)
+    const response = await fetch('/api/favorite', {
+        method: 'POST',
+        headers: {  'Content-Type': 'application/json','authorization': 'bearer ' + token },
+        body: JSON.stringify({game_id:gameId}),
+    });
+    if (response.ok) {
+        //IDK
+       alert("added to favorites")
+    } else {
+        return;
+    }
+};
+async function logout(){
+    const response = await fetch('/api/logout', {
+        method: 'POST',
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+      });
+      if (response.ok) {
+        localStorage.removeItem('arcadeRunnerJWTToken');
+        alert('you are now logged out')
+        return;
+      } else {
+        alert('Failed to log out.');
+      }
+};
+async function getGame(gameId){
+    const response = await fetch('/api/game/' + gameId, {
+        method: 'GET',
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+        const json = await response.json();
+        return json;
+    } else {
+        console.log("Unable to find game")
+        return {};
+    }
+};
 
-export { loginOrSignup, getFavoriteGames };
+
+//Get HighScores of a user
+async function getHighScores() {
+    const response = await fetch('/api/highscores', {
+        method: 'GET',
+        //any route that needs authentication will need this next line
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+        const json = await response.json();
+        console.log("JSON", json);
+        return json;
+    } else {
+        return;
+    }
+}
+
+export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame };

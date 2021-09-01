@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import { Redirect } from 'react-router-dom'
 import { loginOrSignup } from '../../utils/API';
+import { loggedIn } from "../../utils/auth";
 
 
 function UsernamePasswordForm(props) {
@@ -9,7 +10,11 @@ function UsernamePasswordForm(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [userId, setUserId] = useState('');
+  const [userisLoggedIn, setLoggedIn] = useState(false);
+  
+  if (!userisLoggedIn && loggedIn()) {
+    setLoggedIn(true);
+  }
 
   const handleInputChange = (e) => {
     // Getting the value and name of the input which triggered the change
@@ -36,7 +41,7 @@ function UsernamePasswordForm(props) {
       setPassword('');
       setEmail('');
       if (id) {
-        setUserId(id);
+        setLoggedIn(true);
       }
     })
   };
@@ -52,8 +57,8 @@ function UsernamePasswordForm(props) {
     />
   }
 
-  if (userId) {
-    let pathToRedirect = "/games/" + userId;
+  if (userisLoggedIn) {
+    let pathToRedirect = "/games";
     return <Redirect to={pathToRedirect} />
   } else {
     return (
