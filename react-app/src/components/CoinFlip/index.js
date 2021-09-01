@@ -40,13 +40,13 @@ function CoinFlip() {
         </button>
     </div>);
   } else if (flippedCoin === "flipping") {
-    return (<div className="centerDiv"><img src={currImg === "heads" ? `${process.env.PUBLIC_URL}/heads.jpeg`: `${process.env.PUBLIC_URL}/tails.jpeg`} alt="coin"/></div>);
+    return (<div className="centerDiv"><img src={currImg === "heads" ? `${process.env.PUBLIC_URL}/dollarsign.png`: `${process.env.PUBLIC_URL}/bitcoin.png`} alt="coin"/></div>);
   } 
   else {
     return (
         <div>
         <div className="centerDiv">
-        <img src={currImg === "heads" ? `${process.env.PUBLIC_URL}/heads.jpeg`: `${process.env.PUBLIC_URL}/tails.jpeg`} alt="coin"/></div>
+        <img src={currImg === "heads" ? `${process.env.PUBLIC_URL}/dollarsign.png`: `${process.env.PUBLIC_URL}/bitcoin.png`} alt="coin"/></div>
         <div className="centerDiv">
             <button type="button" className="neonBtn coinFlipBtn" onClick={() => setFlippedCoin("not flipped")}>
             Play Again
