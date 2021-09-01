@@ -40,6 +40,7 @@ router.get('/:id', async (req, res) => {
 });
 //user favorite a game
 router.post('/', authenticateJWT, async (req, res) => {
+  console.log(req.body);
   try {
     const favoriteGamesData = await FavoriteGames.create({
       user_id: req.user.user_id,//update to jwt token
