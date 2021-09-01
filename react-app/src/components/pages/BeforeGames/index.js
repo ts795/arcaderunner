@@ -43,7 +43,7 @@ function BeforeGame() {
     let pathToRedirect = "/";
     return <Redirect to={pathToRedirect} />;
   } else if (playGame) {
-    let pathToRedirect = "/";
+    let pathToRedirect = `/gamestart/${id}`;
     return <Redirect to={pathToRedirect} />;
   } else {
     console.log("gameInfo", gameInformation);

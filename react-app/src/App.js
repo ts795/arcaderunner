@@ -3,6 +3,7 @@ import Home from "./components/pages/Home";
 import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
 import Games from "./components/pages/Games";
+import GameStart from "./components/pages/GameStart"
 import Profile from "./components/pages/Profile";
 import BeforeGame from './components/pages/BeforeGames/index';
 import HighScores from "./components/pages/HighScores";
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/highscores" component={HighScores} />
         <Route exact path="/games" component={Games} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/gamestart/:gameId" component={GameStart} />
       </div>
     </Router>
   );
