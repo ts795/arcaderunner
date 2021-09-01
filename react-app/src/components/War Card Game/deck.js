@@ -1,13 +1,11 @@
 import React from 'react'
 
-function war() {
-
-
+function deck() {
     return (
         <div>
             
         </div>
-    );
+    )
 }
 
-export default war;
+export default deck;

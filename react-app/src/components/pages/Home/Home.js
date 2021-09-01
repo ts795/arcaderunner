@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { loggedIn } from "../../utils/auth";
+import { loggedIn } from "../../../utils/auth";
+import './Home.css';
+
 
 function Home() {
   const [userisLoggedIn, setLoggedIn] = useState(false);
