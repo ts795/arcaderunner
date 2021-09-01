@@ -43,10 +43,6 @@ function Profile() {
     setGoToGames(true);
   };
 
-  const onHighScoresButtonClick = (e) => {
-  setGoToHighScores(true);
-  };
-
   const onLogoutClick = (e) => {
     removeJSONWebToken();
     setLogout(true);

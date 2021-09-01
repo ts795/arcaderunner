@@ -98,4 +98,19 @@ async function getHighScores() {
     }
 }
 
-export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame };
+async function getAllHighScores() {
+    const response = await fetch('/api/highscores/10', {
+        method: 'GET',
+        //any route that needs authentication will need this next line
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+        const json = await response.json();
+        console.log("JSON", json);
+        return json;
+    } else {
+        return;
+    }
+}
+
+export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame, getAllHighScores };

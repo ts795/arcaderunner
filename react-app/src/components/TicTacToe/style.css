@@ -18,8 +18,9 @@ body {
   }
   
   .square {
-    background: #fff;
-    border: 1px solid #999;
+    background: #09111b;
+    border: 1px solid #ff00ff;
+    filter: blur(50px) brightness(0);
     float: left;
     font-size: 24px;
     font-weight: bold;
