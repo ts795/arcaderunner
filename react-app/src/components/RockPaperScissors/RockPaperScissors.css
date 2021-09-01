@@ -1,0 +1,8 @@
+.rockPaperScissorsBtn {
+    width: 25%;
+}
+
+.centerDiv {
+    display: flex;
+    justify-content: center;
+}
