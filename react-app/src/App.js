@@ -6,7 +6,7 @@ import Games from "./components/pages/Games";
 import GameStart from "./components/pages/GameStart"
 import Profile from "./components/pages/Profile";
 import BeforeGame from './components/pages/BeforeGames/index';
-import HighScores from "./components/pages/HighScores";
+import HighScores from "./components/pages/HighScores/HighScores";
 import Navbar from './components/Navbar';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
