@@ -1,14 +1,8 @@
-
-.coinFlipBtn {
+.rockPaperScissorsBtn {
     width: 25%;
 }
 
 .centerDiv {
     display: flex;
     justify-content: center;
-}
-
-.coin {
-  color: whitesmoke;
-  font-size: large;
 }

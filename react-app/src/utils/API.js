@@ -98,6 +98,7 @@ async function getHighScores() {
     }
 }
 
+
 async function getAllHighScores() {
     const response = await fetch('/api/highscores/10', {
         method: 'GET',
@@ -114,3 +115,4 @@ async function getAllHighScores() {
 }
 
 export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame, getAllHighScores };
+
