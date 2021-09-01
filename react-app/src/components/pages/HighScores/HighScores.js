@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Redirect, useParams} from 'react-router-dom';
 import { getAllHighScores } from '../../../utils/API';
-
+import './highscores.css';
 
 function HighScores() {
     const { userId } = useParams();
