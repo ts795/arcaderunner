@@ -32,11 +32,11 @@ function CoinFlip() {
 
   if (flippedCoin === "not flipped") {
     return (<div className="centerDiv">
-        <button type="button" className="neonBtn coinFlipBtn" onClick={() => onFlipCoin("tails")}>
-          Choose tails
+        <button type="button" className="neonBtn coinFlipBtn" onClick={() => onFlipCoin("DollarSign")}>
+          <i className="fas fa-usd-circle coin" ></i>
         </button>
-        <button type="button" className="neonBtn coinFlipBtn" onClick={() => onFlipCoin("heads")}>
-          Choose heads
+        <button type="button" className="neonBtn coinFlipBtn" onClick={() => onFlipCoin("Bitcoin")}>
+          <i className="fab fa-bitcoin coin" ></i>
         </button>
     </div>);
   } else if (flippedCoin === "flipping") {

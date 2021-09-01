@@ -30,7 +30,7 @@ function Games() {
         <div className="carouselContainer">
           <Carousel width="100%" centerMode={true} onClickItem={onClickItem}>
             <div gameId="6">
-              <img src={`${process.env.PUBLIC_URL}/CoinFlip.jpg`} />
+              <img src={`${process.env.PUBLIC_URL}/CoinFlip.png`} />
               <p className="legend">Coin Flip</p>
             </div>
             <div gameId="1">
