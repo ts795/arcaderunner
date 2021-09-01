@@ -19,9 +19,9 @@ function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/game/:id" component={BeforeGame} />
         <Route exact path="/highscores" component={HighScores} />
+        <Route exact path="/gamestart/:gameId" component={GameStart} />
         <Route exact path="/games" component={Games} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/gamestart/:gameId" component={GameStart} />
       </div>
     </Router>
   );
