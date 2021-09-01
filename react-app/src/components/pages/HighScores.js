@@ -1,13 +1,15 @@
-import React, {useState} from "react";
-import { Redirect, useParams } from 'react-router-dom'
+import React, {useState, useEffect} from 'react';
+import {Redirect, useParams} from 'react-router-dom';
 
-function Games() {
-  const { userId } = useParams();
-  // const {id} = useParams();
+
+
+function HighScores() {
+    const { userId } = useParams();
+      // Get the user's information from locations
   const [goToProfile, setGoToProfile] = useState(false);
   const [goToGame, setGoToGame] = useState(false);
 
-  const onProfileButtonClick = (e) => {
+       const onProfileButtonClick = (e) => {
     setGoToProfile(true);
   };
   const onGameButtonClick = (e) => {
@@ -31,6 +33,7 @@ function Games() {
       
     );
   }
+
 }
 
-export default Games;
+export default HighScores;

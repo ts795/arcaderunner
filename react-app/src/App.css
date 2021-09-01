@@ -92,4 +92,16 @@ section {
 /* Show cursor pointer for clickable icons */
 .clickableIcon {
   cursor: pointer;
+  background-color: transparent;
+}
+
+.backButton {
+  color: whitesmoke;
+  border: none;
+}
+
+.backButton:hover {
+  color: green;
+  background: greenyellow;
+  box-shadow: 0 0 10px greenyellow, 0 0 40px greenyellow, 0 0 80px greenyellow;
 }
