@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './UsernamePasswordForm.css';
+import './style.css';
 import { Redirect } from 'react-router-dom';
-import  {loginOrSignup} from '../utils/API';
-import { loggedIn } from "../utils/auth";
+import { loginOrSignup } from '../../utils/API';
+import { loggedIn } from "../../utils/auth";
 
 function UsernamePasswordForm(props) {
   // Here we set two state variables for firstName and lastName using `useState`
@@ -21,11 +21,11 @@ function UsernamePasswordForm(props) {
 
     // Ternary statement that will call either setFirstName or setLastName based on what field the user is typing in
     if (name === 'username') {
-        setUsername(value)
+      setUsername(value)
     } else if (name === 'password') {
-        setPassword(value);
+      setPassword(value);
     } else {
-        setEmail(value);
+      setEmail(value);
     }
   };
 
@@ -47,13 +47,13 @@ function UsernamePasswordForm(props) {
 
   let emailInput = '';
   if (props.formType !== "Log In") {
-      emailInput =     <input
-        value={email}
-        name="email"
-        onChange={handleInputChange}
-        type="text"
-        placeholder="Email"
-        />
+    emailInput = <input
+      value={email}
+      name="email"
+      onChange={handleInputChange}
+      type="text"
+      placeholder="Email"
+    />
   }
 
   if (userisLoggedIn) {
@@ -62,24 +62,24 @@ function UsernamePasswordForm(props) {
   } else {
     return (
       <form className="form">
-      <input
+        <input
           value={username}
           name="username"
           onChange={handleInputChange}
           type="text"
           placeholder="User Name"
-      />
-      {emailInput}
-      <input
+        />
+        {emailInput}
+        <input
           value={password}
           name="password"
           onChange={handleInputChange}
           type="password"
           placeholder="Password"
-      />
-      <button type="button" className="neonBtn" onClick={handleFormSubmit}>
+        />
+        <button type="button" className="neonBtn" onClick={handleFormSubmit}>
           {props.formType}
-      </button>
+        </button>
       </form>
     );
   }
