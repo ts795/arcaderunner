@@ -98,4 +98,4 @@ async function getHighScores() {
     }
 }
 
-export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame };
+export { loginOrSignup, getFavoriteGames, getHighScores, addFavoriteGame, logout, getGame };
