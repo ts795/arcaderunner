@@ -10,6 +10,7 @@ function BeforeGame() {
   const [playGame, setPlayGame] = useState(false);
   const [gameInformation, setGameInformation] = useState({});
   const [favGameInformation, setFavGameInformation] = useState({});
+  const [favGame,setFavGame] = useState(false);
   useEffect(() => {
     getGame(id).then((result) => {
       console.log("game", result);
@@ -27,20 +28,23 @@ function BeforeGame() {
     setGoToGames(true);
   };
   const onFavoriteButtonClick = (e) => {
-    console.log("Favorite");
-    console.log("id", id);
+    if(favGameInformation.game_id){
+      deleteFavoritedGame(id);
+      setFavGame(false);
+
+  }else {
     addFavoriteGame(id);
+    setFavGame(true);
+    }
   };
 
   const onPlayButtonClick = (e) => {
     setPlayGame(true);
-    document.getElementById("monitorContent").innerHTML = "Hello";
   };
 
    if (playGame) {
-     console.log("hello")
-    // let pathToRedirect = `/gamestart/${id}`;
-    // return <div><Redirect to={pathToRedirect} /></div>;
+    let pathToRedirect = `/gamestart/${id}`;
+    return <div><Redirect to={pathToRedirect} /></div>;
   }   else if (goToGames) {
     let pathToRedirect = "/games";
     return <Redirect to={pathToRedirect} />;
@@ -66,7 +70,7 @@ function BeforeGame() {
         </div>
           </div>
           <div className = "row" id = "gameInfo">
-            <h2>{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "star">{favGameInformation.game_id ? "★" : "✩"}</button></h2>
+            <h2>{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "star">{favGame ? "★" : "✩"}</button></h2>
             <h3>{gameInformation.description ? gameInformation.description : ""} </h3>
             <button onClick={onBackButtonClick}>Back</button>
 

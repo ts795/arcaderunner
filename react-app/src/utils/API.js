@@ -87,21 +87,21 @@ async function getFavoritedGame(favoriteGameId){
     });
     if (response.ok) {
         const json = await response.json();
+        console.log("game added");
         return json;
     } else {
-        console.log("Unable to find game")
+        console.log("Unable to find game to add")
         return {};
     }
 };
 
 async function deleteFavoritedGame(favoriteGameId){
     const response = await fetch('/api/favorite/' + favoriteGameId, {
-        method: 'GET',
+        method: 'DELETE',
         headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
     });
     if (response.ok) {
-        const json = await response.json();
-        return json;
+     console.log("deleted")
     } else {
         console.log("Unable to find game")
         return {};

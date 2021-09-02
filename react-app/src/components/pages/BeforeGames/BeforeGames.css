@@ -47,11 +47,11 @@
    
   }
   .page {
-    background-image: url("../../../files/arcaderoom.jpeg");
-    /* height: 100vh;
+    background-image: url("../../../files/carl-raw-m3hn2Kn5Bns-unsplash.jpg");
+    height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; */
+    background-size: cover;
       /* Set rules to fill background */
   min-height: 100%;
   min-width: 1024px;
@@ -98,8 +98,15 @@ h2, h3{
     /* border-bottom-right-radius: 50% 2%; */
     transition: margin-right 1s;
 }
-#screen{
+.screen{
   border-radius: 4%;
+  border-color:#1F51FF ;
+  position: fixed;
+	background-size: cover; 
+	background-position: top center;
+	position: relative;
+	overflow: hidden;
+  background: aliceblue
 }
 /* #monitor:after {
 	content: '';
@@ -114,7 +121,7 @@ h2, h3{
 	box-shadow: 0 0 3px 0 white; 
 } */
 
-#monitorscreen {
+/* #monitorscreen {
 	position: relative;
   background-color: #777;
 	background-size: cover; 
@@ -124,7 +131,7 @@ h2, h3{
 	position: relative;
 	overflow: hidden;
   border-radius: 1%;
-}
+} */
 
 
 @media all and (min-width: 960px) {
