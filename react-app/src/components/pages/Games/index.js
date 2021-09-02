@@ -37,6 +37,9 @@ function Games() {
               <img src={`${process.env.PUBLIC_URL}/tictactoe.jpg`} />
               <p className="legend">Tic Tac Toe</p>
             </div>
+            <div gameId="4">
+              <p>Hangman</p>
+            </div>
           </Carousel>
         </div>
       </div>

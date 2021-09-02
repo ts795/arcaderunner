@@ -1,0 +1,12 @@
+.hidden {
+    display: none;
+}
+
+.guesses {
+    display: flex;
+    flex-direction: row;
+}
+
+.guessedLetters {
+    margin-left: 5px;
+}
