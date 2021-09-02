@@ -80,6 +80,33 @@ async function getGame(gameId){
         return {};
     }
 };
+async function getFavoritedGame(favoriteGameId){
+    const response = await fetch('/api/favorite/' + favoriteGameId, {
+        method: 'GET',
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+        const json = await response.json();
+        return json;
+    } else {
+        console.log("Unable to find game")
+        return {};
+    }
+};
+
+async function deleteFavoritedGame(favoriteGameId){
+    const response = await fetch('/api/favorite/' + favoriteGameId, {
+        method: 'GET',
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+        const json = await response.json();
+        return json;
+    } else {
+        console.log("Unable to find game")
+        return {};
+    }
+};
 
 
 //Get HighScores of a user
@@ -98,4 +125,4 @@ async function getHighScores() {
     }
 }
 
-export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame };
+export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame,getFavoritedGame,deleteFavoritedGame };

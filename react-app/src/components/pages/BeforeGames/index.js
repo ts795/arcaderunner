@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { addFavoriteGame, getGame } from "../../../utils/API";
+import { addFavoriteGame, getGame, getFavoritedGame, deleteFavoritedGame } from "../../../utils/API";
 import './BeforeGames.css';
 
 
@@ -9,11 +9,17 @@ function BeforeGame() {
   const [goToGames, setGoToGames] = useState(false);
   const [playGame, setPlayGame] = useState(false);
   const [gameInformation, setGameInformation] = useState({});
-
+  const [favGameInformation, setFavGameInformation] = useState({});
   useEffect(() => {
     getGame(id).then((result) => {
       console.log("game", result);
       setGameInformation(result);
+    });
+  }, []);
+  useEffect(() => {
+    getFavoritedGame(id).then((result) => {
+      console.log("favgame", result);
+      setFavGameInformation(result);
     });
   }, []);
 
@@ -27,8 +33,8 @@ function BeforeGame() {
   };
 
   const onPlayButtonClick = (e) => {
-    document.getElementById("monitor").innerHTML = "Hello";
     setPlayGame(true);
+    document.getElementById("monitorContent").innerHTML = "Hello";
   };
 
    if (playGame) {
@@ -41,6 +47,7 @@ function BeforeGame() {
   } 
   else {
     console.log("gameInfo", gameInformation);
+    console.log("favgameInfo", favGameInformation);
 
     return (
    <div className = "page">
@@ -50,14 +57,16 @@ function BeforeGame() {
           <div className = "container screenImg">
           <div id="container">
           <div id="monitor">
+            <div id = "monitorContent">
             <img id = "screen" src={`${process.env.PUBLIC_URL}/arcadescreen.png`} alt = "arcade screen" width = "10px" height = "100px"/>
           <button onClick={onPlayButtonClick} className = "playBtn">Start Game</button>
+          </div>
           </div>
           </div>
         </div>
           </div>
           <div className = "row" id = "gameInfo">
-            <h2>{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "star">✩</button></h2>
+            <h2>{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "star">{favGameInformation.game_id ? "★" : "✩"}</button></h2>
             <h3>{gameInformation.description ? gameInformation.description : ""} </h3>
             <button onClick={onBackButtonClick}>Back</button>
 
