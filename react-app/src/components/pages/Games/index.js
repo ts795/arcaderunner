@@ -45,6 +45,9 @@ function Games() {
               <img src={`${process.env.PUBLIC_URL}/bitcoin.png`} />
               <p className="legend">War</p>
             </div>
+            <div gameId="4">
+              <p>Hangman</p>
+            </div>
 
           </Carousel>
         </div>

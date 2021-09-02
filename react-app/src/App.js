@@ -8,6 +8,7 @@ import BeforeGame from './components/pages/BeforeGames';
 import HighScores from "./components/pages/HighScores/HighScores";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -17,11 +18,12 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <div>
+          {/* <Navbar/> */}
           <Route exact path="/game/:id" component={BeforeGame} />
           <Route exact path="/highscores" component={HighScores} />
           <Route exact path="/gamestart/:gameId" component={GameStart} />
           <Route exact path="/games" component={Games} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/userprofile" component={Profile} />
         </div>
       </div>
     </Router>
