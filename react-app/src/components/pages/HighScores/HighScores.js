@@ -37,7 +37,7 @@ function HighScores() {
   } else {
         const listItemsHighScore = highScoresData.map((score) =>
       <li key={score.id}><div>
-        {score.game.name + ": " + score.score}</div><div>{score.user.username}</div></li>
+        {score.game.name.toLowerCase() + ": " + score.score}</div><div>{score.user.username.toLowerCase()}</div></li>
     );
 
     return (
