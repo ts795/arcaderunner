@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import TicTacToe from "../../TicTacToe";
-import RockPaperScissors from "../../RockPaperScissors";
+import RockPaperScissors from "../../RockPaperScissors"
 import CoinFlip from "../../CoinFlip";
 import InvalidPage from "../../InvalidPage";
+import War from '../../WarCardGame'
 import "./GameStart.css";
 
 function Games() {

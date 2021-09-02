@@ -43,10 +43,6 @@ function Profile() {
     setGoToGames(true);
   };
 
-  const onHighScoresButtonClick = (e) => {
-  setGoToHighScores(true);
-  };
-
   const onLogoutClick = (e) => {
     removeJSONWebToken();
     setLogout(true);
@@ -63,18 +59,18 @@ function Profile() {
     return <Redirect to={pathToRedirect} />
   } else {
     const listItems = data.map((game) =>
-      <li key={game.id}>{game.name}</li>
+      <li key={game.id}>{game.name.toLowerCase()}</li>
     );
     const listItemsHighScore = highScoresData.map((score) =>
-      <li key={score.id}>{score.game.name + ": " + score.score}</li>
+      <li key={score.id}>{score.game.name.toLowerCase() + ": " + score.score}</li>
     );
     return (
       <div className="profilePageBody">
         <button onClick={onGamesButtonClick} className="clickableIcon backButton" id="profileBack"><i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></button>
         <button onClick={onLogoutClick} className="clickableIcon backButton" id="profileLogout"><i class="fa fa-sign-out fa-3x" aria-hidden="true"></i></button>
         <div className="profileCard">
-          <h1>{decoded.username}</h1>
-          <h3>{decoded.email}</h3>
+          <h1>{decoded.username.toLowerCase()}</h1>
+          <h3>{decoded.email.toLowerCase()}</h3>
           <h2>Favorite Games</h2>
           <ul className="profileFavoriteGames">
             {listItems}
