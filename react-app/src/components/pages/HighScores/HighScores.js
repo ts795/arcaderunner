@@ -13,6 +13,7 @@ function HighScores() {
 
     useEffect(() => {
         getAllHighScores().then((result) => {
+        console.log("ALL HIGH SCORES", getAllHighScores);
         console.log("highscore", result);
         setHighScoresData(result);
     }
@@ -35,20 +36,19 @@ function HighScores() {
     return <Redirect to={pathToRedirect} />
   } else {
         const listItemsHighScore = highScoresData.map((score) =>
-      <li key={score.id}>{score.game.name + ": " + score.score}</li>
+      <li key={score.id}><div>
+        {score.game.name.toLowerCase() + ": " + score.score}</div><div>{score.user.username.toLowerCase()}</div></li>
     );
 
     return (
-      <div>
-        <button onClick={onProfileButtonClick} className="clickableIcon"><i class="fa fa-user fa-5x" aria-hidden="true"></i></button>
-      {/* change icon for games */}
-        <button onClick={onGameButtonClick}>Game</button>
-         <h2>High Scores</h2>
-        <ul>
+      <div id="highScore" className="containerHS">
+        <button onClick={onProfileButtonClick} className="clickableIconHS"><i class="fa fa-user fa-5x" aria-hidden="true"></i></button>
+        <button onClick={onGameButtonClick} className="clickableIconHS"><i class="fa fa-user fa-5x" aria-hidden="true"></i>Game</button>
+         <h3 clasName="logoHS" data-text="high scores">high scores</h3>
+        <ol className="listItemsHS">
           {listItemsHighScore}
-        </ul>
+        </ol>
       </div>
-      
     );
   }
 

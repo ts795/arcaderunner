@@ -39,8 +39,13 @@ function Games() {
             </div>
             <div gameId="2">
               <img src={`${process.env.PUBLIC_URL}/tails.jpeg`} />
-              <p className="legend">Rock Paper Scissors</p>
+              <p className="legend">rock Paper Scissors</p>
             </div>
+            <div gameId="3">
+              <img src={`${process.env.PUBLIC_URL}/bitcoin.png`} />
+              <p className="legend">War</p>
+            </div>
+
           </Carousel>
         </div>
       </div>
