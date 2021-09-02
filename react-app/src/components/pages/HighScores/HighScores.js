@@ -44,7 +44,7 @@ function HighScores() {
       <div id="highScore" className="containerHS">
         <button onClick={onProfileButtonClick} className="clickableIconHS"><i class="fa fa-user fa-5x" aria-hidden="true"></i></button>
         <button onClick={onGameButtonClick} className="clickableIconHS"><i class="fa fa-user fa-5x" aria-hidden="true"></i>Game</button>
-         <h3 clasName="logoHS" data-text="HIGH SCORES">HIGH SCORES</h3>
+         <h3 clasName="logoHS" data-text="high scores">high scores</h3>
         <ol className="listItemsHS">
           {listItemsHighScore}
         </ol>

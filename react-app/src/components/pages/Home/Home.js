@@ -22,7 +22,7 @@ function Home() {
     return (
       <section>
         <div className="container">
-          <h1 data-text="ARCADE RUNNER">ARCADE RUNNER</h1>
+          <h1 data-text="arcade runner">arcade runner</h1>
           <div className="buttonContainer">
             <Link to="/login" className="homeLink">
               <button className='neonBtn'>LOGIN</button>
