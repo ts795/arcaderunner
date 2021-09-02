@@ -112,3 +112,16 @@ section {
   background: greenyellow;
   box-shadow: 0 0 10px greenyellow, 0 0 40px greenyellow, 0 0 80px greenyellow;
 }
+
+@media only screen and (max-width: 768px) {
+  .homeLink {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1%;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+  }
+}
