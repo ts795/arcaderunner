@@ -80,6 +80,33 @@ async function getGame(gameId){
         return {};
     }
 };
+async function getFavoritedGame(favoriteGameId){
+    const response = await fetch('/api/favorite/' + favoriteGameId, {
+        method: 'GET',
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+        const json = await response.json();
+        console.log("game added");
+        return json;
+    } else {
+        console.log("Unable to find game to add")
+        return {};
+    }
+};
+
+async function deleteFavoritedGame(favoriteGameId){
+    const response = await fetch('/api/favorite/' + favoriteGameId, {
+        method: 'DELETE',
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+     console.log("deleted")
+    } else {
+        console.log("Unable to find game")
+        return {};
+    }
+};
 
 
 //Get HighScores of a user
@@ -98,4 +125,21 @@ async function getHighScores() {
     }
 }
 
-export { loginOrSignup, getFavoriteGames, getHighScores, addFavoriteGame, logout, getGame };
+
+async function getAllHighScores() {
+    const response = await fetch('/api/highscores/10', {
+        method: 'GET',
+        //any route that needs authentication will need this next line
+        headers: { 'authorization': 'bearer ' + localStorage.getItem('arcadeRunnerJWTToken') },
+    });
+    if (response.ok) {
+        const json = await response.json();
+        console.log("JSON", json);
+        return json;
+    } else {
+        return;
+    }
+}
+
+export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame, getFavoritedGame, deleteFavoritedGame, getAllHighScores };
+

@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { loggedIn } from "../../utils/auth";
+import { loggedIn } from "../../../utils/auth";
+import './Home.css';
+
 
 function Home() {
   const [userisLoggedIn, setLoggedIn] = useState(false);
@@ -20,7 +22,7 @@ function Home() {
     return (
       <section>
         <div className="container">
-          <h1 data-text="ARCADE RUNNER">ARCADE RUNNER</h1>
+          <h1 data-text="arcade runner">arcade runner</h1>
           <div className="buttonContainer">
             <Link to="/login" className="homeLink">
               <button className='neonBtn'>LOGIN</button>

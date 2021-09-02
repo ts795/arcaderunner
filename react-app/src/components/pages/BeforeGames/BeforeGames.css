@@ -1,0 +1,171 @@
+.star{
+    font-size: 50px;
+    color:white
+}
+
+
+/* Container needed to position the button. Adjust the width as needed */
+.container {
+    position: relative;
+    width: 70%;
+  }
+  
+  /* Make the image responsive */
+  .container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Style the button and place it in the middle of the container/image */
+  .container  .playBtn {
+    position: absolute;
+    font-family: 'Common Pixel', sans-serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    font-size: 40px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .container .playBtn:hover {
+    background-color: rgba(128, 128, 128, 0.29);
+   
+  }
+  .container{
+    justify-content: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4% 4% 1% 4%;
+    margin-bottom: 1%;
+   
+  }
+  .page {
+    background-image: url("../../../files/carl-raw-m3hn2Kn5Bns-unsplash.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+ 
+  }
+h2, h3{
+    color: #f5f5f5;
+    margin: 1%;
+
+}
+#container {
+  max-width: 1024px;
+  margin: auto;
+}
+#gameInfo{
+  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1% 20%;
+  text-align: left;
+}
+#monitor {
+
+  background: #000;
+    position: relative;
+    width: 85%;
+    height: 60%;
+    /* border-top: 3px solid #888; */
+    margin: 5%;
+    margin-bottom: 1%;
+    padding: 6% 4% 6% 4%;
+    /* border-radius: 20px; */
+    /* border-bottom-left-radius: 50% 2%; */
+    /* border-bottom-right-radius: 50% 2%; */
+    transition: margin-right 1s;
+}
+.screen{
+  border-radius: 4%;
+  border-color:#1F51FF ;
+  position: fixed;
+	background-size: cover; 
+	background-position: top center;
+	position: relative;
+	overflow: hidden;
+  background: aliceblue
+}
+/* #monitor:after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 3%;
+	left: 36%;
+	height: .5%; 
+	width: 28%;
+	background: #ddd; 
+	border-radius: 50%; 
+	box-shadow: 0 0 3px 0 white; 
+} */
+
+/* #monitorscreen {
+	position: relative;
+  background-color: #777;
+	background-size: cover; 
+	background-position: top center;
+	height: 0; 
+	padding-bottom: 56.25%; 
+	position: relative;
+	overflow: hidden;
+  border-radius: 1%;
+} */
+
+
+@media all and (min-width: 960px) {
+	#monitor {
+		-webkit-animation: tvflicker .2s infinite alternate; 
+		-moz-animation:    tvflicker .5s infinite alternate; 
+		-o-animation:      tvflicker .5s infinite alternate; 
+		animation:         tvflicker .5s infinite alternate; 
+	}
+  .playBtn{
+    animation:blink 1.2s infinite;
+}
+
+	@-webkit-keyframes tvflicker {
+	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
+	  100% { box-shadow: 0 0 95px 0 #1F51FF; }
+	}
+	@-moz-keyframes tvflicker {
+	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
+	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
+	}
+	@-o-keyframes tvflicker {
+	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
+	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
+	}
+	@keyframes tvflicker {
+	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
+	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
+	}
+  @keyframes blink{
+    0%{     color: white;  -webkit-text-stroke: 1px #1F51FF; }
+    49%{    color: white;-webkit-text-stroke: 1px #1F51FF; }
+    60%{    color: transparent; }
+    99%{    color:transparent;  }
+    100%{   color: white;  -webkit-text-stroke: 1px #1F51FF;  }
+}
+}

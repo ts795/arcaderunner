@@ -1,0 +1,42 @@
+.card {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  background-color: whitesmoke;
+}
+
+.card.red {
+  color: #ff00ff;
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px #ff00ff, 0 0 40px #ff00ff, 0 0 80px #ff00ff;
+}
+
+.card.black {
+  color: #120458;
+  box-shadow: 0 0 10px #7a04eb, 0 0 40px #7a04eb, 0 0 80px #7a04eb;
+}
+
+.card::before,
+.card::after {
+  position: absolute;
+  content: attr(data-value);
+  background-color: whitesmoke;
+  font-size: 1rem;
+}
+
+.card::before {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.card::after {
+  bottom: 0.5rem;
+  right: 0.5rem;
+  transform: rotate(180deg);
+}

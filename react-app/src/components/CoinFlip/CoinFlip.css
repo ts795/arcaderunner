@@ -8,4 +8,17 @@
     justify-content: center;
 }
 
+.coin {
+  color: whitesmoke;
+  font-size: large;
+}
 
+@media only screen and (max-width: 768px) {
+  .coinImage {
+    max-width: 100%;
+  }
+
+  .coinFlipBtn {
+    width: 50%;
+  }
+}

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import './style.css';
 
 
-function ticTacToe() {
+function TicTacToe() {
 
     function Square(props) {
         return (
@@ -78,6 +79,7 @@ function ticTacToe() {
         }
 
         jumpTo(step) {
+            console.log(`jumpTo(${step})`);
             this.setState({
                 stepNumber: step,
                 xIsNext: (step % 2) === 0
@@ -90,6 +92,7 @@ function ticTacToe() {
             const winner = calculateWinner(current.squares);
 
             const moves = history.map((step, move) => {
+                console.log(`move ${move}`);
                 const desc = move ?
                     'Go to move #' + move :
                     'Go to game start';
@@ -123,6 +126,8 @@ function ticTacToe() {
             );
         }
     }
+    console.log("IN");
+    return (<Game />);
 }
 // ========================================
 //DO WE NEED THIS NEXT LINE??????
@@ -149,4 +154,4 @@ function calculateWinner(squares) {
 }
 
 
-export default ticTacToe;
+export default TicTacToe;

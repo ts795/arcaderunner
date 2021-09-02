@@ -5,8 +5,12 @@ import './style.css';
 const Navbar = () => {
     const [goToGames, setGoToGames] = useState(false);
     const [goToHome, setGoToHome] = useState(false);
+    const [goToHighScores, setGoToHighScores] = useState(false);
     const [goToProfile, setGoToProfile] = useState(false);
-    const [goToHighscores, setGoToHighscores] = useState(false);
+
+    const onLogoButtonClick = async (e) => {
+        await setGoToHome(true);
+    }
 
     const onBackButtonClick = (e) => {
         setGoToGames(true);
@@ -16,19 +20,28 @@ const Navbar = () => {
             setGoToProfile(true);
     };
 
-    const onHighscoresButtonClick = (e) => {
-        setGoToHighscores(true);
-    };
+    const onHighScoresButtonClick = async (e) => {
+        await setGoToHighScores(true);
+    }
 
     const onLogoutButtonClick = () => {
         console.log("Logout button");
         logout().then(() => setGoToHome(true));
     };
 
+    if (goToGames) {
+        window.location.replace("/games")
+    }if (goToHome) {
+        window.location.replace("/")
+    } if (goToHighScores) {
+        window.location.replace("/highscores")
+    } if (goToProfile) {
+        window.location.replace("/userprofile")
+    }
     return (
         <header>
             <div class="header-container">
-                <h1 class="neon" data-text="Arcaderunner">Arcaderunner</h1>
+                <h1 class="neon" id="logo-btn" onClick={onLogoButtonClick} data-text="Arcaderunner">Arcaderunner</h1>
                 <nav>
                     <ul>
                         <li>
@@ -38,7 +51,7 @@ const Navbar = () => {
                             <p class="neon neon-link" id="profile-btn" onClick={onProfileButtonClick} data-text="Profile">Profile</p>
                         </li>
                         <li>
-                            <p class="neon neon-link" id="highscores-btn" onClick={onHighscoresButtonClick} data-text="Highscores">Highscores</p>
+                            <p class="neon neon-link" id="highscores-btn" onClick={onHighScoresButtonClick} data-text="Highscores">Highscores</p>
                         </li>
                         <li>
                             <p class="neon neon-link" id="logout" onClick={onLogoutButtonClick} data-text="Logout">Logout</p>
@@ -48,6 +61,6 @@ const Navbar = () => {
             </div>
         </header>
     );
-};
+}
 
 export default Navbar;

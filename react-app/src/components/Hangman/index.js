@@ -1,4 +1,5 @@
 import React, { Component} from "react";
+import { Redirect } from "react-router";
 import "./style.css";
 import { randomWord } from "./words";
 import step0 from "./images/0.png";
@@ -107,6 +108,8 @@ class Hangman extends Component {
     if (gameOver) {
       if(this.endGame(`LOST! The word was ${answer}`)) {
         this.playAgain()
+      } else {
+        window.location.replace("/games")
       }
     }
 
