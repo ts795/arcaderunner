@@ -34,7 +34,7 @@ function Games() {
               <p className="legend">Coin Flip</p>
             </div>
             <div gameId="1">
-              <img src={`${process.env.PUBLIC_URL}/tictactoe.jpg`} />
+              <img src={`${process.env.PUBLIC_URL}/tictactoe.png`} />
               <p className="legend">Tic Tac Toe</p>
             </div>
             <div gameId="2">
