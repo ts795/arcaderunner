@@ -18,7 +18,6 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <div>
-          <Navbar/>
           <Route exact path="/game/:id" component={BeforeGame} />
           <Route exact path="/highscores" component={HighScores} />
           <Route exact path="/gamestart/:gameId" component={GameStart} />
