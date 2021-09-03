@@ -48,29 +48,44 @@
     text-decoration: none;
 }
 
-header {
-    width: 100%;
+.main-navbar {
+    display: flex;
+    width: 100vw;
     padding: 15px;
     background-color: rgb(47, 46, 46);
-    height: 100px;
+    min-height: 100px;
 }
 
-.header-container{
+.main-header-container{
     display: flex;
-    max-width: 1600px;
+    width: 80%;
     height: 100%;
-    padding-right: 40px;
     align-items: center;
-    justify-content: space-between;
     margin: auto;
 }
 
-header nav li{
+.main-nav-links {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.main-nav-link-items{
     list-style-type: none;
     display: inline;
 }
 
-.logo {
+.main-logo-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.main-nav-logo {
     color: #ffff;
     font-family: 'Bladerunner'; 
     font-weight: 600;
@@ -88,15 +103,21 @@ header nav li{
     font-size: 23px;
     padding: 15px;
     cursor: pointer;
+    color: #ff5b32;
+    text-shadow: 0px 0px 10px #ff0000
+}
+
+.small-nav-logo {
+    display: none;
 }
 
 
-.neon {
+.main-nav-neon {
     color: #ff5b32;
     position: relative;
 }
 
-.neon::before {
+.main-nav-neon::before {
     position: absolute;
     content: attr(data-text);
     text-shadow: 0px 0px 50px #ff0000;
@@ -104,6 +125,33 @@ header nav li{
     animation: flicker 2s linear 1s forwards;
 }
 
-.neon:hover {
+.main-nav-neon:hover, .nav-link:hover {
     text-shadow: 0px 0px 50px #ff0000;
+}
+
+@media screen and (max-width: 1200px) {
+    .main-nav-links-list {
+        display: flex;
+        flex-direction: column;
+    }
+    .main-nav-link-items {
+        margin: 2px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .main-header-container {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .big-nav-logo {
+        display: none;
+    }
+
+    .small-nav-logo {
+        display: initial;
+        font-size: 50;
+    }
 }
