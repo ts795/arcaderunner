@@ -1,3 +1,4 @@
+
 .BeforeGameStar{
     font-size: 50px;
     color:#B026FF;
@@ -17,9 +18,11 @@
     width: 100%;
     height: auto;
   }
+
   
   /* Style the button and place it in the middle of the container/image */
   .BeforeGameScreenContainer  .BeforeGamePlayBtn{
+    
     position: absolute;
     font-family: 'Common Pixel', sans-serif;
     top: 50%;
@@ -69,6 +72,7 @@
  
   }
   .BeforeGameH2, .BeforeGameH3{
+    font-family: 'Russo One', sans-serif; 
     color: #f5f5f5;
     margin: 1%;
 
@@ -110,30 +114,6 @@
 	overflow: hidden;
   background: aliceblue
 }
-/* #monitor:after {
-	content: '';
-	display: block;
-	position: absolute;
-	bottom: 3%;
-	left: 36%;
-	height: .5%; 
-	width: 28%;
-	background: #ddd; 
-	border-radius: 50%; 
-	box-shadow: 0 0 3px 0 white; 
-} */
-
-/* #monitorscreen {
-	position: relative;
-  background-color: #777;
-	background-size: cover; 
-	background-position: top center;
-	height: 0; 
-	padding-bottom: 56.25%; 
-	position: relative;
-	overflow: hidden;
-  border-radius: 1%;
-} */
 
 
 @media all and (min-width: 960px) {
