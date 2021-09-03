@@ -2,6 +2,9 @@
 .coinFlipBtn {
     width: 25%;
 }
+.playAgainCoinFlipBtn{
+  width:100%
+}
 
 .centerDiv {
     display: flex;
@@ -11,6 +14,9 @@
 .coin {
   color: whitesmoke;
   font-size: large;
+}
+.coinImage{
+  height:300px;
 }
 
 @media only screen and (max-width: 768px) {

@@ -52,7 +52,7 @@
     display: flex;
     width: 100vw;
     padding: 15px;
-    background-color: rgb(47, 46, 46);
+    background-color: transparent;
     min-height: 100px;
 }
 
