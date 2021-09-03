@@ -1,4 +1,4 @@
-.star{
+.BeforeGameStar{
     font-size: 50px;
     color:#B026FF;
     background-color: transparent;
@@ -7,19 +7,19 @@
 
 
 /* Container needed to position the button. Adjust the width as needed */
-.container {
+.BeforeGamePageContainer, BeforeGameScreenContainer {
     position: relative;
     width: 70%;
   }
   
   /* Make the image responsive */
-  .container img {
+  #BeforeGameScreenImg {
     width: 100%;
     height: auto;
   }
   
   /* Style the button and place it in the middle of the container/image */
-  .container  .playBtn {
+  .BeforeGameScreenContainer  .BeforeGamePlayBtn{
     position: absolute;
     font-family: 'Common Pixel', sans-serif;
     top: 50%;
@@ -35,11 +35,11 @@
     border-radius: 5px;
   }
   
-  .container .playBtn:hover {
+  .BeforeGameScreenContainer  .BeforeGamePlayBtn:hover {
     background-color: rgba(128, 128, 128, 0.29);
    
   }
-  .container{
+  .BeforeGamePageContainer, BeforeGameScreenContainer{
     justify-content: center;
     display: block;
     margin-left: auto;
@@ -48,7 +48,7 @@
     margin-bottom: 1%;
    
   }
-  .page {
+  .BeforeGamePage {
     background-image: url("../../../files/carl-raw-m3hn2Kn5Bns-unsplash.jpg");
     height: 100vh;
     background-position: center;
@@ -68,16 +68,16 @@
   left: 0;
  
   }
-h2, h3{
+  .BeforeGameH2, .BeforeGameH3{
     color: #f5f5f5;
     margin: 1%;
 
 }
-#container {
+#BeforeGameButtonContainer {
   max-width: 1024px;
   margin: auto;
 }
-#gameInfo{
+#BeforeGameInfo{
   justify-content: center;
   display: block;
   margin-left: auto;
@@ -85,7 +85,7 @@ h2, h3{
   padding: 1% 20%;
   text-align: left;
 }
-#monitor {
+#BeforeGameMonitor {
 
   background: #000;
     position: relative;
@@ -100,7 +100,7 @@ h2, h3{
     /* border-bottom-right-radius: 50% 2%; */
     transition: margin-right 1s;
 }
-.screen{
+.BeforeGameScreenImg{
   border-radius: 4%;
   border-color:#1F51FF ;
   position: fixed;
@@ -137,13 +137,13 @@ h2, h3{
 
 
 @media all and (min-width: 960px) {
-	#monitor {
+	#BeforeGameMonitor {
 		-webkit-animation: screenflicker .2s infinite alternate; 
 		-moz-animation:    screenflicker .5s infinite alternate; 
 		-o-animation:      screenflicker .5s infinite alternate; 
 		animation:         screenflicker .5s infinite alternate; 
 	}
-  .playBtn{
+  .BeforeGamePlayBtn{
     animation:blink 1.2s infinite;
 }
 
