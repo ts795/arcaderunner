@@ -58,7 +58,7 @@ function CoinFlip() {
         <div className="centerDiv">
         <img className="coinImage" src={currImg === "DollarSign" ? `${process.env.PUBLIC_URL}/dollarsign.png`: `${process.env.PUBLIC_URL}/bitcoin.png`} alt="coin"/></div>
         <div className="centerDiv">
-            <button type="button" className="neonBtn coinFlipBtn" onClick={() => setFlippedCoin("not flipped")}>
+            <button type="button" className="neonBtn playAgainCoinFlipBtn" onClick={() => setFlippedCoin("not flipped")}>
             Play Again
             </button>
         </div>
