@@ -4,6 +4,7 @@ import TicTacToe from "../../TicTacToe";
 import RockPaperScissors from "../../RockPaperScissors"
 import CoinFlip from "../../CoinFlip";
 import InvalidPage from "../../InvalidPage";
+import Hangman from "../../Hangman";
 import War from '../../WarCardGame'
 import "./GameStart.css";
 
@@ -31,7 +32,11 @@ function Games() {
                 <TicTacToe />
               ) : gameId === "2" ? (
                 <RockPaperScissors />
-              ) : gameId === "6" ? (
+              ) : 
+              gameId === "4" ? (
+                <Hangman />
+              )
+              : gameId === "6" ? (
                 <CoinFlip />
               ) : (
                 <InvalidPage />
