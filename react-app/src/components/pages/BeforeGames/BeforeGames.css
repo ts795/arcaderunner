@@ -1,6 +1,8 @@
 .star{
     font-size: 50px;
-    color:white
+    color:#B026FF;
+    background-color: transparent;
+    border:transparent
 }
 
 
@@ -136,28 +138,28 @@ h2, h3{
 
 @media all and (min-width: 960px) {
 	#monitor {
-		-webkit-animation: tvflicker .2s infinite alternate; 
-		-moz-animation:    tvflicker .5s infinite alternate; 
-		-o-animation:      tvflicker .5s infinite alternate; 
-		animation:         tvflicker .5s infinite alternate; 
+		-webkit-animation: screenflicker .2s infinite alternate; 
+		-moz-animation:    screenflicker .5s infinite alternate; 
+		-o-animation:      screenflicker .5s infinite alternate; 
+		animation:         screenflicker .5s infinite alternate; 
 	}
   .playBtn{
     animation:blink 1.2s infinite;
 }
 
-	@-webkit-keyframes tvflicker {
+	@-webkit-keyframes screenflicker {
 	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
 	  100% { box-shadow: 0 0 95px 0 #1F51FF; }
 	}
-	@-moz-keyframes tvflicker {
+	@-moz-keyframes screenflicker {
 	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
 	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
 	}
-	@-o-keyframes tvflicker {
+	@-o-keyframes screenflicker {
 	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
 	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
 	}
-	@keyframes tvflicker {
+	@keyframes screenflicker {
 	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
 	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
 	}
