@@ -4,7 +4,7 @@ import TicTacToe from "../TicTacToe";
 import RockPaperScissors from "../RockPaperScissors"
 import CoinFlip from "../CoinFlip";
 import InvalidPage from "../InvalidPage";
-import War from '../WarCardGame'
+import Hangman from "../Hangman";
 
 function Games() {
     const { gameId } = useParams();
@@ -22,7 +22,7 @@ function Games() {
                 <div>
                     {(gameId === "1") ? (<TicTacToe />) :
                     (gameId === "2") ? (<RockPaperScissors />) :
-                    (gameId === "3") ? (<War />) :
+                    (gameId === "4") ? (<Hangman />) :
                     (gameId === "6") ? (<CoinFlip />) : <InvalidPage />
 
                     }

@@ -6,3 +6,15 @@
     display: flex;
     justify-content: center;
 }
+
+@media only screen and (max-width: 768px) {
+    .choiceSelectionDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .rockPaperScissorsBtn {
+        width: 100%;
+    }
+  }
