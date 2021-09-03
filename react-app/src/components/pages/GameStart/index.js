@@ -4,10 +4,11 @@ import TicTacToe from "../../TicTacToe";
 import RockPaperScissors from "../../RockPaperScissors"
 import CoinFlip from "../../CoinFlip";
 import InvalidPage from "../../InvalidPage";
+import Hangman from "../../Hangman"
 import War from '../../WarCardGame'
 import "./GameStart.css";
 
-function Games() {
+function GameStart() {
   const { gameId } = useParams();
   const [goToGames, setGoToGames] = useState(false);
   const onCancelButtonClick = (e) => {
@@ -33,7 +34,9 @@ function Games() {
                 <RockPaperScissors />
               ) : gameId === "6" ? (
                 <CoinFlip />
-              ) : (
+              ) : gameId === "4" ? (
+                <Hangman />
+              ): (
                 <InvalidPage />
               )}
             </div>
@@ -45,4 +48,4 @@ function Games() {
   }
 }
 
-export default Games;
+export default GameStart;
