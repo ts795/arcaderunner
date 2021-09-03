@@ -77,7 +77,7 @@ header nav li{
     display: inline-block;
 }
 
-header nav li p {
+.headerLink {
     color: #ffff;
     font-family: 'Russo One', sans-serif;
     font-style: italic; 
