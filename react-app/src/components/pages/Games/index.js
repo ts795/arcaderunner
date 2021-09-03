@@ -7,21 +7,14 @@ import './Games.css';
 import Navbar from "../../Navbar";
 
 function Games() {
-  const [goToProfile, setGoToProfile] = useState(false);
   const [selectedGameId, setSelectedGameId] = useState("");
 
-  const onProfileButtonClick = (e) => {
-    setGoToProfile(true);
-  };
-
+ 
   function onClickItem(currIdx, item) {
     setSelectedGameId(item.props.gameId);
   }
 
-  if (goToProfile) {
-    let pathToRedirect = "/profile";
-    return <Redirect to={pathToRedirect} />
-  } else if (selectedGameId) {
+  if (selectedGameId) {
     let pathToRedirect = "/game/" + selectedGameId;
     return <Redirect to={pathToRedirect} />
   } else {
