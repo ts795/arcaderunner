@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import { addFavoriteGame, getGame, getFavoritedGame } from "../../../utils/API";
 import './BeforeGames.css';
-
+import Navbar from "../../Navbar";
 
 function BeforeGame() {
   const { id } = useParams();
@@ -62,6 +62,7 @@ function BeforeGame() {
 
     return (
    <div className = "page">
+      <Navbar/>
       <div className="container">
         <div className = "row" id = "game">
           {/* image */}
