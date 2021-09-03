@@ -1,60 +1,37 @@
 import React, { useState } from "react";
 import { logout } from "../../utils/API";
 import './style.css';
+import { Redirect } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    const [goToGames, setGoToGames] = useState(false);
     const [goToHome, setGoToHome] = useState(false);
-    const [goToHighScores, setGoToHighScores] = useState(false);
-    const [goToProfile, setGoToProfile] = useState(false);
-
-    const onLogoButtonClick = async (e) => {
-        await setGoToHome(true);
-    }
-
-    const onBackButtonClick = (e) => {
-        setGoToGames(true);
-    };
-
-    const onProfileButtonClick = (e) => {
-            setGoToProfile(true);
-    };
-
-    const onHighScoresButtonClick = async (e) => {
-        await setGoToHighScores(true);
-    }
 
     const onLogoutButtonClick = () => {
         console.log("Logout button");
         logout().then(() => setGoToHome(true));
     };
 
-    if (goToGames) {
-        window.location.replace("/games")
-    }if (goToHome) {
-        window.location.replace("/")
-    } if (goToHighScores) {
-        window.location.replace("/highscores")
-    } if (goToProfile) {
-        window.location.replace("/userprofile")
+    if (goToHome) {
+        return <Redirect to="/" />
     }
     return (
         <header>
             <div class="header-container">
-                <h1 class="neon" id="logo-btn" onClick={onLogoButtonClick} data-text="Arcaderunner">Arcaderunner</h1>
+                <Link to="/games" className="neon neon-link headerLink" id="logo-btn" data-text="Arcaderunner"> Arcaderunner </Link>
                 <nav>
                     <ul>
                         <li>
-                            <p class="neon neon-link" id="home-btn" onClick={onBackButtonClick} data-text="Home">Home</p>
+                            <Link to="/games" className="neon neon-link headerLink" id="home-btn" data-text="Home"> Home </Link>
                         </li>
                         <li>
-                            <p class="neon neon-link" id="profile-btn" onClick={onProfileButtonClick} data-text="Profile">Profile</p>
+                            <Link to="/userprofile"  className="neon neon-link headerLink" id="profile-btn" data-text="Profile"> Profile </Link>
                         </li>
                         <li>
-                            <p class="neon neon-link" id="highscores-btn" onClick={onHighScoresButtonClick} data-text="Highscores">Highscores</p>
+                            <Link to="/highscores"  className="neon neon-link headerLink" id="highscores-btn" data-text="Highscores"> Highscores </Link>
                         </li>
                         <li>
-                            <p class="neon neon-link" id="logout" onClick={onLogoutButtonClick} data-text="Logout">Logout</p>
+                            <Link  className="neon neon-link headerLink" id="logout" data-text="Logout" onClick={onLogoutButtonClick}> Logout </Link>
                         </li>
                     </ul>
                 </nav>
