@@ -16,6 +16,9 @@
   /* height: 100vh; */
   /* background-position: 50%; */
   /* background-repeat: no-repeat; */
+  display:flex;
+  align-items: center;
+  justify-content: center;
   background-color: #777;
   background-size: cover;
   background-position: top;
@@ -26,7 +29,6 @@
   padding: 20%;
   margin: 2%;
   padding-top: 20%;
-  padding-bottom: 20%;
 
 }
 #gameContainer {
@@ -37,6 +39,9 @@
 }
 
 #gameMonitor {
+	display:flex;
+	align-items: center;
+	justify-content: center;
 	background: #000; 
 	position: relative;
 	margin: 5%;
