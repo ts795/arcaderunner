@@ -25,16 +25,16 @@ const Navbar = () => {
                     <nav className="main-nav-links">
                         <ul className="main-nav-links-list">
                             <li className="main-nav-link-items">
-                                <Link to="/games" className=" nav-link" id="main-home-btn" data-text="Home"> Home </Link>
+                                <Link to="/games" className=" nav-link" id="main-home-btn"> Home </Link>
                             </li>
                             <li className="main-nav-link-items">
-                                <Link to="/userprofile"  className=" nav-link" id="main-profile-btn" data-text="Profile"> Profile </Link>
+                                <Link to="/userprofile"  className=" nav-link" id="main-profile-btn"> Profile </Link>
                             </li>
                             <li className="main-nav-link-items">
-                                <Link to="/highscores"  className=" nav-link" id="main-highscores-btn" data-text="Highscores"> Highscores </Link>
+                                <Link to="/highscores"  className=" nav-link" id="main-highscores-btn"> Highscores </Link>
                             </li>
                             <li className="main-nav-link-items">
-                                <Link  className=" nav-link" id="main-logout-btn" data-text="Logout" onClick={onLogoutButtonClick}> Logout </Link>
+                                <Link  className=" nav-link" id="main-logout-btn" onClick={onLogoutButtonClick}> Logout </Link>
                             </li>
                         </ul>
                     </nav>
