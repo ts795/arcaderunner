@@ -47,6 +47,7 @@ function Games() {
               <p className="legend">War</p>
             </div>
             <div gameId="4">
+              <img src={`${process.env.PUBLIC_URL}/Hangman.png`} />
               <p>Hangman</p>
             </div>
 
