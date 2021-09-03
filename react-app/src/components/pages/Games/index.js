@@ -26,7 +26,7 @@ function Games() {
     return <Redirect to={pathToRedirect} />
   } else {
     return (
-      <div>
+      <div id = "gameBackground">
         <Navbar />
         <div className="carouselContainer">
           <Carousel width="100%" centerMode={true} onClickItem={onClickItem}>
