@@ -7,6 +7,7 @@ import './Home.css';
 
 function Home() {
   const [userisLoggedIn, setLoggedIn] = useState(false);
+  const [playSound, setPlaySound] = useState(false);
 
   if (!userisLoggedIn && loggedIn()) {
     console.log("User already logged in");
@@ -21,11 +22,11 @@ function Home() {
 
     return (
       <section>
-        <div className="container">
-          <h1 data-text="arcade runner">arcade runner</h1>
+        <div className="containerMain">
+          <h1 className="mainPageLogo" data-text="arcaderunner">arcaderunner</h1>
           <div className="buttonContainer">
             <Link to="/login" className="homeLink">
-              <button className='neonBtn'>LOGIN</button>
+              <button onMouseEnter={( ) => setPlaySound(true)} className='neonBtn'>LOGIN</button>
             </Link>
             <Link to="/signup" className="homeLink">
               <button className='neonBtn'>SIGN UP</button>
