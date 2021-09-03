@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, useParams } from "react-router-dom";
-import { addFavoriteGame, getGame, getFavoritedGame, deleteFavoritedGame } from "../../../utils/API";
+import { addFavoriteGame, getGame, getFavoritedGame } from "../../../utils/API";
 import './BeforeGames.css';
 
 
@@ -10,17 +10,21 @@ function BeforeGame() {
   const [playGame, setPlayGame] = useState(false);
   const [gameInformation, setGameInformation] = useState({});
   const [favGameInformation, setFavGameInformation] = useState({});
-  const [favGame,setFavGame] = useState(false);
+  const [favGame,setFavGame] = useState();
   useEffect(() => {
     getGame(id).then((result) => {
       console.log("game", result);
       setGameInformation(result);
+
     });
   }, []);
   useEffect(() => {
     getFavoritedGame(id).then((result) => {
       console.log("favgame", result);
       setFavGameInformation(result);
+      if(result.game_id===id){
+        console.log("already favorited")
+        setFavGame(true);}
     });
   }, []);
 
@@ -28,14 +32,14 @@ function BeforeGame() {
     setGoToGames(true);
   };
   const onFavoriteButtonClick = (e) => {
-    if(favGameInformation.game_id){
-      deleteFavoritedGame(id);
-      setFavGame(false);
-
-  }else {
+    if(!favGame){
     addFavoriteGame(id);
     setFavGame(true);
     }
+    else{
+      alert("Already added to Favorites")
+    }
+
   };
 
   const onPlayButtonClick = (e) => {
