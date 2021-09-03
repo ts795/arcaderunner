@@ -3,6 +3,8 @@ import './style.css';
 import { Redirect } from 'react-router-dom';
 import { loginOrSignup } from '../../utils/API';
 import { loggedIn } from "../../utils/auth";
+import ReactHowler from 'react-howler';
+
 
 function UsernamePasswordForm(props) {
   // Here we set two state variables for firstName and lastName using `useState`
@@ -10,6 +12,10 @@ function UsernamePasswordForm(props) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [userisLoggedIn, setLoggedIn] = useState(false);
+  const [makeNoisePlay, setMakeNoisePlay] = useState('/Sounds/LogIn.wav');
+  const [playNoise, setPlayNoise] = useState(false);
+
+
   
   if (!userisLoggedIn && loggedIn()) {
     setLoggedIn(true);
@@ -45,6 +51,12 @@ function UsernamePasswordForm(props) {
     })
   };
 
+    function playNoiseFunc() {
+      setMakeNoisePlay('/Sounds/LogIn.wav');
+      setPlayNoise(true);
+    };
+
+
   let emailInput = '';
   if (props.formType !== "Log In") {
     emailInput = <input
@@ -77,9 +89,13 @@ function UsernamePasswordForm(props) {
           type="password"
           placeholder="Password"
         />
-        <button type="button" className="neonBtn" onClick={handleFormSubmit}>
+        <button type="button" className="neonBtn" onMouseEnter={() => playNoiseFunc(true)}  onClick={handleFormSubmit}>
           {props.formType}
         </button>
+        {playNoise ? <ReactHowler
+        src={ `${process.env.PUBLIC_URL}${makeNoisePlay}`}
+        playing={true}
+      /> : ""}
       </form>
     );
   }

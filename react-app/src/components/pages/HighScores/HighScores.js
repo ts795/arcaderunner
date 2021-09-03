@@ -19,14 +19,14 @@ function HighScores() {
 
   const listItemsHighScore = highScoresData.map((score) =>
     <li key={score.id}><div>
-      {score.game.name.toLowerCase() + ": " + score.score}</div><div>{score.user.username.toLowerCase()}</div></li>
+      {score.game.name + ": " + score.score}</div><div>{score.user.username}</div></li>
   );
 
   return (
     <div>
       <Navbar />
       <div id="highScore" className="containerHS">
-        <h3 clasName="logoHS" data-text="high scores">high scores</h3>
+        <h1 clasName="logoHS">HIGH SCORES</h1>
         <ol className="listItemsHS">
           {listItemsHighScore}
         </ol>
