@@ -32,7 +32,7 @@ function GameStart() {
                 <TicTacToe />
               ) : gameId === "2" ? (
                 <RockPaperScissors />
-              ) : gameId === "6" ? (
+              ): gameId === "6" ? (
                 <CoinFlip />
               ) : gameId === "4" ? (
                 <Hangman />
