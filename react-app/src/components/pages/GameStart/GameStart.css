@@ -29,8 +29,9 @@
 
 }
 #gameContainer {
-  max-width: 2000px;
-  margin: auto;
+    max-width: 2000px;
+    padding: 5%;
+    margin: 1%;
 }
 
 #gameMonitor {
