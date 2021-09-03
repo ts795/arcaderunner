@@ -22,7 +22,9 @@ function BeforeGame() {
     getFavoritedGame(id).then((result) => {
       console.log("favgame", result);
       setFavGameInformation(result);
+      console.log("fav game id", result.game_id, "game id",id)
       if(result.game_id===id){
+        console.log("favegame id",result.game_id)
         console.log("already favorited")
         setFavGame(true);}
     });
@@ -37,6 +39,7 @@ function BeforeGame() {
     setFavGame(true);
     }
     else{
+
       alert("Already added to Favorites")
     }
 
