@@ -4,6 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 // Documentation https://github.com/leandrowd/react-responsive-carousel
 import { Carousel } from 'react-responsive-carousel';
 import './Games.css';
+import Navbar from "../../Navbar";
 
 function Games() {
   const [goToProfile, setGoToProfile] = useState(false);
@@ -26,7 +27,7 @@ function Games() {
   } else {
     return (
       <div>
-        <button onClick={onProfileButtonClick} className="clickableIcon"><i class="fa fa-user fa-5x" aria-hidden="true"></i></button>
+        <Navbar />
         <div className="carouselContainer">
           <Carousel width="100%" centerMode={true} onClickItem={onClickItem}>
             <div gameId="6">

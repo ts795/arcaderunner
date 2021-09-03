@@ -2,48 +2,43 @@ import React, { useState } from "react";
 import { logout } from "../../utils/API";
 import { Redirect } from "react-router";
 import './style.css';
-import "../pages/GameStart"
+import { Redirect } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    const [goToGames, setGoToGames] = useState(false)
     const [goToHome, setGoToHome] = useState(false);
+
     const onLogoutButtonClick = () => {
         console.log("Logout button");
         logout().then(() => setGoToHome(true));
     };
 
-    const onBackButtonClick = () => {
-       setGoToGames(true)
-    }
-
     if (goToHome) {
-        let pathToRedirect = "/";
-        return <Redirect to={pathToRedirect} />;
-    } else {
-        return (
-            <header>
-                <div class="header-container">
-                    <a class="logo" href="#top"><h1 class="neon" id="logo-btn" data-text="Arcaderunner">Arcaderunner</h1></a>
-                    <nav>
-                        <ul>
-                            <li>
-                                <p class="neon neon-link" id="home-btn" onClick={onBackButtonClick} data-text="Home">Home</p>
-                            </li>
-                            <li>
-                                <p class="neon neon-link" id="profile-btn" data-text="Profile">Profile</p>
-                            </li>
-                            <li>
-                                <p class="neon neon-link" id="highscores-btn" data-text="Highscores">Highscores</p>
-                            </li>
-                            <li>
-                                <p class="neon neon-link" id="logout" onClick={onLogoutButtonClick} data-text="Logout">Logout</p>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
-        );
+        return <Redirect to="/" />
     }
+    return (
+        <header>
+            <div class="header-container">
+                <Link to="/games" className="neon neon-link headerLink" id="logo-btn" data-text="Arcaderunner"> Arcaderunner </Link>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/games" className="neon neon-link headerLink" id="home-btn" data-text="Home"> Home </Link>
+                        </li>
+                        <li>
+                            <Link to="/userprofile"  className="neon neon-link headerLink" id="profile-btn" data-text="Profile"> Profile </Link>
+                        </li>
+                        <li>
+                            <Link to="/highscores"  className="neon neon-link headerLink" id="highscores-btn" data-text="Highscores"> Highscores </Link>
+                        </li>
+                        <li>
+                            <Link  className="neon neon-link headerLink" id="logout" data-text="Logout" onClick={onLogoutButtonClick}> Logout </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    );
 }
 
 export default Navbar;
