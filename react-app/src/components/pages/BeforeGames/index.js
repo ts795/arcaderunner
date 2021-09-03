@@ -6,7 +6,6 @@ import Navbar from "../../Navbar";
 
 function BeforeGame() {
   const { id } = useParams();
-  const [goToGames, setGoToGames] = useState(false);
   const [playGame, setPlayGame] = useState(false);
   const [gameInformation, setGameInformation] = useState({});
   const [favGameInformation, setFavGameInformation] = useState({});
@@ -30,9 +29,7 @@ function BeforeGame() {
     });
   }, []);
 
-  const onBackButtonClick = (e) => {
-    setGoToGames(true);
-  };
+
   const onFavoriteButtonClick = (e) => {
     if(!favGame){
     addFavoriteGame(id);
@@ -52,36 +49,31 @@ function BeforeGame() {
    if (playGame) {
     let pathToRedirect = `/gamestart/${id}`;
     return <div><Redirect to={pathToRedirect} /></div>;
-  }   else if (goToGames) {
-    let pathToRedirect = "/games";
-    return <Redirect to={pathToRedirect} />;
   } 
   else {
     console.log("gameInfo", gameInformation);
     console.log("favgameInfo", favGameInformation);
 
     return (
-   <div className = "page">
+   <div className = "BeforeGamePage">
       <Navbar/>
-      <div className="container">
-        <div className = "row" id = "game">
+      <div className="BeforeGamePageContainer">
+        <div className = "BeforeGameRow" id = "BeforeGame">
           {/* image */}
-          <div className = "container screenImg">
-          <div id="container">
-          <div id="monitor">
-            <div id = "monitorContent">
-            <img id = "screen" src={`${process.env.PUBLIC_URL}/arcadescreen.png`} alt = "arcade screen" width = "10px" height = "100px"/>
-          <button onClick={onPlayButtonClick} className = "playBtn">Start Game</button>
+          <div className = "BeforeGameScreenContainer">
+          <div id="BeforeGameButtonContainer">
+          <div id="BeforeGameMonitor">
+            <div id = "BeforeGameMonitorContent">
+            <img id = "BeforeGameScreenImg" src={`${process.env.PUBLIC_URL}/arcadescreen.png`} alt = "arcade screen"/>
+          <button onClick={onPlayButtonClick} className = "BeforeGamePlayBtn">Start Game</button>
           </div>
           </div>
           </div>
         </div>
           </div>
-          <div className = "row" id = "gameInfo">
-            <h2>{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "star">{favGame ? "★" : "✩"}</button></h2>
-            <h3>{gameInformation.description ? gameInformation.description : ""} </h3>
-            <button onClick={onBackButtonClick}>Back</button>
-
+          <div className = "BeforeGameInfoRow" id = "BeforeGameInfo">
+            <h2 className = "BeforeGameH2">{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "BeforeGameStar">{favGame ? "★" : "✩"}</button></h2>
+            <h3 className = "BeforeGameH3">{gameInformation.description ? gameInformation.description : ""} </h3>
             </div>
             </div>
  </div>
