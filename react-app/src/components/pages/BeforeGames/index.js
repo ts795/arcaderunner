@@ -6,7 +6,6 @@ import Navbar from "../../Navbar";
 
 function BeforeGame() {
   const { id } = useParams();
-  const [goToGames, setGoToGames] = useState(false);
   const [playGame, setPlayGame] = useState(false);
   const [gameInformation, setGameInformation] = useState({});
   const [favGameInformation, setFavGameInformation] = useState({});
@@ -30,9 +29,7 @@ function BeforeGame() {
     });
   }, []);
 
-  const onBackButtonClick = (e) => {
-    setGoToGames(true);
-  };
+
   const onFavoriteButtonClick = (e) => {
     if(!favGame){
     addFavoriteGame(id);
@@ -52,9 +49,6 @@ function BeforeGame() {
    if (playGame) {
     let pathToRedirect = `/gamestart/${id}`;
     return <div><Redirect to={pathToRedirect} /></div>;
-  }   else if (goToGames) {
-    let pathToRedirect = "/games";
-    return <Redirect to={pathToRedirect} />;
   } 
   else {
     console.log("gameInfo", gameInformation);
@@ -80,8 +74,6 @@ function BeforeGame() {
           <div className = "BeforeGameInfoRow" id = "BeforeGameInfo">
             <h2 className = "BeforeGameH2">{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "BeforeGameStar">{favGame ? "★" : "✩"}</button></h2>
             <h3 className = "BeforeGameH3">{gameInformation.description ? gameInformation.description : ""} </h3>
-            <button onClick={onBackButtonClick}>Back</button>
-
             </div>
             </div>
  </div>
