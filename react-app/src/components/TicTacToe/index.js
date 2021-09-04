@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './style.css';
+import ReactHowler from 'react-howler';
 
 
 function TicTacToe() {
-
     function Square(props) {
         return (
             <button className="square" onClick={props.onClick}>
@@ -109,9 +109,13 @@ function TicTacToe() {
             } else {
                 status = "Next player: " + (this.state.xIsNext ? "X" : "O");
             }
-
+            console.log(this.state.xIsNext)
             return (
                 <div className="game">
+                    <ReactHowler
+                        src={this.state.xIsNext ? `${process.env.PUBLIC_URL}/Sounds/Tic.wav` : `${process.env.PUBLIC_URL}/Sounds/Tac.wav`}
+                        playing={this.state.stepNumber > 0}
+                    />
                     <div className="game-board">
                         <Board
                             squares={current.squares}
