@@ -39,9 +39,9 @@ function Games() {
               <img src={`${process.env.PUBLIC_URL}/bitcoin.png`} />
               <p className="legend">War</p>
             </div>
-            <div gameId="4">
-              <img src={`${process.env.PUBLIC_URL}/Hangman.png`} height = "300px" />
-              <p>Hangman</p>
+            <div class="main-hangman-game" gameId="4">
+              <img src={`${process.env.PUBLIC_URL}/Hangman.png`} className="hangman-thumbnail" />
+              <p className="legend">Hangman</p>
             </div>
 
           </Carousel>
