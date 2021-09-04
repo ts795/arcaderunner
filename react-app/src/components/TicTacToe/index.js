@@ -119,8 +119,8 @@ function TicTacToe() {
                         />
                     </div>
                     <div className="game-info">
-                        <div>{status}</div>
-                        <ol>{moves}</ol>
+                        <div className="ticTacToeStatus">{status}</div>
+                        <ol className="ticTacToeMovesList">{moves}</ol>
                     </div>
                 </div>
             );
