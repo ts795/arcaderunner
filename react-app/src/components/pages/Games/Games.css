@@ -13,7 +13,7 @@
   height: auto;
 	
   /* Set up positioning */
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0; 
 }
@@ -28,3 +28,13 @@
         margin-left: 5%;
     }
 }
+@media all and (min-width: 768px){
+	#gameBackground {
+	  background-attachment: fixed;
+	}
+  }
+  @media all and (max-width: 768px){
+    #gameBackground {
+    position:fixed;
+    }
+  }
