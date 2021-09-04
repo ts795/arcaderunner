@@ -28,25 +28,25 @@ const RockPaperScissors = () => {
     }
     if (!gameComplete) {
         return (<div className="centerDiv choiceSelectionDiv">
-            <button type="button" className="neonBtn rockPaperScissorsBtn" onClick={() => onSelection("rock")}>
-                Rock
+            <button type="button" className="neonBtn rockPaperScissorsBtn rock" onClick={() => onSelection("rock")}>
+                <i class="fas fa-hand-rock"></i>
             </button>
-            <button type="button" className="neonBtn rockPaperScissorsBtn" onClick={() => onSelection("paper")}>
-                Paper
+            <button  type="button" className="neonBtn rockPaperScissorsBtn paper" onClick={() => onSelection("paper")}>
+                <i class="fas fa-hand-paper"></i>
             </button>
-            <button type="button" className="neonBtn rockPaperScissorsBtn" onClick={() => onSelection("scissors")}>
-                Scissors
+            <button  type="button" className="neonBtn rockPaperScissorsBtn scissors" onClick={() => onSelection("scissors")}>
+                <i class="fas fa-hand-scissors"></i>
             </button>
         </div>);
     } else {
         return (
             <div>
                 <div className="centerDiv">
-                    <button id="playAgainBtn" type="button" className="neonBtn rockPaperScissorsBtn" onClick={() => setGameComplete(false)}>
+                    <button type="button" className="neonBtn rockPaperScissorsBtn playAgainBtn" onClick={() => setGameComplete(false)}>
                         Play Again
                     </button>
                 </div>
-                <div className="centerDiv">
+                <div className="centerDiv msgDiv">
                     <p className="messageText">{message}</p>
                 </div>
             </div>
