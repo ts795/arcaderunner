@@ -1,5 +1,4 @@
 import React, { Component} from "react";
-import { Redirect } from "react-router";
 import "./style.css";
 import { randomWord } from "./words";
 import step0 from "./images/0.png";
@@ -11,7 +10,6 @@ import step5 from "./images/5.png";
 import step6 from "./images/6.png";
  
 
-let gameStat;
 class Hangman extends Component {
   static defaultProps = {
     maxWrong: 6,
@@ -54,11 +52,7 @@ class Hangman extends Component {
      * 97 = a (Small)
      * 122 = z (Small)
      */
-    if (gameStat === "YOU WON" || gameStat === "YOU LOST") {
-      if (event.keyCode === 8 || event.keyCode === 13 || event.keyCode === 32) {
-        this.resetButton();
-      }
-    } else if (
+     if (
       (event.keyCode >= 65 && event.keyCode <= 90) ||
       (event.keyCode >= 97 && event.keyCode <= 122)
     ) {
@@ -102,6 +96,8 @@ class Hangman extends Component {
     if (isWinner) {
       if(this.endGame("WON!")) {
         this.playAgain()
+      } else {
+        window.location.replace("/games")
       }
       
     }
@@ -115,18 +111,18 @@ class Hangman extends Component {
 
     return (
       <div className="Hangman">
-        <div className="guessedLetters" id="navbarText">
+        <div className="guessedLetters text-light" id="navbarText">
             <span className="guesses">
                 Letters Guessed: {guesses}
             </span>
         </div>
         <p className="text-center">
-          <img src={images[mistake]} alt={altText} />
+          <img src={images[mistake]} className="Hangman-img" alt={altText} />
         </p>
         <p className="text-center text-light">
           Guess the Word
         </p>
-        <p className="Hangman-word text-center">
+        <p className="Hangman-word text-light text-center">
           {!gameOver ? this.guessedWord() : answer}{" "}
         </p>
     </div>

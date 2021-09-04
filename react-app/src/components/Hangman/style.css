@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 .hidden {
     display: none;
 }
@@ -9,4 +10,20 @@
 
 .guessedLetters {
     margin-left: 5px;
+}
+
+.text-light {
+    color: #fff;
+    font-family: 'Russo One', sans-serif; 
+    font-size: 20px;
+}
+
+.Hangman-word {
+    padding-right: 2px;
+    margin-right: 2px;
+    letter-spacing: 3px;
+}
+
+.Hangman-img {
+    margin: 10px;
 }
