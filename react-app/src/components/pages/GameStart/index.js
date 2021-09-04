@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import TicTacToe from "../../TicTacToe";
 import RockPaperScissors from "../../RockPaperScissors";
 import CoinFlip from "../../CoinFlip";
