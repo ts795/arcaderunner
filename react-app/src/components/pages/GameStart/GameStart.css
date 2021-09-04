@@ -57,7 +57,16 @@
 		text-align: center;
 		color: #f5f5f5;
 }
-
+@media all and (min-width: 768px){
+	.gamePage {
+	  background-attachment: fixed;
+	}
+  }
+@media all and (max-width: 768px){
+  .gamePage {
+  position:fixed;
+  }
+}
 
 @media all and (min-width: 960px) {
 	#gameMonitor {
@@ -84,3 +93,18 @@
 	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
 	}
 }
+
+@media only screen and (max-width: 768px) {
+	#gameMonitor {
+		margin: 0%;
+	}
+
+	#gameContainer {
+		padding: 1%;
+	}
+
+	.currentGame{ 
+		height: 100%;
+		padding: 1%;
+	}
+  }

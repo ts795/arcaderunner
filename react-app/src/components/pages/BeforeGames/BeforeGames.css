@@ -24,7 +24,7 @@
   .BeforeGameScreenContainer  .BeforeGamePlayBtn{
     
     position: absolute;
-    font-family: 'Common Pixel', sans-serif;
+    font-family: 'Common Pixel','Russo One', sans-serif;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -66,7 +66,6 @@
   height: auto;
 	
   /* Set up positioning */
-  position: fixed;
   top: 0;
   left: 0;
  
@@ -114,7 +113,16 @@
 	overflow: hidden;
   background: aliceblue
 }
-
+@media all and (min-width: 768px){
+  .BeforeGamePage {
+    background-attachment: fixed;
+  }
+}
+@media all and (max-width: 768px){
+  .BeforeGamePage {
+  position:fixed;
+  }
+}
 
 @media all and (min-width: 960px) {
 	#BeforeGameMonitor {
