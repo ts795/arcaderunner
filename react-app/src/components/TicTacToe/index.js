@@ -120,7 +120,7 @@ function TicTacToe() {
                     </div>
                     <div className="game-info">
                         <div>{status}</div>
-                        <ol>{moves}</ol>
+                        <ol className="movesTic">{moves}</ol>
                     </div>
                 </div>
             );

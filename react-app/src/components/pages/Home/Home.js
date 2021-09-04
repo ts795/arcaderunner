@@ -38,14 +38,14 @@ console.log("play sound", playSound);
             <Link to="/login" className="HomePageLink">
               <button type="button" onMouseEnter={() => onClick(true)} className='neonBtn'>LOGIN</button>
             </Link>
-            <Link to="/signup" className="homeLink">
+            <Link to="/signup" className="HomePageLink">
               <button type="button" onMouseEnter={() => onClick(false)}  className='neonBtn'>SIGN UP</button>
             </Link>
             {playSound ? <ReactHowler
         src={ `${process.env.PUBLIC_URL}${makeSoundPlay}`}
         playing={true}
       /> : ""}
-          </div>
+      </div>
         </div>
       </section>
     );

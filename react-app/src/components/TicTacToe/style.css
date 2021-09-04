@@ -1,9 +1,11 @@
 .game {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
+    color: fuchsia;
+
   }
   
-  ol, ul {
+  .movesTic, ul {
     padding-left: 30px;
   }
   
@@ -15,22 +17,23 @@
   
   .status {
     margin-bottom: 10px;
+    color: fuchsia;
   }
   
   .square {
-    /* background: #09111b; */
+    background: lightskyblue;
     border: 1px solid #ff00ff;
     /* filter: blur(50px) brightness(0); */
     float: left;
     font-size: 24px;
     font-weight: bold;
     line-height: 34px;
-    height: 34px;
+    height: 54px;
     margin-right: -1px;
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 54px;
   }
   
   .square:focus {
