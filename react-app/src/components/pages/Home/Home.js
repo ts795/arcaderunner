@@ -36,10 +36,10 @@ console.log("play sound", playSound);
           <h1 className="HomePageLogo" data-text="arcaderunner">arcaderunner</h1>
           <div className="HomePageButtonContainer">
             <Link to="/login" className="HomePageLink">
-              <button onMouseEnter={() => onClick(true)} className='neonBtn'>LOGIN</button>
+              <button type="button" onMouseEnter={() => onClick(true)} className='neonBtn'>LOGIN</button>
             </Link>
             <Link to="/signup" className="homeLink">
-              <button onMouseEnter={() => onClick(false)}  className='neonBtn'>SIGN UP</button>
+              <button type="button" onMouseEnter={() => onClick(false)}  className='neonBtn'>SIGN UP</button>
             </Link>
             {playSound ? <ReactHowler
         src={ `${process.env.PUBLIC_URL}${makeSoundPlay}`}
