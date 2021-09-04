@@ -23,7 +23,7 @@ const RockPaperScissors = () => {
             computerSelection = "scissors";
         }
         let gameResult = winLossTable[selection][computerSelection] ? "won" : (winLossTable[selection][computerSelection] === false ? "lost" : "tied");
-        setMessage(`You chose ${selection} and the computer chose ${computerSelection}. You ${gameResult}!`);
+        setMessage(`You chose ${selection} and the computer chose ${computerSelection}.&#13:&#10:You ${gameResult}!`);
         setGameComplete(true);
     }
     if (!gameComplete) {
@@ -46,7 +46,7 @@ const RockPaperScissors = () => {
                         Play Again
                     </button>
                 </div>
-                <div className="centerDiv">
+                <div className="centerDiv msgDiv">
                     <p className="messageText">{message}</p>
                 </div>
             </div>
