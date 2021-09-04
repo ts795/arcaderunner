@@ -27,4 +27,8 @@
         margin-right: 5%;
         margin-left: 5%;
     }
-}
+}@media all and (min-width: 768px){
+	#gameBackground {
+	  background-attachment: fixed;
+	}
+  }
