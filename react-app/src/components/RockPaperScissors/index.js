@@ -28,14 +28,14 @@ const RockPaperScissors = () => {
     }
     if (!gameComplete) {
         return (<div className="centerDiv choiceSelectionDiv">
-            <button type="button" className="neonBtn rockPaperScissorsBtn" onClick={() => onSelection("rock")}>
-                Rock
+            <button type="button" className="neonBtn rockPaperScissorsBtn rock" onClick={() => onSelection("rock")}>
+                <i class="fas fa-hand-rock"></i>
             </button>
-            <button type="button" className="neonBtn rockPaperScissorsBtn" onClick={() => onSelection("paper")}>
-                Paper
+            <button  type="button" className="neonBtn rockPaperScissorsBtn paper" onClick={() => onSelection("paper")}>
+                <i class="fas fa-hand-paper"></i>
             </button>
-            <button type="button" className="neonBtn rockPaperScissorsBtn" onClick={() => onSelection("scissors")}>
-                Scissors
+            <button  type="button" className="neonBtn rockPaperScissorsBtn scissors" onClick={() => onSelection("scissors")}>
+                <i class="fas fa-hand-scissors"></i>
             </button>
         </div>);
     } else {
