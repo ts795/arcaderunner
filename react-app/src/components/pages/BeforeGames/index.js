@@ -10,30 +10,29 @@ function BeforeGame() {
   const [gameInformation, setGameInformation] = useState({});
   const [favGameInformation, setFavGameInformation] = useState({});
   const [favGame,setFavGame] = useState();
+  const [star, setStar] = useState("✩");
   useEffect(() => {
     getGame(id).then((result) => {
       console.log("game", result);
       setGameInformation(result);
 
-    });
+    }
+    );
   }, []);
   useEffect(() => {
     getFavoritedGame(id).then((result) => {
       console.log("favgame", result);
       setFavGameInformation(result);
       console.log("fav game id", result.game_id, "game id",id)
-      if(result.game_id===id){
-        console.log("favegame id",result.game_id)
-        console.log("already favorited")
-        setFavGame(true);}
     });
   }, []);
 
 
   const onFavoriteButtonClick = (e) => {
-    if(!favGame){
+ if(!favGame){
     addFavoriteGame(id);
     setFavGame(true);
+    setStar("★")
     }
     else{
 
@@ -52,8 +51,17 @@ function BeforeGame() {
   } 
   else {
     console.log("gameInfo", gameInformation);
-    console.log("favgameInfo", favGameInformation);
-
+    console.log("favgameInfo", favGameInformation.game_id);
+    function checkFavGame(){
+      console.log("gameInfo2222222", gameInformation);
+    console.log("favgameInfo222222", favGameInformation.game_id);
+      if(favGameInformation.game_id===id){
+        console.log("star")
+        setStar("★");
+        setFavGame(true);
+      }
+    };
+    checkFavGame();
     return (
    <div className = "BeforeGamePage">
       <Navbar/>
@@ -72,7 +80,7 @@ function BeforeGame() {
         </div>
           </div>
           <div className = "BeforeGameInfoRow" id = "BeforeGameInfo">
-            <h2 className = "BeforeGameH2">{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "BeforeGameStar">{favGame ? "★" : "✩"}</button></h2>
+            <h2 className = "BeforeGameH2">{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "BeforeGameStar">{star}</button></h2>
             <h3 className = "BeforeGameH3">{gameInformation.description ? gameInformation.description : ""} </h3>
             </div>
             </div>

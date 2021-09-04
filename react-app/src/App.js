@@ -17,13 +17,13 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <div>
+       
           <Route exact path="/game/:id" component={BeforeGame} />
           <Route exact path="/highscores" component={HighScores} />
           <Route exact path="/gamestart/:gameId" component={GameStart} />
           <Route exact path="/games" component={Games} />
           <Route exact path="/userprofile" component={Profile} />
-        </div>
+     
       </div>
     </Router>
   );
