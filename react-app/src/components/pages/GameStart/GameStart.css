@@ -84,3 +84,18 @@
 	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
 	}
 }
+
+@media only screen and (max-width: 768px) {
+	#gameMonitor {
+		margin: 0%;
+	}
+
+	#gameContainer {
+		padding: 1%;
+	}
+
+	.currentGame{ 
+		height: 100%;
+		padding: 1%;
+	}
+  }

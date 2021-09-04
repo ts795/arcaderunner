@@ -23,7 +23,7 @@ function HighScores() {
   );
 
   return (
-    <div>
+    <div className="highScoresPage">
       <Navbar />
       <div id="highScore" className="containerHS">
         <h1 clasName="logoHS">HIGH SCORES</h1>
