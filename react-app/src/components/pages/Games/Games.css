@@ -55,3 +55,9 @@
     position:fixed;
     }
   }
+
+@media screen and (max-width: 500px) {
+  .hangman-thumbnail {
+    height: 50%;
+  }
+}
