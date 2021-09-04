@@ -1,6 +1,7 @@
 #gameBackground{
     background-image: url("../../../files/91656.jpg");
     height: 100vh;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,13 +14,14 @@
   height: auto;
 	
   /* Set up positioning */
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0; 
 }
 .carouselContainer {
     margin-right: 25%;
     margin-left: 25%;
+    padding:20%;
 }
 
 @media only screen and (max-width: 768px) {
