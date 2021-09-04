@@ -19,9 +19,16 @@
   height:300px;
 }
 
+.coinFlipMessageText {
+  color: #FF6EC7;
+  font-weight: bold;
+  font-size: large;
+}
+
 @media only screen and (max-width: 768px) {
   .coinImage {
-    max-width: 100%;
+    width: 50%;
+    height: 50%;
   }
 
   .coinFlipBtn {
