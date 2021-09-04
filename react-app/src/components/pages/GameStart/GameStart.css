@@ -1,86 +1,87 @@
 .gamePage{
-  background-image: url("../../../files/gabriel-bassino-tdm4efl-1QE-unsplash.jpg");
-  height: 100vh;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  left: 0;
-}
-.currentGame{
-  background-image: url("../../../files/screenwave.png");
-  /* height: 100vh; */
-  /* background-position: 50%; */
-  /* background-repeat: no-repeat; */
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #777;
-  background-size: cover;
-  background-position: top;
-  height: 0;
-  padding-bottom: 50%;
-  position: relative;
-  overflow: hidden;
-  padding: 20%;
-  margin: 2%;
-  padding-top: 20%;
-
-}
-#gameContainer {
-    max-width: 2000px;
-    padding: 5%;
-    margin: 1%;
-	padding-top: 1%;
-}
-
-#gameMonitor {
+	background-image: url("../../../files/gabriel-bassino-tdm4efl-1QE-unsplash.jpg");
+	height: 100vh;
+	background-attachment: fixed;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	/* position: fixed; */
+	left: 0;
+  }
+  .currentGame{
+	background-image: url("../../../files/screenwave.png");
+	/* height: 100vh; */
+	/* background-position: 50%; */
+	/* background-repeat: no-repeat; */
 	display:flex;
 	align-items: center;
 	justify-content: center;
-	background: #000; 
+	background-color: #777;
+	background-size: cover;
+	background-position: top;
+	height: 0;
+	padding-bottom: 50%;
 	position: relative;
-	margin: 5%;
-	padding: 2% 2% 4% 2%; 
-	border-radius: 10px; 
-	border-bottom-left-radius: 50% 2%; 
-	border-bottom-right-radius: 50% 2%; 
-	transition: margin-right 1s;
-}
-.GameStartNameRow{
-	font-family: 'Russo One', sans-serif; 
-		margin: 1%;
-		text-align: center;
-		color: #f5f5f5;
-}
-
-
-@media all and (min-width: 960px) {
-	#gameMonitor {
-		-webkit-animation: tvflicker .2s infinite alternate; 
-		-moz-animation:    tvflicker .5s infinite alternate; 
-		-o-animation:      tvflicker .5s infinite alternate; 
-		animation:         tvflicker .5s infinite alternate; 
-	}
-
-	@-webkit-keyframes tvflicker {
-	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
-	  100% { box-shadow: 0 0 95px 0 #1F51FF; }
-	}
-	@-moz-keyframes tvflicker {
-	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
-	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
-	}
-	@-o-keyframes tvflicker {
-	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
-	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
-	}
-	@keyframes tvflicker {
-	  0%   { box-shadow: 0 0 100px 0 #1F51FF; }
-	  100% { box-shadow: 0 0 60px 0 #1F51FF; }
-	}
-}
+	overflow: hidden;
+	padding: 20%;
+	margin: 2%;
+	padding-top: 20%;
+  
+  }
+  #gameContainer {
+	  max-width: 2000px;
+	  padding: 5%;
+	  margin: 1%;
+	  padding-top: 1%;
+  }
+  
+  #gameMonitor {
+	  display:flex;
+	  align-items: center;
+	  justify-content: center;
+	  background: #000; 
+	  position: relative;
+	  margin: 5%;
+	  padding: 2% 2% 4% 2%; 
+	  border-radius: 10px; 
+	  border-bottom-left-radius: 50% 2%; 
+	  border-bottom-right-radius: 50% 2%; 
+	  transition: margin-right 1s;
+  }
+  .GameStartNameRow{
+	  font-family: 'Russo One', sans-serif; 
+		  margin: 1%;
+		  text-align: center;
+		  color: #f5f5f5;
+  }
+  
+  
+  @media all and (min-width: 960px) {
+	  #gameMonitor {
+		  -webkit-animation: tvflicker .2s infinite alternate; 
+		  -moz-animation:    tvflicker .5s infinite alternate; 
+		  -o-animation:      tvflicker .5s infinite alternate; 
+		  animation:         tvflicker .5s infinite alternate; 
+	  }
+  
+	  @-webkit-keyframes tvflicker {
+		0%   { box-shadow: 0 0 100px 0 #1F51FF; }
+		100% { box-shadow: 0 0 95px 0 #1F51FF; }
+	  }
+	  @-moz-keyframes tvflicker {
+		0%   { box-shadow: 0 0 100px 0 #1F51FF; }
+		100% { box-shadow: 0 0 60px 0 #1F51FF; }
+	  }
+	  @-o-keyframes tvflicker {
+		0%   { box-shadow: 0 0 100px 0 #1F51FF; }
+		100% { box-shadow: 0 0 60px 0 #1F51FF; }
+	  }
+	  @keyframes tvflicker {
+		0%   { box-shadow: 0 0 100px 0 #1F51FF; }
+		100% { box-shadow: 0 0 60px 0 #1F51FF; }
+	  }
+  }
