@@ -53,3 +53,19 @@
     margin-left: 20px;
   }
   
+  .ticTacToeStatus {
+    color: #FF6EC7;
+    font-weight: bold;
+    font-size: large;  
+  }
+
+  /* Set the font for the number before the list item */
+  /* https://stackoverflow.com/questions/488830/ol-with-numbers-another-color */
+  .ticTacToeMovesList { counter-reset: item; }
+  .ticTacToeMovesList li { display: block; }
+
+  .ticTacToeMovesList li:before {
+    content: counter(item) ". ";
+    counter-increment: item;
+    color: #FF6EC7;
+}
