@@ -22,7 +22,7 @@
     box-shadow: 0 0 10px #2facff, 0 0 40px #2facff, 0 0 80px #2facff;
 }
 
-#playAgainBtn {
+.playAgainBtn {
     border-radius: 50%;
     background-color: fuchsia;
     border: none;
@@ -53,6 +53,10 @@
     }
 
     .rockPaperScissorsBtn {
-        width: 100%;
+        width: 100vw;
+    }
+
+    .centerDiv {
+        width: 100vw;
     }
   }
