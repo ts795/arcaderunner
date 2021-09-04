@@ -45,7 +45,7 @@ console.log("play sound", playSound);
         src={ `${process.env.PUBLIC_URL}${makeSoundPlay}`}
         playing={true}
       /> : ""}
-          </div>
+      </div>
         </div>
       </section>
     );

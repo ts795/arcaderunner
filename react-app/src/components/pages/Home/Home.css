@@ -83,6 +83,10 @@ section {
   width: 100%;
 }
 
+/* .loginBtn {
+  width: 80%;
+} */
+
 .neonBtn:hover {
   color: green;
   background: greenyellow;
@@ -123,7 +127,7 @@ section {
     padding: 1%;
   }
 
-  .HomePageButtonContainer {
+  /* .HomePageButtonContainer {
     flex-direction: column;
-  }
+  } */
 }
