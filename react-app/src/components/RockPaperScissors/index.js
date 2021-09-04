@@ -42,12 +42,12 @@ const RockPaperScissors = () => {
         return (
             <div>
                 <div className="centerDiv">
+                    <p className="rockPaperScissorsMessageText">{message}</p>
+                </div>
+                <div className="centerDiv">
                     <button id="playAgainBtn" type="button" className="neonBtn rockPaperScissorsBtn" onClick={() => setGameComplete(false)}>
                         Play Again
                     </button>
-                </div>
-                <div className="centerDiv">
-                    <p className="messageText">{message}</p>
                 </div>
             </div>
         );
