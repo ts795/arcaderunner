@@ -42,6 +42,9 @@
 .GameFooter{
   font-size: 1px;
 }
+.gameCarouselItem:hover, .main-hangman-game:hover{
+  cursor: pointer;
+}
 
 @media only screen and (max-width: 768px) {
     .carouselContainer {
