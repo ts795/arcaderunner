@@ -142,5 +142,19 @@ async function getAllHighScores() {
     }
 }
 
-export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame, getFavoritedGame, deleteFavoritedGame, getAllHighScores };
+async function addHighscore(game_id, gameScore){
+    const token = localStorage.getItem('arcadeRunnerJWTToken');
+    console.log(game_id)
+    const response = await fetch('/api/highscores', {
+        method: 'POST',
+        headers: {  'Content-Type': 'application/json','authorization': 'bearer ' + token },
+        body: JSON.stringify({gameId:game_id, score:gameScore}),
+    });
+    if (!response.ok) {
+        //IDK
+       alert("unable to add score")
+    }
+};
+
+export { loginOrSignup, getFavoriteGames, getHighScores,addFavoriteGame,logout, getGame, getFavoritedGame, deleteFavoritedGame, getAllHighScores, addHighscore };
 
