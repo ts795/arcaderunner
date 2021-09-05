@@ -39,6 +39,10 @@
   height: 100%;
 }
 
+.GameFooter{
+  font-size: 1px;
+}
+
 @media only screen and (max-width: 768px) {
     .carouselContainer {
         margin-right: 5%;

@@ -20,6 +20,7 @@ function Games() {
   } else {
     return (
       <div id = "gameBackground">
+        <div>
         <Navbar />
         <div className="carouselContainer">
           <Carousel width="100%" centerMode={true} onClickItem={onClickItem}>
@@ -46,6 +47,10 @@ function Games() {
 
           </Carousel>
         </div>
+      </div>
+      <footer className = "GameFooter">
+      <a href="http://www.freepik.com">Designed by rawpixel.com / Freepik</a>
+      </footer>
       </div>
     );
   }
