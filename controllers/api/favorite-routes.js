@@ -22,12 +22,13 @@ router.get('/', authenticateJWT, async (req, res) => {
 });
 
 // Get one game by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', authenticateJWT, async (req, res) => {
   try {
     // Get all of the games
     const gamesData = await FavoriteGames.findOne({
       where: {
-        id: req.params.id
+        game_id: req.params.id,
+        user_id: req.user.user_id
       }
 
     });
