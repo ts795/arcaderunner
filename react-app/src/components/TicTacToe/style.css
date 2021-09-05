@@ -57,12 +57,19 @@
     color: #FF6EC7;
     font-weight: bold;
     font-size: large;  
+    font-family: 'Russo One', sans-serif; 
   }
 
   .statusTicTac {
     color: #FF6EC7;
     font-weight: bold;
     font-size: large;  
+    text-align: center;
+    font-family: 'Russo One', sans-serif; 
+  }
+
+  .gameOverTicTac {
+    font-size: xx-large;
   }
 
   /* Set the font for the number before the list item */

@@ -125,7 +125,7 @@ function TicTacToe() {
 
             let status;
             if (this.state.stepNumber === 9) {
-            status = "Draw";
+                status = "Draw";
             } else if (winner){
                 status = "Winner: " + winner;
             } else {
@@ -136,7 +136,10 @@ function TicTacToe() {
             if(!this.state.gameProgress) {
                 return (
                 <div className="centerDiv">
-                    <div className="statusTicTac">THIS IS THE STATUS{status}</div>
+                    <div className="statusTicTac">
+                        <h5 className="gameOverTicTac">GAME OVER</h5> 
+                        <p>{status}</p>
+                    </div>
                     <button type="button" className="neonBtn playAgainBtn" onClick={() => this.initState()}>
                         Play Again
                     </button>
