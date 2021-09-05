@@ -5,14 +5,14 @@
     margin: auto;
     text-align: center;
     z-index: 2;
-    background-color:rgba(255, 255, 255, 0.5);
-    color: white;
+    background-color:rgba(255, 255, 255, 0.95);
+    color: #FF10F0;
     /* Add a text shadow */
-    text-shadow: 2px 2px 8px #FF0000;
+    /* text-shadow: 2px 2px 8px #FF0000; */
 }
 
-.profileFavoriteGames {
-    list-style-type: none;
+.profileFavoriteGames, .profileHighScores {
+    margin: 1%;
 }
  
 .profilePageBody {
@@ -21,6 +21,11 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.profileSectionName {
+    margin: 2%;
+    color: #4666FF;
 }
 
 .favoriteGameProfile {
