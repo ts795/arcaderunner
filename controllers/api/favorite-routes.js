@@ -31,7 +31,10 @@ router.get('/:id', authenticateJWT, async (req, res) => {
         user_id: req.user.user_id
       }
 
-    });
+    }); 
+     if (!gamesData) {
+      return;
+    };
     const game = gamesData.get({ plain: true });
 
     res.json(game);
