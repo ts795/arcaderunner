@@ -57,6 +57,11 @@
 		text-align: center;
 		color: #f5f5f5;
 }
+@media only screen and (max-width: 1600px) {
+	.currentGame{ 
+		height: 100%;
+	}
+}
 @media all and (min-width: 768px){
 	.gamePage {
 	  background-attachment: fixed;
@@ -104,7 +109,6 @@
 	}
 
 	.currentGame{ 
-		height: 100%;
 		padding: 1%;
 	}
   }
