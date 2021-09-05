@@ -20,6 +20,7 @@ async function loginOrSignup(username, password, login, email) {
             localStorage.setItem('arcadeRunnerJWTToken', json.jwt_token);
             return jwt_decode(json.jwt_token).user_id;
         } else {
+            alert("Invalid email or password!");
             return;
         }
     }

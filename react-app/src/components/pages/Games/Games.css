@@ -39,9 +39,18 @@
   height: 100%;
 }
 
+
+.GameFooter{
+  font-size: 1px;
+}
+.gameCarouselItem:hover, .main-hangman-game:hover{
+  cursor: pointer;
+}
+
 .HomeImgGame{
   filter: drop-shadow(7px 7px 7px #ff5b32);
   -webkit-filter: drop-shadow(7px 7px 7px #ff5b32);
+
 }
 
 @media only screen and (max-width: 768px) {
