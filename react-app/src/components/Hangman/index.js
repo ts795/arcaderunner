@@ -2,6 +2,7 @@ import React, { Component} from "react";
 import ReactHowler from "react-howler";
 import "./style.css";
 import { randomWord } from "./words";
+import { addHighscore } from '../../utils/API';
 import step0 from "./images/0.png";
 import step1 from "./images/1.png";
 import step2 from "./images/2.png";
@@ -16,14 +17,14 @@ class Hangman extends Component {
     maxWrong: 6,
     images: [step0, step1, step2, step3, step4, step5, step6],
   };
-
+  
   constructor(props) {
     super(props);
     this.state = {
       mistake: 0,
       guessed: new Set(),
       answer: randomWord(),
-      gameEnd: false
+      gameEnd: false,
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
@@ -72,6 +73,7 @@ class Hangman extends Component {
   };
 
   render() {
+    const gameId = window.location.href.split("/")[window.location.href.split("/").length - 1]
     const { mistake, answer } = this.state;
     const { maxWrong, images } = this.props;
     const gameOver = mistake >= maxWrong;
@@ -86,6 +88,12 @@ class Hangman extends Component {
       } else {
         return false
       }
+    }
+
+    console.log(answer)
+
+    if(isWinner) {
+      addHighscore(gameId, 100)
     }
 
     if (gameOver || isWinner) {

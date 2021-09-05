@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './CoinFlip.css';
 import ReactHowler from 'react-howler';
+import { addHighscore } from '../../utils/API';
+import { useParams } from 'react-router';
 
 function CoinFlip() {
   // flippedCoin can be flipping, not flipped, or flipped
+  const { gameId } = useParams();
   const [flippedCoin, setFlippedCoin] = useState("not flipped");
   const [message, setMessage] = useState("");
   const [currImg, setCurrImg] = useState("DollarSign");
@@ -32,6 +35,10 @@ function CoinFlip() {
           loopCnt++;
          },
       100);
+  }
+  console.log(wonGame)
+  if(flippedCoin === "flipped" && wonGame) {
+    addHighscore(gameId, 100)
   }
 
   if (flippedCoin === "not flipped") {
