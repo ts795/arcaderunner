@@ -1,9 +1,11 @@
 import React, { useState }  from 'react';
 import './RockPaperScissors.css';
+import ReactHowler from 'react-howler';
 
 const RockPaperScissors = () => {
     const [gameComplete, setGameComplete] = useState(false);
     const [message, setMessage] = useState("");
+    const [gameResult, setGameResult] = useState(undefined)
 
     let winLossTable = {
         "rock": { "paper": false, "scissors": true },
@@ -22,8 +24,9 @@ const RockPaperScissors = () => {
         } else {
             computerSelection = "scissors";
         }
-        let gameResult = winLossTable[selection][computerSelection] ? "won" : (winLossTable[selection][computerSelection] === false ? "lost" : "tied");
-        setMessage(`You chose ${selection} and the computer chose ${computerSelection}. You ${gameResult}!`);
+        let localGameResult = winLossTable[selection][computerSelection] ? "won" : (winLossTable[selection][computerSelection] === false ? "lost" : "tied")
+        setGameResult(localGameResult)
+        setMessage(`You chose ${selection} and the computer chose ${computerSelection}. You ${localGameResult}!`);
         setGameComplete(true);
     }
     if (!gameComplete) {
@@ -41,6 +44,10 @@ const RockPaperScissors = () => {
     } else {
         return (
             <div>
+                 <ReactHowler
+                        src={gameResult === "won" ? `${process.env.PUBLIC_URL}/Sounds/RPS_Win.wav` : gameResult === "lost" ? `${process.env.PUBLIC_URL}/Sounds/RPS_Loose.wav` : `${process.env.PUBLIC_URL}/Sounds/RPS_Draw.wav`}
+                        playing={true}
+                />
                 <div className="centerDiv">
                     <button type="button" className="neonBtn rockPaperScissorsBtn playAgainBtn" onClick={() => setGameComplete(false)}>
                         Play Again
