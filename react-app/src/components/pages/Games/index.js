@@ -23,7 +23,7 @@ function Games() {
         <div>
         <Navbar />
         <div className="carouselContainer">
-          <Carousel width="100%" centerMode={true} onClickItem={onClickItem}
+          <Carousel width="100%" centerMode={true} onClickItem={onClickItem}>
             <div className = "gameCarouselItem" gameId="6">
               <img className="HomeImgGame" src={`${process.env.PUBLIC_URL}/CoinFlip.png`} />
               <p className="legend">Coin Flip</p>
