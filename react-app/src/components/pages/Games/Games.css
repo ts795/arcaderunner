@@ -5,8 +5,8 @@
     background-repeat: no-repeat;
     background-size: cover;
       /* Set rules to fill background */
-  min-height: 100%;
-  width: 100vw;
+    min-height: 100%;
+    width: 100vw;
 	
   /* Set up proportionate scaling */
   width: 100%;
@@ -17,6 +17,7 @@
   top: 0;
   left: 0; 
 }
+
 .carouselContainer {
     margin-right: 25%;
     margin-left: 25%;
@@ -26,6 +27,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* min-width: 100px;
+  max-width: 100px;
+  min-height: 100px;
+  max-height: 100px; */
 }
 
 .main-hangman-game {
@@ -35,10 +40,14 @@
   margin: auto;
 }
 
+/* ,thumb {
+  width: 100px;
+  height: 100px;
+} */
+
 .hangman-thumbnail {
   height: 100%;
 }
-
 
 .GameFooter{
   font-size: 1px;
@@ -50,7 +59,11 @@
 .HomeImgGame{
   filter: drop-shadow(7px 7px 7px #ff5b32);
   -webkit-filter: drop-shadow(7px 7px 7px #ff5b32);
-
+  max-height: 350px;
+  max-width: 400px;
+  width: 320px;
+  /* height: 320px; */
+  margin: 10px;
 }
 
 @media only screen and (max-width: 768px) {
