@@ -9,7 +9,7 @@ import step3 from "./images/3.png";
 import step4 from "./images/4.png";
 import step5 from "./images/5.png";
 import step6 from "./images/6.png";
- 
+let letter
 
 class Hangman extends Component {
   static defaultProps = {
@@ -37,7 +37,7 @@ class Hangman extends Component {
   }
 
   handleGuess(value) {
-    let letter = value;
+    letter = value;
     this.setState((st) => ({
       guessed: st.guessed.add(letter),
       mistake: st.mistake + (st.answer.includes(letter) ? 0 : 1),
@@ -45,10 +45,7 @@ class Hangman extends Component {
   }
 
   keyPress(event) {
-     if (
-      (event.keyCode >= 65 && event.keyCode <= 90) ||
-      (event.keyCode >= 97 && event.keyCode <= 122)
-    ) {
+     if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
       this.handleGuess(event.key);
     } else {
     }
@@ -82,11 +79,22 @@ class Hangman extends Component {
     const isWinner = this.guessedWord().join("") === answer;
     let gameResult = isWinner ? "WON" : "LOST"
     let guesses = this.generateLetters()
-  
+
+    const checkCorrect = () => {
+      if(this.state.answer.split("").includes(letter)) {
+        return true
+      } else {
+        return false
+      }
+    }
 
     if (gameOver || isWinner) {
       return (
         <div>
+          <ReactHowler
+          src={isWinner ? `${process.env.PUBLIC_URL}/Sounds/Win.wav` : `${process.env.PUBLIC_URL}/Sounds/Loose.wav`}
+          playing={true}
+           />
             <div className="centerDiv">
                 <button type="button" className="neonBtn hangmanPlayAgainBtn" onClick={this.playAgain}>
                     Play Again
@@ -100,6 +108,10 @@ class Hangman extends Component {
     } else {
       return (
         <div className="Hangman">
+           <ReactHowler
+          src={`${process.env.PUBLIC_URL}/Sounds/Confirm.wav`}
+          playing={checkCorrect()}
+           />
           <div className="guessedLetters text-light" id="navbarText">
               <span className="guesses">
                   Letters Guessed: {guesses}
