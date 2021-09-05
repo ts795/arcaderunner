@@ -27,3 +27,7 @@
     margin: 2%;
     color: #4666FF;
 }
+
+.favoriteGameProfile {
+    cursor: pointer;
+}
