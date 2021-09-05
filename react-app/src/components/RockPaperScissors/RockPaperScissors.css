@@ -59,6 +59,7 @@
 
     .centerDiv {
         width: 100vw;
+        padding: 20%;
     }
     .playAgainBtn {
         margin: 5px;
@@ -77,5 +78,4 @@
         justify-content: center;
         margin: auto;
     }
-
   }
