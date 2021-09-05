@@ -1,4 +1,5 @@
 import React, { Component} from "react";
+import ReactHowler from "react-howler";
 import "./style.css";
 import { randomWord } from "./words";
 import step0 from "./images/0.png";
@@ -22,6 +23,7 @@ class Hangman extends Component {
       mistake: 0,
       guessed: new Set(),
       answer: randomWord(),
+      gameEnd: false
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
@@ -43,15 +45,6 @@ class Hangman extends Component {
   }
 
   keyPress(event) {
-    /**
-     * 8 = backspace
-     * 13 = enter
-     * 32 = space
-     * 65 = A (Capital)
-     * 90 = Z (Capital)
-     * 97 = a (Small)
-     * 122 = z (Small)
-     */
      if (
       (event.keyCode >= 65 && event.keyCode <= 90) ||
       (event.keyCode >= 97 && event.keyCode <= 122)
@@ -81,52 +74,49 @@ class Hangman extends Component {
     });
   };
 
-  endGame(outcome) {
-    alert(`YOU ${outcome}`)
-    return window.confirm("Would you like to play again?")
-  }
-
   render() {
     const { mistake, answer } = this.state;
     const { maxWrong, images } = this.props;
     const gameOver = mistake >= maxWrong;
     const altText = `${mistake}/${maxWrong} wrong guesses`;
     const isWinner = this.guessedWord().join("") === answer;
+    let gameResult = isWinner ? "WON" : "LOST"
     let guesses = this.generateLetters()
-    if (isWinner) {
-      if(this.endGame("WON!")) {
-        this.playAgain()
-      } else {
-        window.location.replace("/games")
-      }
-      
-    }
-    if (gameOver) {
-      if(this.endGame(`LOST! The word was ${answer}`)) {
-        this.playAgain()
-      } else {
-        window.location.replace("/games")
-      }
-    }
+  
 
-    return (
-      <div className="Hangman">
-        <div className="guessedLetters text-light" id="navbarText">
-            <span className="guesses">
-                Letters Guessed: {guesses}
-            </span>
+    if (gameOver || isWinner) {
+      return (
+        <div>
+            <div className="centerDiv">
+                <button type="button" className="neonBtn hangmanPlayAgainBtn" onClick={this.playAgain}>
+                    Play Again
+                </button>
+            </div>
+            <div className="centerDiv msgDiv">
+                <p className="messageText">{`You ${gameResult}! The word was ${answer}`}</p>
+            </div>
         </div>
-        <p className="text-center">
-          <img src={images[mistake]} className="Hangman-img" alt={altText} />
-        </p>
-        <p className="text-center text-light">
-          Guess the Word
-        </p>
-        <p className="Hangman-word text-light text-center">
-          {!gameOver ? this.guessedWord() : answer}{" "}
-        </p>
-    </div>
     );
+    } else {
+      return (
+        <div className="Hangman">
+          <div className="guessedLetters text-light" id="navbarText">
+              <span className="guesses">
+                  Letters Guessed: {guesses}
+              </span>
+          </div>
+          <p className="text-center">
+            <img src={images[mistake]} className="Hangman-img" alt={altText} />
+          </p>
+          <p className="text-center text-light">
+            Guess the Word
+          </p>
+          <p className="Hangman-word text-light text-center">
+            {!gameOver ? this.guessedWord() : answer}{" "}
+          </p>
+      </div>
+      );
+    }
   }
 }
 
