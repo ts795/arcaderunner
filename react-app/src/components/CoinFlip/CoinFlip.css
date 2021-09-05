@@ -34,4 +34,8 @@
   .coinFlipBtn {
     width: 50%;
   }
+
+  .playAgainCoinFlipBtn{
+    width:75%
+  }
 }
