@@ -49,17 +49,17 @@ router.get('/:maxNumScores', authenticateJWT, async (req, res) => {
 // Add a high score for a game
 // The following are expected in the request body:
 // gameID is the ID for the game
-// userID is the ID for the user
 // score is the score for the user for the game
 router.post('/', authenticateJWT, async (req, res) => {
   try {
     const highScoreData = await Highscores.create({
       score: req.body.score,
       game_id: req.body.gameId,
-      user_id: req.body.userId
+      user_id: req.user.user_id
     })
     res.status(200).json(highScoreData);
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });

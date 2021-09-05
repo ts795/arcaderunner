@@ -1,4 +1,10 @@
-# arcade runner
+# Arcade Runner
+![mit](https://img.shields.io/badge/license-MIT-blue)
+
+This project is a hosting platform for react video games. Users can play games, update their profile with their favorite games, and see their high scores. Users can also see the high scores of everyone on the site and compete to be first. It was built using React, node JS, express, mySQL.
+
+## Site Picture
+![Site](./arcade_runner.gif)
 
 ## Getting Started
 
@@ -33,4 +39,31 @@ To run the server and compile the react app type:
 npm run start:prod
 ```
 
-then go to localhost:3004 in your browser
+then go to localhost:3000 in your browser
+
+## Built With
+* [Express](https://expressjs.com/)
+* [nodeJS](https://nodejs.org/en/)
+* [reactJS](https://reactjs.org/)
+* [mySQL](https://www.mysql.com/)
+* [sequelize](https://sequelize.org/)
+
+## Deployed Link
+
+* [See Live Site](https://afternoon-eyrie-60513.herokuapp.com/)
+
+## Authors
+
+* Alisha Pal
+- Email: alishapal96@gmail.com
+* Jessica Giannini
+- Email: jessgiannini@gmail.com
+* Josh Gumperz
+- Email: joshgumperz@gmail.com
+* Sam Lingampalli
+- Email: sam.l.full.stack@gmail.com
+
+
+## License
+
+This project is licensed under the MIT License
