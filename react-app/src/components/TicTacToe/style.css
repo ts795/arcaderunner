@@ -59,6 +59,12 @@
     font-size: large;  
   }
 
+  .statusTicTac {
+    color: #FF6EC7;
+    font-weight: bold;
+    font-size: large;  
+  }
+
   /* Set the font for the number before the list item */
   /* https://stackoverflow.com/questions/488830/ol-with-numbers-another-color */
   .ticTacToeMovesList { counter-reset: item; }
@@ -69,3 +75,30 @@
     counter-increment: item;
     color: #FF6EC7;
 }
+
+@media only screen and (max-width: 768px) {
+    .game {
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+    }
+
+    .playAgainBtn {
+        margin: 5px;
+        padding: 10px;
+
+    }
+    .statusTicTac {
+    font-family: 'Russo One', sans-serif;
+    font-size: 10px;
+    word-wrap: break-word;
+}
+    /* .msgDiv {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: auto;
+    } */
+
+  }
