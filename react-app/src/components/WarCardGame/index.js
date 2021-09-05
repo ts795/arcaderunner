@@ -1,29 +1,54 @@
 import React, { useState } from 'react';
 import Deck from './deck';
 import Card from './card';
+import { getTopCard, insertCard, freshDeck, shuffleDeck } from './deck';
 
 function War() {
   const [start, setStart] = useState(false);
   const [inRound, setInRound] = useState(false);
-  const [playerDeck, setPlayerDeck] = useState(undefined);
-  const [computerDeck, setComputerDeck] = useState(undefined);
+  const [playerDeck, setPlayerDeck] = useState([]);
+  const [computerDeck, setComputerDeck] = useState([]);
+  const [compFlipped, setCompFlipped] = useState(null);
+  const [playerFlipped, setPlayerFlipped] = useState(null);
 
 
- function startGame () {
-  const deck = new Deck()
-  deck.shuffle()
+    function startGame () {
+        const deck = freshDeck()
+        shuffleDeck(deck)
+        const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
+        setPlayerDeck(deck.slice(0, deckMidpoint))
+        setComputerDeck(deck.slice(deckMidpoint, deck.numberOfCards))
+        console.log("started Game");
+        setStart(true);
 
-  const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
-  setPlayerDeck(new Deck(deck.cards.slice(0, deckMidpoint)))
-  setComputerDeck(new Deck(deck.cards.slice(deckMidpoint, deck.numberOfCards)))
 
-    console.log("started Game");
-    setStart(true);
+    }
 
-}
+    function updateDeck() {
+        if(compFlipped > playerFlipped) {
+            let newCompDeck = insertCard(computerDeck, compFlipped)
+            newCompDeck = insertCard(newCompDeck, playerFlipped)
+            setComputerDeck(newCompDeck)
+        } else if (playerFlipped > compFlipped) {
+            let newPlayerDeck = insertCard(playerDeck, playerFlipped)
+            newPlayerDeck = insertCard(newPlayerDeck, compFlipped)
+            setPlayerDeck(newPlayerDeck)
+        } else {
+            setComputerDeck(insertCard(computerDeck, compFlipped))
+            setPlayerDeck(insertCard(playerDeck, playerFlipped))
+        }
+    }
+
+    function clearCards() {
+        if(compFlipped !== null && playerFlipped !== null) {
+            updateDeck()
+        }
+    }
+
  if (start) {
      if (!inRound) {
-        const playerCard = playerDeck.pop()
+        clearCards()
+        const { card: playerCard, deck: newPlayerDeck } = getTopCard(playerDeck)
         const computerCard = computerDeck.pop()
 
         return <div>
@@ -32,8 +57,13 @@ function War() {
             <h1>player card</h1>
             <Card suit={playerCard.suit} value={playerCard.value}/>
         </div>
+     } else {
+        return (
+        <div>
+            <button onClick={startGame}>Start</button>
+        </div> 
+        )
      }
-     return <h1>You have started the game!</h1>
  } else {
     return (
         <div>

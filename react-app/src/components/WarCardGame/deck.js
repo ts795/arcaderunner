@@ -17,20 +17,21 @@ const VALUES = [
   "K"
 ]
 
-export default class Deck {
+class Deck {
   constructor(cards = freshDeck()) {
     this.cards = cards
+    console.log(this.cards)
   }
 
   get numberOfCards() {
     return this.cards.length
   }
 
-  pop() {
+  getTopCard() {
     return this.cards.shift()
   }
 
-  push(card) {
+  insertIntoBottom(card) {
     this.cards.push(card)
   }
 
@@ -63,13 +64,43 @@ class Card {
   }
 }
 
-function freshDeck() {
-  return SUITS.flatMap(suit => {
-    return VALUES.map(value => {
-      return new Card(suit, value)
-    })
-  })
+// function freshDeck() {
+//   return SUITS.flatMap(suit => {
+//     return VALUES.map(value => {
+//       return new Card(suit, value)
+//     })
+//   })
+// }
+
+function shuffleDeck(deckOfCards) {
+    for (let i = deckOfCards.length - 1; i > 0; i--) {
+        const newIndex = Math.floor(Math.random() * (i + 1))
+        const oldValue = deckOfCards[newIndex]
+        deckOfCards[newIndex] = deckOfCards[i]
+        deckOfCards[i] = oldValue
+    }
 }
 
+function freshDeck() {
+    return SUITS.flatMap(suit => {
+        return VALUES.map(value => {
+            return { 
+                suit: suit, 
+                value:value 
+            }
+        })
+    })
+}
 
+function getTopCard(deck) {
+    return {
+        card: deck[0],
+        deck: [...deck.splice(1)]
+    }
+}
 
+function insertCard(deck, card) {
+    return [...deck, card]
+}
+
+export { getTopCard, insertCard, freshDeck, shuffleDeck }
