@@ -3,6 +3,8 @@ import { Redirect, useParams } from "react-router-dom";
 import { addFavoriteGame, getGame, getFavoritedGame } from "../../../utils/API";
 import './BeforeGames.css';
 import Navbar from "../../Navbar";
+import ReactHowler from 'react-howler';
+
 
 function BeforeGame() {
   const { id } = useParams();
@@ -10,6 +12,9 @@ function BeforeGame() {
   const [gameInformation, setGameInformation] = useState({});
   const [favGameInformation, setFavGameInformation] = useState({});
   const [favGame,setFavGame] = useState();
+  const [playMusic, setPlayMusic] = useState(false);
+
+
   useEffect(() => {
     getGame(id).then((result) => {
       console.log("game", result);
@@ -65,7 +70,11 @@ function BeforeGame() {
           <div id="BeforeGameMonitor">
             <div id = "BeforeGameMonitorContent">
             <img id = "BeforeGameScreenImg" src={`${process.env.PUBLIC_URL}/arcadescreen.png`} alt = "arcade screen"/>
-          <button onClick={onPlayButtonClick} className = "BeforeGamePlayBtn">Start Game</button>
+          <button onMouseEnter={() => setPlayMusic(true)} onMouseLeave={() => setPlayMusic(false)}  onClick={onPlayButtonClick} className = "BeforeGamePlayBtn">Start Game</button>
+           {playMusic ? <ReactHowler
+        src={ `${process.env.PUBLIC_URL}/Sounds/Game Entry.wav`}
+        playing={true}
+      /> : ""}
           </div>
           </div>
           </div>
