@@ -24,23 +24,23 @@ function Games() {
         <div className="carouselContainer">
           <Carousel width="100%" centerMode={true} onClickItem={onClickItem}>
             <div gameId="6">
-              <img src={`${process.env.PUBLIC_URL}/CoinFlip.png`} />
+              <img className="HomeImgGame" src={`${process.env.PUBLIC_URL}/CoinFlip.png`} />
               <p className="legend">Coin Flip</p>
             </div>
             <div gameId="1">
-              <img src={`${process.env.PUBLIC_URL}/tictactoe.png`} />
+              <img className="HomeImgGame" src={`${process.env.PUBLIC_URL}/tictactoe.png`} />
               <p className="legend">Tic Tac Toe</p>
             </div>
             <div gameId="2">
-              <img src={`${process.env.PUBLIC_URL}/tails.jpeg`} />
-              <p className="legend">rock Paper Scissors</p>
+              <img className="HomeImgGame" src={`${process.env.PUBLIC_URL}/rockPaperScissors.PNG`} />
+              <p className="legend">Rock Paper Scissors</p>
             </div>
             <div gameId="3">
-              <img src={`${process.env.PUBLIC_URL}/bitcoin.png`} />
+              <img className="HomeImgGame" src={`${process.env.PUBLIC_URL}/war.png`} />
               <p className="legend">War</p>
             </div>
             <div class="main-hangman-game" gameId="4">
-              <img src={`${process.env.PUBLIC_URL}/Hangman.png`} className="hangman-thumbnail" />
+              <img src={`${process.env.PUBLIC_URL}/Hangman.png`} className="hangman-thumbnail HomeImgGame" />
               <p className="legend">Hangman</p>
             </div>
 
