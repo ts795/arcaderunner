@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
 .profileCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -5,14 +6,14 @@
     margin: auto;
     text-align: center;
     z-index: 2;
-    background-color:rgba(255, 255, 255, 0.5);
-    color: white;
+    background-color:rgba(255, 255, 255, 0.75);
+    color: #FF10F0;
     /* Add a text shadow */
-    text-shadow: 2px 2px 8px #FF0000;
+    /* text-shadow: 2px 2px 8px #FF0000; */
 }
 
-.profileFavoriteGames {
-    list-style-type: none;
+.profileFavoriteGames, .profileHighScores {
+    margin: 1%;
 }
  
 .profilePageBody {
@@ -21,8 +22,31 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Russo One', sans-serif; 
+    letter-spacing: 2px;
+}
+
+.profileSectionName {
+    margin: 2%;
+    color: #4666FF;
 }
 
 .favoriteGameProfile {
     cursor: pointer;
 }
+
+@media all and (max-width: 768px){
+    .profileCard {
+        max-width: 95%;
+    }
+  }
+
+  @media all and (min-width: 768px){
+    .profileSectionName {
+        font-size: x-large;
+    }
+
+    .profileFavoriteGames, .profileHighScores {
+        font-size: larger;
+    }
+  }
