@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './style.css';
 import ReactHowler from 'react-howler';
 
 
 function TicTacToe() {
+
     function Square(props) {
         return (
             <button className="square" onClick={props.onClick}>
@@ -46,19 +47,36 @@ function TicTacToe() {
     }
 
     class Game extends Component {
-        constructor(props) {
-            super(props);
-            this.state = {
+        initState(){
+                this.setState( {
                 history: [
                     {
                         squares: Array(9).fill(null)
                     }
                 ],
                 stepNumber: 0,
-                xIsNext: true
-            };
-        }
+                xIsNext: true,
+                gameProgress: true,
+            });
 
+        };
+        constructor(props) {
+            super(props);
+            // this.initState();
+                this.state = {
+                history: [
+                    {
+                        squares: Array(9).fill(null)
+                    }
+                ],
+                stepNumber: 0,
+                xIsNext: true,
+                gameProgress: true,
+            };
+
+            console.log("STATE===", this.state);
+        };
+        
         handleClick(i) {
             const history = this.state.history.slice(0, this.state.stepNumber + 1);
             const current = history[history.length - 1];
@@ -67,6 +85,7 @@ function TicTacToe() {
                 return;
             }
             squares[i] = this.state.xIsNext ? "X" : "O";
+               console.log("winner squares", calculateWinner(squares));
             this.setState({
                 history: history.concat([
                     {
@@ -74,7 +93,8 @@ function TicTacToe() {
                     }
                 ]),
                 stepNumber: history.length,
-                xIsNext: !this.state.xIsNext
+                xIsNext: !this.state.xIsNext,
+                gameProgress: calculateWinner(squares) === null,
             });
         }
 
@@ -104,12 +124,29 @@ function TicTacToe() {
             });
 
             let status;
-            if (winner) {
+            if (this.state.stepNumber === 9) {
+                status = "Draw";
+            } else if (winner){
                 status = "Winner: " + winner;
             } else {
                 status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-            }
+            } 
             console.log(this.state.xIsNext)
+             console.log("gameProgress....", this.state.gameProgress);
+            if(!this.state.gameProgress) {
+                return (
+                <div className="centerDiv">
+                    <div className="statusTicTac">
+                        <h5 className="gameOverTicTac">GAME OVER</h5> 
+                        <p>{status}</p>
+                    </div>
+                    <button type="button" className="neonBtn playAgainBtn" onClick={() => this.initState()}>
+                        Play Again
+                    </button>
+                </div>
+                )
+                
+            } else {
             return (
                 <div className="game">
                     <ReactHowler
@@ -130,12 +167,10 @@ function TicTacToe() {
             );
         }
     }
+}
     console.log("IN");
     return (<Game />);
 }
-// ========================================
-//DO WE NEED THIS NEXT LINE??????
-// ReactDOM.render(<Game />, document.getElementById("root"));
 
 function calculateWinner(squares) {
     const lines = [
@@ -151,6 +186,7 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+            console.log("winner=====", squares[a]);
             return squares[a];
         }
     }
