@@ -57,6 +57,19 @@
     color: #FF6EC7;
     font-weight: bold;
     font-size: large;  
+    font-family: 'Russo One', sans-serif; 
+  }
+
+  .statusTicTac {
+    color: #FF6EC7;
+    font-weight: bold;
+    font-size: large;  
+    text-align: center;
+    font-family: 'Russo One', sans-serif; 
+  }
+
+  .gameOverTicTac {
+    font-size: xx-large;
   }
 
   /* Set the font for the number before the list item */
@@ -69,3 +82,35 @@
     counter-increment: item;
     color: #FF6EC7;
 }
+
+@media only screen and (max-width: 768px) {
+    .game {
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+    }
+
+    .playAgainBtn {
+        margin: 5px;
+        padding: 10px;
+
+    }
+    .statusTicTac {
+    font-family: 'Russo One', sans-serif;
+    font-size: 10px;
+    word-wrap: break-word;
+}
+    .square{
+      flex-direction: row;
+      width: 24px;
+      height: 24px;
+    }
+    /* .msgDiv {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: auto;
+    } */
+
+  }
