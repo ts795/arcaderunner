@@ -22,7 +22,7 @@ function BeforeGame() {
       console.log("favgame", result);
       setFavGameInformation(result);
       console.log("fav game id", result.game_id, "game id",id)
-      if(result.game_id===id){
+      if(result.game_id && (result.game_id===parseInt(id))){
         console.log("favegame id",result.game_id)
         console.log("already favorited")
         setFavGame(true);}
