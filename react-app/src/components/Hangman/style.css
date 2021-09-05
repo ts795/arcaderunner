@@ -27,3 +27,55 @@
 .Hangman-img {
     margin: 10px;
 }
+
+.hangmanPlayAgainBtn {
+    border-radius: 50%;
+    background-color: fuchsia;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #2facff, 0 0 40px #2facff, 0 0 80px #2facff;
+    font-family: 'Russo One', sans-serif; 
+}
+
+.centerDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.messageText {
+    font-family: 'Russo One', sans-serif;
+    font-size: 15px;
+    color: #2facff;
+    text-align: center;
+}
+
+@media screen and (max-width:768px) {
+    .centerDiv {
+        width: 100vw;
+    }
+    .hangmanPlayAgainBtn {
+        margin: 5px;
+        padding: 10px;
+        width: 25%;
+        font-size: 10px;
+    }
+    .messageText {
+    font-family: 'Russo One', sans-serif;
+    font-size: 10px;
+    word-wrap: break-word;
+}
+    .msgDiv {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: auto;
+    }
+}
