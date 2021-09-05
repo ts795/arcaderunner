@@ -45,7 +45,7 @@ const RockPaperScissors = () => {
         return (
             <div>
                  <ReactHowler
-                        src={gameResult === "won" ? `${process.env.PUBLIC_URL}/Sounds/RPS_Win.wav` : gameResult === "lost" ? `${process.env.PUBLIC_URL}/Sounds/RPS_Loose.wav` : `${process.env.PUBLIC_URL}/Sounds/RPS_Draw.wav`}
+                        src={gameResult === "won" ? `${process.env.PUBLIC_URL}/Sounds/RPS_Winner.wav` : gameResult === "lost" ? `${process.env.PUBLIC_URL}/Sounds/RPS_Looser.wav` : `${process.env.PUBLIC_URL}/Sounds/RPS_Draw.wav`}
                         playing={true}
                 />
                 <div className="centerDiv">

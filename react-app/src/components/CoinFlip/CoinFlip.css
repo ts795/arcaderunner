@@ -1,9 +1,36 @@
 
 .coinFlipBtn {
-    width: 25%;
+   border-radius: 50%;
+    background-color: rgb(22, 73, 241);
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 25px; */
+    margin: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #2facff, 0 0 40px #2facff, 0 0 80px #2facff;
 }
+
+.coin {
+  font-size: 300px;
+}
+
 .playAgainCoinFlipBtn{
-  width:100%
+    border-radius: 50%;
+    background-color: fuchsia;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #2facff, 0 0 40px #2facff, 0 0 80px #2facff;
 }
 
 .centerDiv {
@@ -21,6 +48,7 @@
 
 .coinFlipMessageText {
   color: #FF6EC7;
+  font-family: 'Russo One', sans-serif; 
   font-weight: bold;
   font-size: large;
 }
