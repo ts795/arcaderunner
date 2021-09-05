@@ -1,8 +1,11 @@
 import React, { useState }  from 'react';
 import './RockPaperScissors.css';
 import ReactHowler from 'react-howler';
+import { addHighscore } from '../../utils/API';
+import { useParams } from 'react-router';
 
 const RockPaperScissors = () => {
+    const { gameId } = useParams()
     const [gameComplete, setGameComplete] = useState(false);
     const [message, setMessage] = useState("");
     const [gameResult, setGameResult] = useState(undefined)
@@ -29,6 +32,10 @@ const RockPaperScissors = () => {
         setMessage(`You chose ${selection} and the computer chose ${computerSelection}. You ${localGameResult}!`);
         setGameComplete(true);
     }
+    if(gameResult === "won" && gameComplete) {
+        addHighscore(gameId, 100)
+    }
+
     if (!gameComplete) {
         return (<div className="centerDiv choiceSelectionDiv">
             <button type="button" className="neonBtn rockPaperScissorsBtn rock" onClick={() => onSelection("rock")}>
