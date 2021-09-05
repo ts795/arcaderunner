@@ -9,6 +9,7 @@ function Home() {
   const [userisLoggedIn, setLoggedIn] = useState(false);
   const [playSound, setPlaySound] = useState(false);
   const [makeSoundPlay, setMakeSoundPlay] = useState('/Sounds/LogIn.wav');
+  const [hoverState, setHoverState] = useState(false);
 
   function onClick(loggingIn) {
     if (loggingIn) {
@@ -23,7 +24,12 @@ function Home() {
     console.log("User already logged in");
     setLoggedIn(true);
   }
+ function playSoundForLogo() {
+   setHoverState(true);
+   setMakeSoundPlay('/Sounds/Neon.wav');
+   setPlaySound(true);
 
+ }
   if (userisLoggedIn) {
     console.log("Redirecting to /games");
     let pathToRedirect = "/games";
@@ -33,8 +39,8 @@ console.log("play sound", playSound);
     return (
       <section className="HomePageSection">
         <div className="HomePageContainerMain">
-          <h1 className="HomePageLogo" data-text="arcaderunner">arcaderunner</h1>
-          <div className="HomePageButtonContainer">
+          <h1 onMouseEnter={playSoundForLogo} className={hoverState ? "HomePageLogo" : "NotFlickerHomePageLogo"} data-text="arcaderunner">arcaderunner</h1>
+           <div className="HomePageButtonContainer">
             <Link to="/login" className="HomePageLink">
               <button type="button" onMouseEnter={() => onClick(true)} className='neonBtn'>LOGIN</button>
             </Link>
