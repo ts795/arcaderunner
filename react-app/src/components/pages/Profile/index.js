@@ -36,10 +36,10 @@ function Profile() {
   }, []);
 
   const listItems = data.map((game) =>
-    <li key={game.id}>{game.name.toLowerCase()}</li>
+    <div key={game.id}>{game.name.toLowerCase()}</div>
   );
   const listItemsHighScore = highScoresData.map((score) =>
-    <li key={score.id}>{score.game.name.toLowerCase() + ": " + score.score}</li>
+    <div key={score.id}>{score.game.name.toLowerCase() + ": " + score.score}</div>
   );
   return (
     <div className="profilePageBody">
@@ -47,14 +47,14 @@ function Profile() {
       <div className="profileCard">
         <h1>{decoded.username.toLowerCase()}</h1>
         <h3>{decoded.email.toLowerCase()}</h3>
-        <h2>Favorite Games</h2>
-        <ul className="profileFavoriteGames">
+        <h2 className="profileSectionName">Favorite Games</h2>
+        <div className="profileFavoriteGames">
           {listItems}
-        </ul>
-        <h2>High Scores</h2>
-        <ul>
+        </div>
+        <h2 className="profileSectionName">High Scores</h2>
+        <div className="profileHighScores">
           {listItemsHighScore}
-        </ul>
+        </div>
       </div>
     </div>
   );
