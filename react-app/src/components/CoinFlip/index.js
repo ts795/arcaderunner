@@ -56,7 +56,8 @@ function CoinFlip() {
         src={wonGame? `${process.env.PUBLIC_URL}/Sounds/Coin_Win.wav` : `${process.env.PUBLIC_URL}/Sounds/Coin_Loose.wav`}
         playing={true}
       />
-      <img className="coinImage" src={currImg === "DollarSign" ? `${process.env.PUBLIC_URL}/dollarsign.png`: `${process.env.PUBLIC_URL}/bitcoin.png`} alt="coin"/>
+      <img className={currImg === "DollarSign" ? "coinImage" : "coinImageNotDisplayed"} src={`${process.env.PUBLIC_URL}/dollarsign.png`} alt="coin"/>
+      <img className={currImg === "Bitcoin" ? "coinImage" : "coinImageNotDisplayed"} src={`${process.env.PUBLIC_URL}/bitcoin.png`} alt="coin"/>
       </div>);
   } 
   else {
