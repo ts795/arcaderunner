@@ -1,3 +1,72 @@
-.warWinner, .warCards{
+.warWinner {
     color:white,
 }
+
+
+.warCardsContain{
+    position: relative;
+    margin: auto;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+}
+
+.warCardsTitle {
+    font-size: large;
+    color: whitesmoke;
+}
+
+.warCardsOutline {
+  border: 1px solid black;
+border-radius:0.5rem; 
+-moz-border-radius: 0.5rem; 
+-webkit-border-radius: 0.5rem;  width: 175px; 
+  text-align: center; 
+  padding: 10px; 
+  margin: 10px; 
+  box-shadow: 1px 1px 3px #2facff; 
+ -moz-box-shadow: 1px 1px 3px #2facff; 
+ -webkit-box-shadow: 1px 1px 3px #2facff;
+}
+
+.warCardsTop {
+    text-align: left;
+    font-size: 2rem;
+}
+
+.warCardsBottom{
+    text-align: right;
+    font-size: 2rem;
+    bottom: 8px;
+  /* right: 16px; */
+}
+
+.warCardsSuit {
+    font-size: 3rem;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.warCardsTop, .warCardsBottom, .warCardsSuit {
+  height: 65px;
+  width: 155px;
+  display: block;
+  background-color: whitesmoke;
+}
+
+span {
+    display: inline;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+/* className ={getColor ? "warCardsTop  red" : "warCardsTop  black"} */
+/* {getColor ? "warCardsBottom  red" : "warCardsBottom black"} */

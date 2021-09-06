@@ -31,52 +31,58 @@ const cardValues = {
   "Q":12,
   "K":13
 };
-class Deck {
-  constructor(cards = freshDeck()) {
-    this.cards = cards
-    console.log(this.cards)
+
+function getColor(suit) {
+    // return this.suit === "♠, ♣" || this.suit === "♦, ♥" ? "black" : "red"
+    return suit === "♠" || suit === "♣" ? "black" : "red"
   }
 
-  get numberOfCards() {
-    return this.cards.length
-  }
+// class Deck {
+//   constructor(cards = freshDeck()) {
+//     this.cards = cards
+//     console.log(this.cards)
+//   }
 
-  getTopCard() {
-    return this.cards.shift()
-  }
+//   get numberOfCards() {
+//     return this.cards.length
+//   }
 
-  insertIntoBottom(card) {
-    this.cards.push(card)
-  }
+//   getTopCard() {
+//     return this.cards.shift()
+//   }
 
-  shuffle() {
-    for (let i = this.numberOfCards - 1; i > 0; i--) {
-      const newIndex = Math.floor(Math.random() * (i + 1))
-      const oldValue = this.cards[newIndex]
-      this.cards[newIndex] = this.cards[i]
-      this.cards[i] = oldValue
-    }
-  }
-}
+//   insertIntoBottom(card) {
+//     this.cards.push(card)
+//   }
 
-class Card {
-  constructor(suit, value) {
-    this.suit = suit
-    this.value = value
-  }
+//   shuffle() {
+//     for (let i = this.numberOfCards - 1; i > 0; i--) {
+//       const newIndex = Math.floor(Math.random() * (i + 1))
+//       const oldValue = this.cards[newIndex]
+//       this.cards[newIndex] = this.cards[i]
+//       this.cards[i] = oldValue
+//     }
+//   }
+// }
 
-  get color() {
-    return this.suit === "♣" || this.suit === "♠" ? "black" : "red"
-  }
+// class Card {
+//   constructor(suit, value) {
+//     this.suit = suit
+//     this.value = value
+//   }
 
-  getHTML() {
-    const cardDiv = document.createElement("div")
-    cardDiv.innerText = this.suit
-    cardDiv.classList.add("card", this.color)
-    cardDiv.dataset.value = `${this.value} ${this.suit}`
-    return cardDiv
-  }
-}
+//   get color() {
+//     return this.suit === "♣" || this.suit === "♠" ? "black" : "red"
+//   }
+
+//   getHTML() {
+//     const cardDiv = document.createElement("div")
+//     cardDiv.innerText = this.suit
+//     cardDiv.classList.add("card", this.color)
+//     cardDiv.dataset.value = `${this.value} ${this.suit}`
+//     return cardDiv
+//   }
+// }
 
 // function freshDeck() {
 //   return SUITS.flatMap(suit => {
@@ -119,4 +125,4 @@ function insertCard(deck, card) {
     return [...deck, card]
 }
 
-export { getTopCard, insertCard, freshDeck, shuffleDeck, cardValues }
+export { getTopCard, insertCard, freshDeck, shuffleDeck, cardValues, getColor }
