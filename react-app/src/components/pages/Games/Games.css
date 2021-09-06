@@ -89,3 +89,8 @@
     height: 50%;
   }
 }
+@media all and (min-height: 700px){
+  #gameBackground {
+    position:fixed;
+	}
+}
