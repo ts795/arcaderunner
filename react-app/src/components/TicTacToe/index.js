@@ -133,7 +133,7 @@ function TicTacToe() {
             } 
             console.log(this.state.xIsNext)
              console.log("gameProgress....", this.state.gameProgress);
-            if(!this.state.gameProgress) {
+            if(!this.state.gameProgress || (this.state.stepNumber === 9)) {
                 return (
                 <div className="centerDiv">
                     <div className="statusTicTac">
