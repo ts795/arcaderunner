@@ -2,6 +2,13 @@
     color:white,
 }
 
+.warCardsTitle {
+    text-align: center;
+    font-family: 'Russo One', sans-serif; 
+    color: #f5f5f5;
+    margin: 1%;
+    text-shadow: #B026FF 2px 2px 8px;    
+}
 
 .warCardsContain{
     position: relative;
@@ -68,5 +75,28 @@ span {
     color: black;
 }
 
-/* className ={getColor ? "warCardsTop  red" : "warCardsTop  black"} */
-/* {getColor ? "warCardsBottom  red" : "warCardsBottom black"} */
+#warGameStartImg{
+    justify-content: center;
+    height: 350px;
+}
+
+@media all and (min-width: 768px){
+  #warGameStartImg {
+      height: 150px;
+  }
+  .bothCards{
+      display: flex;
+      flex-wrap: wrap;
+  }
+}
+@media all and (max-width: 768px){
+  #warGameStartImg {
+  position:fixed;
+  }
+} 
+/*
+@media all and (min-width: 960px) {
+	#BeforeGameMonitor {
+	}
+  .BeforeGamePlayBtn{
+} */

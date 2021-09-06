@@ -19,10 +19,10 @@ function War() {
         const deck = freshDeck()
         shuffleDeck(deck)
         const deckMidpoint = Math.ceil(deck.length / 2)
-        // setPlayerDeck(deck.slice(0, deckMidpoint))
-        // setComputerDeck(deck.slice(deckMidpoint, deck.length))
-        setPlayerDeck(deck.slice(0, 3))
-        setComputerDeck(deck.slice(3, 6))
+        setPlayerDeck(deck.slice(0, deckMidpoint))
+        setComputerDeck(deck.slice(deckMidpoint, deck.length))
+        // setPlayerDeck(deck.slice(0, 3))
+        // setComputerDeck(deck.slice(3, 6))
         console.log("started Game");
         setStart(true);
         setDoneWithGame(false);
@@ -85,6 +85,7 @@ function War() {
     console.log("PLAYER DECK",JSON.stringify(playerDeck));
         return <div className = "warCardsContain" onClick = {()=>updateDeck(playerCard,computerCard,newPlayerDeck, newComputerDeck)}>
             <div  className = "warCardsTitle">Computer {newComputerDeck.length +1}</div>
+            <div className="bothCards">
             <div className = "warCardsOutline ">
             <div className={getColor(computerCard.suit) === "red" ? "warCardsTop red" : "warCardsTop black"}><span>{computerCard.value}</span><span>{computerCard.suit}</span></div> 
             <div className={getColor(computerCard.suit) === "red" ? "warCardsSuit red" : "warCardsSuit black"}>{computerCard.suit}</div>
@@ -96,13 +97,26 @@ function War() {
             <div className={getColor(playerCard.suit) === "red" ? "warCardsSuit red" : "warCardsSuit black"}>{playerCard.suit}</div>
             <div className={getColor(playerCard.suit) === "red" ? "warCardsBottom red" : "warCardsBottom black"}><span>{playerCard.suit}</span><span>{playerCard.value}</span></div>
             </div>
+            </div>
         </div>
     
  } else {
     return (
-        <div>
-            <button onClick={startGame}>Start</button>
+        <div className = "warCardsContainStart" onClick={startGame}>
+            <img id = "warGameStartImg" src={`${process.env.PUBLIC_URL}/warstart.png`} alt = "war start screen"/>
+            {/* <div  className = "warCardsTitle"></div>
+            <div className = "warCardsOutline ">
+            <div className="warCardsTop"><span></span></div> 
+            <div className="warCardsSuit"></div>
+            <div className="warCardsBottom"><span></span></div>
+            </div>
+            <div className = "warCardsOutline">
+            <div className="warCardsTop"><span></span></div> 
+            <div className="warCardsSuit"></div>
+            <div className="warCardsBottom"><span></span></div>
+            </div> */}
         </div>
+        
     );
  }
     
