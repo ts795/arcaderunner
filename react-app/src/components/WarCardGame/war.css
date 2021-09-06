@@ -94,6 +94,27 @@ span {
 
   }
 }
+@media all and (max-width:768px){
+  .warCardsContain {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+  }
+
+  #warGameStartImg {
+    width: 250px;
+    height: 180px;
+  }
+  .warCardsOutline{
+    max-width: 50%;
+    max-height: 30%;
+  }
+  .warCardsBottom, .warCardsSuit, .warCardsTop {
+    height: 32%;
+    width: 80%;
+
+}
+}
 /* @media all and (max-width: 768px){
   #warGameStartImg {
   position:fixed;
