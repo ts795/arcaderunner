@@ -4,6 +4,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    /* background-attachment: fixed; */
       /* Set rules to fill background */
     min-height: 100%;
     width: 100vw;
@@ -13,7 +14,7 @@
   height: auto;
 	
   /* Set up positioning */
-  /* position: fixed; */
+  position: fixed;
   top: 0;
   left: 0; 
 }
