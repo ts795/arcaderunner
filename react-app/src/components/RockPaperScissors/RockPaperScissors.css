@@ -59,7 +59,8 @@
 
     .centerDiv {
         width: 100vw;
-        padding: 20%;
+        padding-top: 10%;
+        padding-bottom: 10%;
     }
     .playAgainBtn {
         margin: 5px;
