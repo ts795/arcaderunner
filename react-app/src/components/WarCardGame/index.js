@@ -3,12 +3,16 @@ import Deck from './deck';
 import Card from './card';
 import { getTopCard, insertCard, freshDeck, shuffleDeck,cardValues } from './deck';
 import "./war.css";
+import ReactHowler from 'react-howler';
+
 
 function War() {
   const [start, setStart] = useState(false);
   const [playerDeck, setPlayerDeck] = useState([]);
   const [computerDeck, setComputerDeck] = useState([]);
   const [doneWithGame, setDoneWithGame] = useState(false);
+  const [winGame, setWinGame] = useState(false);
+
 
 
     function startGame () {
@@ -46,6 +50,7 @@ function War() {
         }
         if(updatedPlayerDeck.length ===0|| updatedCompDeck.length===0){
             setDoneWithGame(true);
+            setWinGame(true);
         }
         setComputerDeck(updatedCompDeck)
         setPlayerDeck(updatedPlayerDeck);
@@ -57,7 +62,10 @@ function War() {
     if(doneWithGame){
         return <div>
             <h1 className = "warWinner">Winner:{playerDeck.length >0 ? "Player":"Computer"}</h1>
-            
+            <ReactHowler
+        src={winGame? `${process.env.PUBLIC_URL}/Sounds/Win.wav` : `${process.env.PUBLIC_URL}/Sounds/Loose.wav`}
+        playing={true}
+      />
             <button onClick={startGame}>Play Again</button>
 
         </div>
