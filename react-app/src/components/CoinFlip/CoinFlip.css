@@ -46,6 +46,10 @@
   height:300px;
 }
 
+.coinImageNotDisplayed {
+  display: none;
+}
+
 .coinFlipMessageText {
   color: #FF6EC7;
   font-family: 'Russo One', sans-serif; 
