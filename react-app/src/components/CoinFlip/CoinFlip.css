@@ -72,4 +72,7 @@
   .playAgainCoinFlipBtn{
     width:75%
   }
+  .centerDiv{
+    padding:1%;
+  }
 }
