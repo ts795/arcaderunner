@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Deck from './deck';
+import Deck, { getColor } from './deck';
 import Card from './card';
 import { getTopCard, insertCard, freshDeck, shuffleDeck,cardValues } from './deck';
-import './card.css';
+import './war.css';
 import ReactHowler from 'react-howler';
 
 
@@ -61,7 +61,7 @@ function War() {
     console.log("COMPUTER DECK",JSON.stringify(computerDeck));
     if(doneWithGame){
         return <div>
-            <h1 className = "warWinner">Winner:{playerDeck.length >0 ? "Player":"Computer"}</h1>
+            <div className = "warWinner">{playerDeck.length >0 ? "You WON!":"You LOST to the Computer!"}</div>
             <ReactHowler
         src={winGame? `${process.env.PUBLIC_URL}/Sounds/Win.wav` : `${process.env.PUBLIC_URL}/Sounds/Loose.wav`}
         playing={true}
@@ -72,21 +72,30 @@ function War() {
     }else if (start && playerDeck.length >0&& computerDeck.length>0) {
     
         // clearCards()
-        // console.log("****Player Deck***", playerDeck);
+        console.log("****Player Deck***", playerDeck);
         // console.log("****Computer Deck****", computerDeck);
         const { card: playerCard, deck: newPlayerDeck } = getTopCard(playerDeck);
         const { card: computerCard, deck: newComputerDeck } = getTopCard(computerDeck)
         console.log("Player Card", playerCard);
         console.log("Computer Card", computerCard);
 
-
-        return <div className = "warCards">
-            <h1  className = "warCards">computer card</h1>
-            <div  className = "warCards">suit={computerCard.suit} value={computerCard.value}</div> 
-            <h1  className = "warCards">player card</h1>
-            <div  className = "warCards">suit={playerCard.suit} value={playerCard.value}</div> 
-            <button onClick = {()=>updateDeck(playerCard,computerCard,newPlayerDeck, newComputerDeck)}>Next</button>
-
+            console.log("LENGTH===", playerDeck);
+            console.log("NewPLAYER", newPlayerDeck.length +1);
+            console.log("NewCOMP", newComputerDeck.length +1);
+    console.log("PLAYER DECK",JSON.stringify(playerDeck));
+        return <div className = "warCardsContain" onClick = {()=>updateDeck(playerCard,computerCard,newPlayerDeck, newComputerDeck)}>
+            <div  className = "warCardsTitle">Computer {newComputerDeck.length +1}</div>
+            <div className = "warCardsOutline ">
+            <div className={getColor(computerCard.suit) === "red" ? "warCardsTop red" : "warCardsTop black"}><span>{computerCard.value}</span><span>{computerCard.suit}</span></div> 
+            <div className={getColor(computerCard.suit) === "red" ? "warCardsSuit red" : "warCardsSuit black"}>{computerCard.suit}</div>
+            <div className={getColor(computerCard.suit) === "red" ? "warCardsBottom red" : "warCardsBottom black"}><span>{computerCard.suit}</span><span>{computerCard.value}</span></div>
+            </div>
+            <div  className = "warCardsTitle">Player {newPlayerDeck.length +1}</div>
+            <div className = "warCardsOutline">
+            <div className={getColor(playerCard.suit) === "red" ? "warCardsTop red" : "warCardsTop black"}><span>{playerCard.value}</span><span>{playerCard.suit}</span></div> 
+            <div className={getColor(playerCard.suit) === "red" ? "warCardsSuit red" : "warCardsSuit black"}>{playerCard.suit}</div>
+            <div className={getColor(playerCard.suit) === "red" ? "warCardsBottom red" : "warCardsBottom black"}><span>{playerCard.suit}</span><span>{playerCard.value}</span></div>
+            </div>
         </div>
     
  } else {
