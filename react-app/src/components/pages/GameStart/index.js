@@ -37,6 +37,8 @@ function GameStart() {
               <CoinFlip />
             ) : gameId === "4" ? (
               <Hangman />
+            ) : gameId === "3" ? (
+              <War/>
             ) : (
               <InvalidPage />
             )}
