@@ -83,6 +83,22 @@ span {
     height: 550px;
 }
 
+.warPlayAgainBtn {
+  border-radius: 50%;
+  background-color: fuchsia;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #2facff, 0 0 40px #2facff, 0 0 80px #2facff;
+  font-family: 'Russo One', sans-serif; 
+}
+
 @media all and (min-width: 768px){
   #warGameStartImg {
       height: 350px;
@@ -113,7 +129,14 @@ span {
     height: 32%;
     width: 80%;
 
-}
+  }
+  
+  .warPlayAgainBtn {
+    margin: 5px;
+    padding: 10px;
+    width: 90%;
+    font-size: 10px;
+  }
 }
 /* @media all and (max-width: 768px){
   #warGameStartImg {
