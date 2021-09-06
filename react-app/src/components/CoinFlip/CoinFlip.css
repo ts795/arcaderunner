@@ -80,3 +80,8 @@
     padding:1%;
   }
 }
+@media all and (max-width:300px){
+  .coinFlipMessageText{
+    font-size:15px;
+  }
+}
