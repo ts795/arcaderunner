@@ -47,7 +47,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    padding: 4% 4% 1% 4%;
+    padding: 2% 12% 4%;
     margin-bottom: 1%;
    
   }
@@ -116,12 +116,12 @@
 }
 @media all and (min-width: 768px){
   .BeforeGamePage {
-    background-attachment: fixed;
+    position:fixed;
   }
 }
 @media all and (max-width: 768px){
   .BeforeGamePage {
-  position:fixed;
+    position:fixed;
   }
 }
 
