@@ -66,7 +66,7 @@ function War() {
         src={playerDeck.length >0? `${process.env.PUBLIC_URL}/Sounds/Win.wav` : `${process.env.PUBLIC_URL}/Sounds/Loose.wav`}
         playing={true}
       />
-            <button className="neonBtn hangmanPlayAgainBtn" onClick={startGame}>Play Again</button>
+            <button className="neonBtn warPlayAgainBtn" onClick={startGame}>Play Again</button>
 
         </div>
     }else if (start && playerDeck.length >0&& computerDeck.length>0) {
