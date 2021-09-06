@@ -61,7 +61,12 @@
 
   .coinFlipBtn {
     width: 50%;
+    padding: 5px;
   }
+
+  .coinStyle {
+  font-size: 50px;
+}
 
   .playAgainCoinFlipBtn{
     width:75%
