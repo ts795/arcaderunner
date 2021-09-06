@@ -44,8 +44,8 @@ function Games() {
               <img src={`${process.env.PUBLIC_URL}/Hangman.png`} className="hangman-thumbnail HomeImgGame" alt="hangman"/>
               <p className="legend">Hangman</p>
             </div>
-            <div class="main-hangman-game" gameId="5">
-              <img src={`${process.env.PUBLIC_URL}/Hangman.png`} alt="GoFish"/>
+            <div class="gameCarouselItem" gameId="5">
+              <img className="HomeImgGame" src={`${process.env.PUBLIC_URL}/goFish.png`} alt="GoFish"/>
               <p className="legend">GoFish</p>
             </div>
 
