@@ -117,7 +117,7 @@ function TicTacToe() {
                     'Go to game start';
                 return (
                     <li key={move}>
-                        <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                        <button className="TTTMoveListBtn" onClick={() => this.jumpTo(move)}>{desc}</button>
                     </li>
                 );
             });

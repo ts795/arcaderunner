@@ -68,6 +68,26 @@
     font-family: 'Russo One', sans-serif; 
   }
 
+  .TTTMoveListBtn {
+    background-color: fuchsia;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 5px;
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 5px #2facff, 0 0 10px #2facff, 0 0 20px #2facff;
+  }
+
+  .TTTMoveListBtn:hover {
+    box-shadow: 0 0 10px #2facff, 0 0 20px #2facff, 0 0 40px #2facff;
+  }
+
+
   .gameOverTicTac {
     font-size: xx-large;
   }
@@ -105,6 +125,15 @@
     width: 24px;
     height: 24px;
     line-height: 24px;
+  }
+
+  .TTTMoveListBtn {
+    padding: 2px;
+    font-size: 7px;
+    width: 80%; 
+  }
+  .game-info {
+    width: 45%;
   }
   /* .msgDiv {
       width: 50%;
