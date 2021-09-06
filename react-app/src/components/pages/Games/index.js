@@ -33,7 +33,7 @@ function Games() {
               <p className="legend">Tic Tac Toe</p>
             </div>
             <div className = "gameCarouselItem"  gameId="2">
-              <img className="HomeImgGame" src={`${process.env.PUBLIC_URL}/rockPaperScissors.PNG`} alt="rockpaper"/>
+              <img className="HomeImgGame" src={`${process.env.PUBLIC_URL}/rockPaperScissors.png`} alt="rockpaper"/>
               <p className="legend">Rock Paper Scissors</p>
             </div>
             <div className = "gameCarouselItem"  gameId="3">
