@@ -2,9 +2,9 @@ import React from 'react';
 import './InvalidPage.css';
 
 
-const InvalidPage = () => {
+function InvalidPage() {
     return (
-        <h1 className="invalidText">Invalid Page</h1>
+        <div className="invalidText">Invalid Page</div>
     );
 };
 

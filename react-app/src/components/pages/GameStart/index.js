@@ -3,7 +3,7 @@ import { Redirect, useParams } from "react-router-dom";
 import TicTacToe from "../../TicTacToe";
 import RockPaperScissors from "../../RockPaperScissors";
 import CoinFlip from "../../CoinFlip";
-import InvalidPage from "../../InvalidPage";
+import InvalidPage from "../../pages/InvalidPage";
 import Hangman from "../../Hangman";
 import War from "../../WarCardGame";
 import "./GameStart.css";
