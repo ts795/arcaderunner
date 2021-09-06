@@ -74,7 +74,8 @@ router.get('/', authenticateJWT, async (req, res) => {
         user_id: req.user.user_id,
       },
       order: [['score', 'DESC']],
-      include: Games
+      include: Games,
+      limit: 10
     });
     const highScores = highScoresData.map((highScore) =>
       highScore.get({ plain: true })
