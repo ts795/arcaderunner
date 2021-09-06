@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Deck from './deck';
 import Card from './card';
 import { getTopCard, insertCard, freshDeck, shuffleDeck,cardValues } from './deck';
-import "./war.css";
+import './card.css';
 import ReactHowler from 'react-howler';
 
 
@@ -66,7 +66,7 @@ function War() {
         src={winGame? `${process.env.PUBLIC_URL}/Sounds/Win.wav` : `${process.env.PUBLIC_URL}/Sounds/Loose.wav`}
         playing={true}
       />
-            <button onClick={startGame}>Play Again</button>
+            <button className="neonBtn hangmanPlayAgainBtn" onClick={startGame}>Play Again</button>
 
         </div>
     }else if (start && playerDeck.length >0&& computerDeck.length>0) {
