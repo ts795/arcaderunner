@@ -120,9 +120,19 @@
     position:fixed;
   }
 }
-@media all and (max-width: 768px){
+@media all and (max-width: 768px) and (max-height: 560px){
+  .BeforeGamePage {
+    background-attachment: scroll;
+  }
+}
+@media all and (min-height: 560px){
   .BeforeGamePage {
     position:fixed;
+	}
+}
+@media screen and (max-width: 300px) {
+  .BeforeGameScreenContainer  .BeforeGamePlayBtn {
+    font-size: 30px;
   }
 }
 
@@ -162,8 +172,3 @@
   }
 }
 
-@media screen and (max-width: 300px) {
-  .BeforeGameScreenContainer  .BeforeGamePlayBtn {
-    font-size: 30px;
-  }
-}
