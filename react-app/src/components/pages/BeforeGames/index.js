@@ -66,20 +66,17 @@ function BeforeGame() {
         <div className = "BeforeGameRow" id = "BeforeGame">
           {/* image */}
           <div className = "BeforeGameScreenContainer">
-          <div id="BeforeGameButtonContainer">
-          <div id="BeforeGameMonitor">
-            <div id = "BeforeGameMonitorContent">
-            <img id = "BeforeGameScreenImg" src={`${process.env.PUBLIC_URL}/arcadescreen.png`} alt = "arcade screen"/>
-          <button onMouseEnter={() => setPlayMusic(true)} onMouseLeave={() => setPlayMusic(false)}  onClick={onPlayButtonClick} className = "BeforeGamePlayBtn">Start Game</button>
-           {playMusic ? <ReactHowler
-        src={ `${process.env.PUBLIC_URL}/Sounds/Game Entry.wav`}
-        playing={true}
-      /> : ""}
-          </div>
-          </div>
+            <div id="BeforeGameButtonContainer">
+              <div id="BeforeGameMonitor">
+                <div id = "BeforeGameMonitorContent">
+                  <img id = "BeforeGameScreenImg" src={`${process.env.PUBLIC_URL}/arcadescreen.png`} alt = "arcade screen"/>
+                  <button onMouseEnter={() => setPlayMusic(true)} onMouseLeave={() => setPlayMusic(false)}  onClick={onPlayButtonClick} className = "BeforeGamePlayBtn">Start Game</button>
+                  {playMusic ? <ReactHowler src={ `${process.env.PUBLIC_URL}/Sounds/Game Entry.wav`} playing={true}/> : ""}
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
-          </div>
           <div className = "BeforeGameInfoRow" id = "BeforeGameInfo">
             <h2 className = "BeforeGameH2">{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "BeforeGameStar">{favGame ? "★" : "✩"}</button></h2>
             <h3 className = "BeforeGameH3">{gameInformation.description ? gameInformation.description : ""} </h3>

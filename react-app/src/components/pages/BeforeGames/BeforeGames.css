@@ -158,5 +158,11 @@
     60%{    color: transparent; }
     99%{    color:transparent;  }
     100%{   color: white;  -webkit-text-stroke: 1px #1F51FF;  }
+  }
 }
+
+@media screen and (max-width: 300px) {
+  .BeforeGameScreenContainer  .BeforeGamePlayBtn {
+    font-size: 30px;
+  }
 }
