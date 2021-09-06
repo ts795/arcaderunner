@@ -21,6 +21,7 @@ function War() {
         setComputerDeck(deck.slice(3, 6))
         console.log("started Game");
         setStart(true);
+        setDoneWithGame(false);
 
 
     }
