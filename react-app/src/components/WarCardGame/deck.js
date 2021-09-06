@@ -16,7 +16,21 @@ const VALUES = [
   "Q",
   "K"
 ]
-
+const cardValues = {
+  "A":14,
+  "2":2,
+  "3":3,
+  "4":4,
+  "5":5,
+  "6":6,
+  "7":7,
+  "8":8,
+  "9":9,
+  "10":10,
+  "J":11,
+  "Q":12,
+  "K":13
+};
 class Deck {
   constructor(cards = freshDeck()) {
     this.cards = cards
@@ -100,7 +114,9 @@ function getTopCard(deck) {
 }
 
 function insertCard(deck, card) {
+  console.log("DECK ", deck);
+  console.log("CARD", card);
     return [...deck, card]
 }
 
-export { getTopCard, insertCard, freshDeck, shuffleDeck }
+export { getTopCard, insertCard, freshDeck, shuffleDeck, cardValues }
