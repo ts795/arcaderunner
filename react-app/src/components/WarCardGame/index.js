@@ -11,7 +11,7 @@ function War() {
   const [playerDeck, setPlayerDeck] = useState([]);
   const [computerDeck, setComputerDeck] = useState([]);
   const [doneWithGame, setDoneWithGame] = useState(false);
-  const [winGame, setWinGame] = useState(false);
+//   const [winGame, setWinGame] = useState(false);
 
 
 
@@ -19,10 +19,10 @@ function War() {
         const deck = freshDeck()
         shuffleDeck(deck)
         const deckMidpoint = Math.ceil(deck.length / 2)
-        setPlayerDeck(deck.slice(0, deckMidpoint))
-        setComputerDeck(deck.slice(deckMidpoint, deck.length))
-        // setPlayerDeck(deck.slice(0, 3))
-        // setComputerDeck(deck.slice(3, 6))
+        // setPlayerDeck(deck.slice(0, deckMidpoint))
+        // setComputerDeck(deck.slice(deckMidpoint, deck.length))
+        setPlayerDeck(deck.slice(0, 3))
+        setComputerDeck(deck.slice(3, 6))
         console.log("started Game");
         setStart(true);
         setDoneWithGame(false);
@@ -50,7 +50,7 @@ function War() {
         }
         if(updatedPlayerDeck.length ===0|| updatedCompDeck.length===0){
             setDoneWithGame(true);
-            setWinGame(true);
+            // setWinGame(true);
         }
         setComputerDeck(updatedCompDeck)
         setPlayerDeck(updatedPlayerDeck);
@@ -63,7 +63,7 @@ function War() {
         return <div>
             <div className = "warWinner">{playerDeck.length >0 ? "You WON!":"You LOST to the Computer!"}</div>
             <ReactHowler
-        src={winGame? `${process.env.PUBLIC_URL}/Sounds/Win.wav` : `${process.env.PUBLIC_URL}/Sounds/Loose.wav`}
+        src={playerDeck.length >0? `${process.env.PUBLIC_URL}/Sounds/Win.wav` : `${process.env.PUBLIC_URL}/Sounds/Loose.wav`}
         playing={true}
       />
             <button className="neonBtn hangmanPlayAgainBtn" onClick={startGame}>Play Again</button>
