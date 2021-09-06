@@ -62,7 +62,6 @@ function TicTacToe() {
         };
         constructor(props) {
             super(props);
-            // this.initState();
                 this.state = {
                 history: [
                     {

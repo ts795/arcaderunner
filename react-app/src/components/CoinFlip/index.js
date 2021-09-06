@@ -44,10 +44,10 @@ function CoinFlip() {
   if (flippedCoin === "not flipped") {
     return (<div className="centerDiv">
         <button type="button" className="neonBtn coinFlipBtn" onClick={() => onFlipCoin("DollarSign")}>
-          <i className="fas fa-usd-circle coin" ></i>
+          <i className="fas fa-usd-circle coinStyle" ></i>
         </button>
         <button type="button" className="neonBtn coinFlipBtn" onClick={() => onFlipCoin("Bitcoin")}>
-          <i className="fab fa-bitcoin coin" ></i>
+          <i class="fab fa-bitcoin coinStyle"></i>
         </button>
     </div>);
   } else if (flippedCoin === "flipping") {
