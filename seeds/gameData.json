@@ -17,7 +17,7 @@
   },
   {
     "name": "Go Fish",
-    "description": "Competitive Card Game"
+    "description": "Five cards are dealt from a standard 52-card deck (54 Counting Jokers) to each player, or seven cards if there are three or fewer players. The remaining cards are shared between the players, usually spread out in a disorderly pile referred to as the \"ocean\" or \"pool\". The player whose turn it is to play asks another player for their cards of a particular face value. For example, Player A may ask, \"Player B, do you have any threes?\" Player A must have at least one card of the rank they requested. Player B must hand over all cards of that rank if possible. If they have none, Player B tells Player A to \"go fish\" (or just simply \"fish\"), and Player A draws a card from the pool and places it in their own hand. Then it is the next player's turn – unless the card Player A drew is the card they asked for, in which case they show it to the other players, and they get another turn. When any player at any time has four cards of one face value, it forms a book, and the cards must be placed face up in front of that player. Play proceeds to the left. When all sets of cards have been laid down in books, the game ends. The player with the most books wins."
   },
   {
     "name": "Coin Flip",

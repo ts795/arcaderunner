@@ -77,6 +77,13 @@
     text-shadow: #B026FF 2px 2px 8px;
 
 }
+
+.BeforeGameH3 {
+  /* Make the description scrollable if it is large */
+  height: 100px;
+  overflow-y: auto;
+}
+
 #BeforeGameButtonContainer {
   max-width: 100%;
   margin: auto;
