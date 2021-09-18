@@ -125,4 +125,4 @@ function insertCard(deck, card) {
     return [...deck, card]
 }
 
-export { getTopCard, insertCard, freshDeck, shuffleDeck, cardValues, getColor }
+export { getTopCard, insertCard, freshDeck, shuffleDeck, cardValues, getColor, VALUES }
