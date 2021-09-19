@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./gofish.css";
 import { getTopCard, insertCard, freshDeck, shuffleDeck, VALUES } from '../WarCardGame/deck';
+import jwt_decode from "jwt-decode";
 
 const PLURAL_VALUES = {
     "A": "Aces",
@@ -19,10 +20,20 @@ const PLURAL_VALUES = {
 };
 
 function GoFish() {
+    // Get the user's information from local storage
+    let jwt_token = localStorage.getItem('arcadeRunnerJWTToken');
+    let decoded;
+    try {
+        decoded = jwt_decode(jwt_token);
+    } catch (err) {
+        // Token will not exist when logging out
+    }
+
     // Stage of the game, can be:
     //    not started
     //    playing - player turn
     //    playing - player fish
+    //    playing - computer turn
     //    done with game
     const [gameStage, setGameStage] = useState("not started");
     const [playerCards, setPlayerCards] = useState([]);
@@ -39,14 +50,14 @@ function GoFish() {
         // Give 7 cards to the computer and player
         let computerCards = deck.slice(0, 7);
         // Check if the computer got any books on the initial deal
-        let computerBooks = checkForBooks(computerCards);
-        setComputerBooks(computerBooks);
-        setComputerCards(computerCards);
+        let {booksFound, newListOfCards} = checkForBooks(computerCards);
+        setComputerBooks(booksFound);
+        setComputerCards(newListOfCards);
         // Check if the player got any books on the initial deal
         let playerCards = deck.slice(7, 14);
-        let playerBooks = checkForBooks(playerCards);
-        setPlayerBooks(playerBooks);
-        setPlayerCards(playerCards);
+        let {booksFound: playerBooksFound, newListOfCards: playerNewListOfCards} = checkForBooks(playerCards);
+        setPlayerBooks(playerBooksFound);
+        setPlayerCards(playerNewListOfCards);
         setOceanCards(deck.slice(14, 52));
         setGameStage("playing - player turn");
     }
@@ -71,11 +82,8 @@ function GoFish() {
             }
         }
         // Filter out any cards that were in a book
-        for (var idx = 0; idx < booksFound.length; idx++ ) {
-            let bookFound = booksFound[idx];
-            listOfCards = listOfCards.filter(card => card.value !== bookFound);
-        }
-        return booksFound;
+        let newListOfCards = listOfCards.filter(card => booksFound.indexOf(card.value) === -1);
+        return {booksFound, newListOfCards};
     }
 
     // Get a list of books to fish for
@@ -83,7 +91,7 @@ function GoFish() {
         let possibleBooks = [...VALUES];
         // Filter out the player and the computer's books
         let foundBooks = [...playerBooks].concat([...computerBooks]);
-        for (var idx = 0; idx < foundBooks.length; idx++ ) {
+        for (var idx = 0; idx < foundBooks.length; idx++) {
             let bookFound = foundBooks[idx];
             possibleBooks = possibleBooks.filter(book => book !== bookFound);
         }
@@ -100,61 +108,152 @@ function GoFish() {
             let newComputerCards = computerCards.filter(card => card.value !== rankAskedFor);
             let newPlayerCards = [...playerCards, ...computerCardsOfRank];
             // Check if the player got any books
-            let newPlayerBooks = checkForBooks(newPlayerCards);
-            if (newPlayerBooks.length) {
-                setPlayerBooks([...playerBooks, ...newPlayerBooks]);
-            }
+            checkForNewPlayerBooks(newPlayerCards);
             setComputerCards(newComputerCards);
-            setPlayerCards(newPlayerCards);
         } else {
             // Player didn't get a card from the computer so they have to go fish
             setFishingFor(rankAskedFor);
             setGameStage("playing - player fish");
         }
+        checkForGameCompletion();
+    }
+
+    // Call back when the computer has to give the player cards
+    function giveComputerPlayerCards(rankComputerAskedFor, playerCardsOfRank) {
+        // The player had cards of that rank so the computer gets them
+        let newPlayerCards = playerCards.filter(card => card.value !== rankComputerAskedFor);
+        let newComputerCards = [...computerCards, ...playerCardsOfRank];
+        // Check if the computer got any books
+        checkForNewComputerBooks(newComputerCards);
+        setPlayerCards(newPlayerCards);
+        checkForGameCompletion();
+    }
+
+    // Check if the game is done
+    function checkForGameCompletion() {
+        // Game is completed if there are books for every rank
+        if (playerBooks.length + computerBooks.length === VALUES.length) {
+            setGameStage("done with game");
+        }
+    }
+
+    // Check for new player books after adding cards for the player
+    function checkForNewPlayerBooks(newPlayerCards) {
+        let {booksFound, newListOfCards} = checkForBooks(newPlayerCards);
+        if (booksFound.length) {
+            setPlayerBooks([...playerBooks, ...booksFound]);
+        }
+        setPlayerCards(newListOfCards);
+    }
+
+    // Check for new computer books after adding cards for the computer
+    function checkForNewComputerBooks(newComputerCards) {
+        let {booksFound, newListOfCards} = checkForBooks(newComputerCards);
+        if (booksFound.length) {
+            setComputerBooks([...computerBooks, ...booksFound]);
+        }
+        setComputerCards(newListOfCards);
     }
 
     // Get a card from the ocean
     function getCardFromOcean() {
-        alert(fishingFor);
         // Draw a card from the ocean
+        let { card, deck } = getTopCard(oceanCards);
         // If the card matches what the player was fishing for they get another turn
         // Otherwise, it's the other player's turn
+        checkForNewPlayerBooks([...playerCards, card]);
+        // Update the ocean
+        setOceanCards(deck);
+        if (card.value === fishingFor) {
+            // It remains the player's turn
+            setGameStage("playing - player turn");
+        } else {
+            // It's the computer's turn now
+            setGameStage("playing - computer turn");
+        }
+        checkForGameCompletion();
     }
 
-    if (gameStage.startsWith("playing")) {
+    // Get a card from the ocean for the computer
+    function computerGetsCardFromOcean(rankComputerAskedFor) {
+        // Draw a card from the ocean
+        let { card, deck } = getTopCard(oceanCards);
+        // If the card matches what the computer was fishing for they get another turn
+        // Otherwise, it's the player's turn
+        checkForNewComputerBooks([...computerCards, card]);
+        // Update the ocean
+        setOceanCards(deck);
+        if (card.value === rankComputerAskedFor) {
+            // It remains the computer's turn
+            setGameStage("playing - computer turn");
+        } else {
+            // It's the player's turn now
+            setGameStage("playing - player turn");
+        }
+        checkForGameCompletion();
+    }
+
+    if (gameStage === "done with game") {
+        return (
+            <div style={{ color: 'white' }}>
+                <h1> {decoded.username} {playerBooks.length > computerBooks.length ? " won" : " lost"} </h1>;
+                <button onClick={startGame}>Play Again</button>
+            </div>
+        );
+    } else if (gameStage.startsWith("playing")) {
         let booksInfo = <div> No completed books yet </div>;
         if (playerBooks.length + computerBooks.length > 0) {
             booksInfo = <div> {playerBooks.concat(computerBooks).join(" ")} </div>;
         }
         let playerRequest = <> </>;
-        let goFishButton = <> </>
+        let goFishButton = <> </>;
+        let computerRequest = <> </>;
+        let computerActionButton = <> </>;
         if (gameStage === "playing - player turn") {
             // Create a drop down so the user can ask for a card
             let booksCanAskFor = getPossibleBooksToFishFor();
             let optionsList = [<option value="No selection"> </option>].concat(booksCanAskFor.map((item) => <option value={item}> {PLURAL_VALUES[item]} </option>))
             playerRequest = <div> Do you have any <select onChange={onPlayerSelectRankToFishFor}>  {optionsList} </select> ? </div>
         } else if (gameStage === "playing - player fish") {
-            goFishButton = <button onClick={getCardFromOcean}>Computer has no {PLURAL_VALUES[fishingFor]}. Go Fish!</button>
+            goFishButton = <button className="goFishButton" onClick={getCardFromOcean}>Computer has no {PLURAL_VALUES[fishingFor]}. Go Fish!</button>
+        } else if (gameStage === "playing - computer turn") {
+            // Simulate the computer asking for a rank
+            let booksCanAskFor = getPossibleBooksToFishFor();
+            // Randomly select something to ask for
+            let idx = Math.floor(Math.random() * booksCanAskFor.length);
+            let rankComputerAskedFor = booksCanAskFor[idx];
+            computerRequest = <div> {decoded.username} Do you have any {PLURAL_VALUES[rankComputerAskedFor]} ? </div>;
+            // Check if the computer asked for a rank the player has
+            let playerCardsOfRank = playerCards.filter(card => card.value === rankComputerAskedFor);
+            if (playerCardsOfRank.length) {
+                // The player has cards of the passed in rank
+                computerActionButton = <button onClick={() => giveComputerPlayerCards(rankComputerAskedFor, playerCardsOfRank)}> Yes, computer I have {PLURAL_VALUES[rankComputerAskedFor]} </button>
+            } else {
+                // Computer has to fish
+                computerActionButton = <button onClick={() => computerGetsCardFromOcean(rankComputerAskedFor)}> Sorry computer, go fish! </button>
+            }
         }
         return (
             <div style={{ color: 'white' }}>
                 {booksInfo}
                 {playerRequest}
+                {computerRequest}
                 {goFishButton}
+                {computerActionButton}
                 <div>
-                Player Cards: {JSON.stringify(playerCards)}
+                    Player Cards: {JSON.stringify(playerCards)}
                 </div>
                 <div>
-                Computer Cards: {JSON.stringify(computerCards)}
+                    Computer Cards: {JSON.stringify(computerCards)}
                 </div>
                 <div>
-                Ocean Cards: {JSON.stringify(oceanCards)}
+                    Ocean Cards: {JSON.stringify(oceanCards)}
                 </div>
                 <div>
-                Player books: {JSON.stringify(playerBooks)}
+                    Player books: {JSON.stringify(playerBooks)}
                 </div>
                 <div>
-                Computer books: {JSON.stringify(computerBooks)}
+                    Computer books: {JSON.stringify(computerBooks)}
                 </div>
             </div>
         );
