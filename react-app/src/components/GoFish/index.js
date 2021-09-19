@@ -34,7 +34,6 @@ function GoFish() {
     //    playing - player turn
     //    playing - player fish
     //    playing - computer turn
-    //    done with game
     const [gameStage, setGameStage] = useState("not started");
     const [playerCards, setPlayerCards] = useState([]);
     const [computerCards, setComputerCards] = useState([]);
@@ -43,6 +42,7 @@ function GoFish() {
     const [computerBooks, setComputerBooks] = useState([]);
     // What the current player is fishing for
     const [fishingFor, setFishingFor] = useState(null);
+    const [dropDownValue, setDropDownValue] = useState("No selection");
 
     function startGame() {
         const deck = freshDeck();
@@ -115,7 +115,7 @@ function GoFish() {
             setFishingFor(rankAskedFor);
             setGameStage("playing - player fish");
         }
-        checkForGameCompletion();
+        setDropDownValue("No selection");
     }
 
     // Call back when the computer has to give the player cards
@@ -126,15 +126,6 @@ function GoFish() {
         // Check if the computer got any books
         checkForNewComputerBooks(newComputerCards);
         setPlayerCards(newPlayerCards);
-        checkForGameCompletion();
-    }
-
-    // Check if the game is done
-    function checkForGameCompletion() {
-        // Game is completed if there are books for every rank
-        if (playerBooks.length + computerBooks.length === VALUES.length) {
-            setGameStage("done with game");
-        }
     }
 
     // Check for new player books after adding cards for the player
@@ -171,7 +162,6 @@ function GoFish() {
             // It's the computer's turn now
             setGameStage("playing - computer turn");
         }
-        checkForGameCompletion();
     }
 
     // Get a card from the ocean for the computer
@@ -190,17 +180,18 @@ function GoFish() {
             // It's the player's turn now
             setGameStage("playing - player turn");
         }
-        checkForGameCompletion();
     }
 
-    if (gameStage === "done with game") {
-        return (
-            <div style={{ color: 'white' }}>
-                <h1> {decoded.username} {playerBooks.length > computerBooks.length ? " won" : " lost"} </h1>;
-                <button onClick={startGame}>Play Again</button>
-            </div>
-        );
-    } else if (gameStage.startsWith("playing")) {
+    if (gameStage.startsWith("playing")) {
+        if (playerBooks.length + computerBooks.length === VALUES.length) {
+            // Game is done
+            return (
+                <div style={{ color: 'white' }}>
+                    <h1> {decoded.username} {playerBooks.length > computerBooks.length ? " won" : " lost"} </h1>
+                    <button onClick={startGame}>Play Again</button>
+                </div>
+            );
+        }
         let booksInfo = <div> No completed books yet </div>;
         if (playerBooks.length + computerBooks.length > 0) {
             booksInfo = <div> {playerBooks.concat(computerBooks).join(" ")} </div>;
@@ -213,7 +204,7 @@ function GoFish() {
             // Create a drop down so the user can ask for a card
             let booksCanAskFor = getPossibleBooksToFishFor();
             let optionsList = [<option value="No selection"> </option>].concat(booksCanAskFor.map((item) => <option value={item}> {PLURAL_VALUES[item]} </option>))
-            playerRequest = <div> Do you have any <select onChange={onPlayerSelectRankToFishFor}>  {optionsList} </select> ? </div>
+            playerRequest = <div> Do you have any <select onChange={onPlayerSelectRankToFishFor} value={dropDownValue}>  {optionsList} </select> ? </div>
         } else if (gameStage === "playing - player fish") {
             goFishButton = <button className="goFishButton" onClick={getCardFromOcean}>Computer has no {PLURAL_VALUES[fishingFor]}. Go Fish!</button>
         } else if (gameStage === "playing - computer turn") {
@@ -233,6 +224,12 @@ function GoFish() {
                 computerActionButton = <button onClick={() => computerGetsCardFromOcean(rankComputerAskedFor)}> Sorry computer, go fish! </button>
             }
         }
+
+        console.log("Computer Cards: ",JSON.stringify(computerCards));
+        console.log("Ocean Cards: ",JSON.stringify(oceanCards));
+        console.log("Player books: ",JSON.stringify(playerBooks));
+        console.log("Computer books: ",JSON.stringify(computerBooks));
+
         return (
             <div style={{ color: 'white' }}>
                 {booksInfo}
@@ -242,18 +239,6 @@ function GoFish() {
                 {computerActionButton}
                 <div>
                     Player Cards: {JSON.stringify(playerCards)}
-                </div>
-                <div>
-                    Computer Cards: {JSON.stringify(computerCards)}
-                </div>
-                <div>
-                    Ocean Cards: {JSON.stringify(oceanCards)}
-                </div>
-                <div>
-                    Player books: {JSON.stringify(playerBooks)}
-                </div>
-                <div>
-                    Computer books: {JSON.stringify(computerBooks)}
                 </div>
             </div>
         );
