@@ -9,6 +9,7 @@ import War from "../../WarCardGame";
 import "./GameStart.css";
 import { getGame } from "../../../utils/API";
 import Navbar from "../../Navbar";
+import GoFish from "../../GoFish";
 
 function GameStart() {
   const { gameId } = useParams();
@@ -39,6 +40,8 @@ function GameStart() {
               <Hangman />
             ) : gameId === "3" ? (
               <War/>
+            ) : gameId === "5" ? (
+              <GoFish/>
             ) : (
               <InvalidPage />
             )}

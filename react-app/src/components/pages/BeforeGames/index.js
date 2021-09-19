@@ -11,7 +11,7 @@ function BeforeGame() {
   const [playGame, setPlayGame] = useState(false);
   const [gameInformation, setGameInformation] = useState({});
   const [favGameInformation, setFavGameInformation] = useState({});
-  const [favGame,setFavGame] = useState();
+  const [favGame, setFavGame] = useState();
   const [playMusic, setPlayMusic] = useState(false);
 
 
@@ -26,21 +26,22 @@ function BeforeGame() {
     getFavoritedGame(id).then((result) => {
       console.log("favgame", result);
       setFavGameInformation(result);
-      console.log("fav game id", result.game_id, "game id",id)
-      if(result.game_id && (result.game_id===parseInt(id))){
-        console.log("favegame id",result.game_id)
+      console.log("fav game id", result.game_id, "game id", id)
+      if (result.game_id && (result.game_id === parseInt(id))) {
+        console.log("favegame id", result.game_id)
         console.log("already favorited")
-        setFavGame(true);}
+        setFavGame(true);
+      }
     });
   }, []);
 
 
   const onFavoriteButtonClick = (e) => {
-    if(!favGame){
-    addFavoriteGame(id);
-    setFavGame(true);
+    if (!favGame) {
+      addFavoriteGame(id);
+      setFavGame(true);
     }
-    else{
+    else {
 
       alert("Already added to Favorites")
     }
@@ -51,38 +52,38 @@ function BeforeGame() {
     setPlayGame(true);
   };
 
-   if (playGame) {
+  if (playGame) {
     let pathToRedirect = `/gamestart/${id}`;
     return <div><Redirect to={pathToRedirect} /></div>;
-  } 
+  }
   else {
     console.log("gameInfo", gameInformation);
     console.log("favgameInfo", favGameInformation);
 
     return (
-   <div className = "BeforeGamePage">
-      <Navbar/>
-      <div className="BeforeGamePageContainer">
-        <div className = "BeforeGameRow" id = "BeforeGame">
-          {/* image */}
-          <div className = "BeforeGameScreenContainer">
-            <div id="BeforeGameButtonContainer">
-              <div id="BeforeGameMonitor">
-                <div id = "BeforeGameMonitorContent">
-                  <img id = "BeforeGameScreenImg" src={`${process.env.PUBLIC_URL}/arcadescreen.png`} alt = "arcade screen"/>
-                  <button onMouseEnter={() => setPlayMusic(true)} onMouseLeave={() => setPlayMusic(false)}  onClick={onPlayButtonClick} className = "BeforeGamePlayBtn">Start Game</button>
-                  {playMusic ? <ReactHowler src={ `${process.env.PUBLIC_URL}/Sounds/Game Entry.wav`} playing={true}/> : ""}
+      <div className="BeforeGamePage">
+        <Navbar />
+        <div className="BeforeGamePageContainer">
+          <div className="BeforeGameRow" id="BeforeGame">
+            {/* image */}
+            <div className="BeforeGameScreenContainer">
+              <div id="BeforeGameButtonContainer">
+                <div id="BeforeGameMonitor">
+                  <div id="BeforeGameMonitorContent">
+                    <img id="BeforeGameScreenImg" src={`${process.env.PUBLIC_URL}/arcadescreen.png`} alt="arcade screen" />
+                    <button onMouseEnter={() => setPlayMusic(true)} onMouseLeave={() => setPlayMusic(false)} onClick={onPlayButtonClick} className="BeforeGamePlayBtn">Start Game</button>
+                    {playMusic ? <ReactHowler src={`${process.env.PUBLIC_URL}/Sounds/Game Entry.wav`} playing={true} /> : ""}
                   </div>
+                </div>
               </div>
             </div>
           </div>
+          <div className="BeforeGameInfoRow" id="BeforeGameInfo">
+            <h2 className="BeforeGameH2">{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className="BeforeGameStar">{favGame ? "★" : "✩"}</button></h2>
+            <h3 className="BeforeGameH3">{gameInformation.description ? gameInformation.description : ""} </h3>
+          </div>
         </div>
-          <div className = "BeforeGameInfoRow" id = "BeforeGameInfo">
-            <h2 className = "BeforeGameH2">{gameInformation.name ? gameInformation.name : ""}  <button onClick={onFavoriteButtonClick} className = "BeforeGameStar">{favGame ? "★" : "✩"}</button></h2>
-            <h3 className = "BeforeGameH3">{gameInformation.description ? gameInformation.description : ""} </h3>
-            </div>
-            </div>
- </div>
+      </div>
     );
   }
 }

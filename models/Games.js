@@ -17,7 +17,8 @@ Games.init(
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      // Set size so the description can be a couple of paragraphs long if needed
+      type: DataTypes.STRING(4096),
     },
   },
   {
